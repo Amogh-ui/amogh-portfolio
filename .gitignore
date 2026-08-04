@@ -35,7 +35,5 @@ Beyond the net/
 refs/
 ref/
 
-# Large media files
+# Large media files (originals excluded, compressed versions committed)
 public/trox-video.mp4
-*.mp4
-*.mov
