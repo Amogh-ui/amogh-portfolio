@@ -1,0 +1,41 @@
+# Secrets & local config
+MCP server.json
+.env
+.env.*
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Large raw asset folders (exceed GitHub 100MB limit)
+TROX 
+Screencalorie Scroll/
+Beyond the net/
+refs/
+ref/
+
+# Large media files
+public/trox-video.mp4
+*.mp4
+*.mov
