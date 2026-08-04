@@ -836,7 +836,8 @@ const syncScrollState = () => {
   }
 
   if (belowIntro && !window.matchMedia('(max-width: 768px)').matches) {
-    const introStart = belowIntro.offsetTop - window.innerHeight * 0.75
+    // Subtract less from offsetTop so the user has to scroll down further before it triggers
+    const introStart = belowIntro.offsetTop - window.innerHeight * 0.55
     const introTravel = window.innerHeight * 0.55 // Fixed scroll distance for smooth reveal
     const introProgress = clamp((scrollY - introStart) / introTravel, 0, 1)
     applyIntroScrollState(introProgress)
@@ -1471,7 +1472,7 @@ const initBelowIntroAnimationMobile = () => {
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: belowIntro,
-      start: 'top 75%',
+      start: 'top 85%',
       toggleActions: 'play none none reverse'
     }
   })
