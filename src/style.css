@@ -1533,7 +1533,7 @@ a {
   height: 400px;
   display: block;
   overflow: hidden;
-  background: #E8E4DC;  /* cream fallback — WebGL canvas covers this */
+  background: #121212;
   cursor: grab;
   user-select: none;
   -webkit-user-select: none;
@@ -1573,8 +1573,8 @@ a {
   font-size: 94px;
   font-weight: 500;
   letter-spacing: -4.7px;
-  color: #0d0d0c;  /* dark text on cream */
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+  color: #e0e0e0;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .footer_canvas_brand .shete {
@@ -1587,8 +1587,8 @@ a {
 .footer_canvas_icon {
   width: 85px;
   height: 85px;
-  /* Invert the SVG to make it near-black on the cream canvas */
-  filter: brightness(0);
+  filter: brightness(1.1);
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
 .footer_canvas_icon_mobile {
@@ -1667,7 +1667,6 @@ a {
     width: 48px;
     height: 48px;
     margin: 0 20px;
-    filter: brightness(0);  /* dark icon on cream */
   }
 
   .mobile_hold_btn {

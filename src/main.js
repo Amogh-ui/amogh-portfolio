@@ -1619,9 +1619,9 @@ if (footerContainer && footerCanvas) {
 
   createHalftoneAnimation(footerContainer, footerCanvas, {
     reducedMotion,
-    bg: '#E8E4DC',   // Warm cream — bymonolog-style halftone field
-    fg: '#080807',   // Near-black animated blobs
-    pixelSize: 4,
+    bg: '#4469B4',   // Milder blue requested by user
+    fg: '#02040a',   // Dark foreground dots matching site background
+    pixelSize: 3,
     gooeyness: 0.58,
     contrast: 1.5,
     bias: 0.0,
