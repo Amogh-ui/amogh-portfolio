@@ -105,6 +105,57 @@ const glassAsset = (fileName) => `/icons/glass/${encodeURIComponent(fileName)}`
 const workPreviewImage = new URL('../images/AM-FREEBIES-IP-005 1.png', import.meta.url).href
 const beyondTheNetImage = new URL('../images/beyond-the-net-thumbnail.png', import.meta.url).href
 
+// ─── Real Asset Preloader ─────────────────────────────────────────────────────
+// Kick off all critical image loads immediately so they're warmed up in the
+// browser cache before the intro animation finishes. The progress bar and the
+// exit of the loader are both driven by *actual* loading state.
+let _loaderProgress = 0
+let _assetsLoaded = false
+let _assetsResolve
+const _assetsReady = new Promise(res => { _assetsResolve = res })
+
+;(() => {
+  const criticalUrls = [
+    '/icons/shape.svg',
+    '/icons/glass/gradient%20glass%20(11).png',
+    '/icons/glass/gradient%20glass%20(21).png',
+    '/icons/glass/gradient%20glass%20(8).png',
+    '/icons/glass/dispersion%20glass%20(16).png',
+    '/screencalorie-scroll/1.jpg',
+    '/screencalorie-scroll/2.jpg',
+    '/screencalorie-scroll/3.jpg',
+    '/screencalorie-scroll/4.jpg',
+    '/screencalorie-scroll/5.jpg',
+    '/screencalorie-scroll/6.jpg',
+    '/beyond-the-net-scroll/1.jpg',
+    '/beyond-the-net-scroll/2.jpg',
+    '/beyond-the-net-scroll/3.jpg',
+    '/beyond-the-net-scroll/4.jpg',
+    '/beyond-the-net-scroll/5.jpg',
+    '/beyond-the-net-scroll/6.jpg',
+    '/beyond-the-net-scroll/7.jpg',
+    '/beyond-the-net-scroll/8.jpg',
+    workPreviewImage,
+    beyondTheNetImage
+  ]
+
+  let loaded = 0
+  const total = criticalUrls.length
+
+  criticalUrls.forEach(src => {
+    const img = new Image()
+    img.onload = img.onerror = () => {
+      loaded++
+      _loaderProgress = loaded / total
+      if (loaded >= total) {
+        _assetsLoaded = true
+        _assetsResolve()
+      }
+    }
+    img.src = src
+  })
+})()
+
 const workItems = [
   {
     id: 'screen-calorie',
@@ -952,27 +1003,55 @@ const runAnimation = () => {
     ease: 'power3.out'
   }, 0.18)
 
-  const loadingObj = { value: 0 }
-  
-  timeline.to([loadingPercentage, loadingProgressBar], { autoAlpha: 1, duration: 0.3 }, 1.0)
-  timeline.to(loadingObj, {
-    value: 100,
-    duration: 1.5,
-    ease: 'power2.inOut',
-    onUpdate: () => {
-      if (loadingPercentage) {
-        loadingPercentage.innerHTML = Math.round(loadingObj.value) + '%'
-      }
-      if (loadingProgressFill) {
-        if (isMobile) {
-          loadingProgressFill.style.width = `${loadingObj.value}%`
-        } else {
-          loadingProgressFill.style.height = `${loadingObj.value}%`
-        }
-      }
+  // ─── Real progress bar driven by actual asset loading ──────────────────────
+  // A GSAP ticker smoothly interpolates the display toward the true loaded
+  // fraction. At t=2.5 the timeline pauses and only continues once every
+  // critical asset has finished fetching, guaranteeing a pop-in-free hero.
+  let _smoothed = 0
+  const _progressTick = () => {
+    const target = _loaderProgress * 100
+    _smoothed += (target - _smoothed) * 0.06  // smooth chase
+    const display = Math.min(Math.round(_smoothed), 99)  // never fake 100%
+    if (loadingPercentage) loadingPercentage.innerHTML = display + '%'
+    if (loadingProgressFill) {
+      isMobile
+        ? (loadingProgressFill.style.width  = `${_smoothed}%`)
+        : (loadingProgressFill.style.height = `${_smoothed}%`)
     }
-  }, 1.0)
-  timeline.to([loadingPercentage, loadingProgressBar], { autoAlpha: 0, filter: isMobile ? 'blur(14px)' : 'none', duration: 0.3 }, 2.8)
+  }
+  gsap.ticker.add(_progressTick)
+
+  // Show the loading UI at t=1.0 (same as before)
+  timeline.to([loadingPercentage, loadingProgressBar], { autoAlpha: 1, duration: 0.3 }, 1.0)
+
+  // At t=2.5 pause and wait for real assets, then snap to 100% and fade out
+  timeline.call(() => {
+    const proceed = () => {
+      gsap.ticker.remove(_progressTick)
+      // Snap visually to 100%
+      if (loadingPercentage) loadingPercentage.innerHTML = '100%'
+      if (loadingProgressFill) {
+        isMobile
+          ? (loadingProgressFill.style.width  = '100%')
+          : (loadingProgressFill.style.height = '100%')
+      }
+      gsap.to([loadingPercentage, loadingProgressBar], {
+        autoAlpha: 0,
+        filter: isMobile ? 'blur(14px)' : 'none',
+        duration: 0.3,
+        onComplete: () => timeline.resume()
+      })
+    }
+
+    if (_assetsLoaded) {
+      // Already done — exit immediately (fast connection)
+      proceed()
+    } else {
+      // Slow connection: hold here until every asset resolves
+      timeline.pause()
+      _assetsReady.then(proceed)
+    }
+  }, null, 2.5)
 
   const tapToEnterHint = document.querySelector('.tap-to-enter-hint')
   if (isMobile && tapToEnterHint) {
