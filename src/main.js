@@ -1619,9 +1619,9 @@ if (footerContainer && footerCanvas) {
 
   createHalftoneAnimation(footerContainer, footerCanvas, {
     reducedMotion,
-    bg: '#4469B4', // Milder blue requested by user
-    fg: '#02040a', // Dark foreground dots matching the site background
-    pixelSize: 3,  // Decreased to zoom out the texture
+    bg: '#E8E4DC',   // Warm cream — bymonolog-style halftone field
+    fg: '#080807',   // Near-black animated blobs
+    pixelSize: 4,
     gooeyness: 0.58,
     contrast: 1.5,
     bias: 0.0,
@@ -1678,24 +1678,25 @@ if (footerContainer && footerCanvas) {
     )
 
     if (footerContainer) {
-      // Canvas content slide-ins only (no vertical shift on the container
-      // itself — that caused a gap at the bottom of the footer).
-      const canvasTimeline = gsap.timeline({
+      // ── Bymonolog-style canvas parallax ──────────────────────────────────
+      // Clamped scrub: starts when canvas top enters viewport bottom,
+      // ends when canvas top reaches viewport top. Brand slides in from
+      // the left and the icon from the right, mirroring bymonolog exactly.
+      const footerCanvasBottom = document.querySelector('.footer_canvas_bottom')
+      const canvasTl = gsap.timeline({
         scrollTrigger: {
-          trigger: footerContainer,
-          start: 'top bottom',
-          // 'bottom bottom' = canvas bottom reaches viewport bottom,
-          // which is exactly what happens when the user reaches page end
-          end: 'bottom bottom',
+          trigger: footerCanvasBottom || footerContainer,
+          start: 'clamp(top bottom)',
+          end: 'clamp(top top)',
           scrub: true,
           invalidateOnRefresh: true
         }
       })
 
       canvasContents.forEach((el) => {
-        const slideDirection = el.dataset.canvasContent === 'left' ? 80 : -80
-        canvasTimeline.fromTo(el,
-          { xPercent: slideDirection, opacity: 0 },
+        const xDir = el.dataset.canvasContent === 'left' ? 100 : -100
+        canvasTl.fromTo(el,
+          { xPercent: xDir, opacity: 0 },
           { xPercent: 0, opacity: 1, ease: 'none' },
           '<'
         )
