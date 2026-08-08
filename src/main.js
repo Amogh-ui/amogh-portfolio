@@ -104,6 +104,7 @@ const glassAsset = (fileName) => `/icons/glass/${encodeURIComponent(fileName)}`
 
 const workPreviewImage = new URL('../images/AM-FREEBIES-IP-005 1.png', import.meta.url).href
 const beyondTheNetImage = new URL('../images/beyond-the-net-thumbnail.png', import.meta.url).href
+const troxImage = new URL('../images/trox-thumbnail.png', import.meta.url).href
 
 // ─── Real Asset Preloader ─────────────────────────────────────────────────────
 // Kick off all critical image loads immediately so they're warmed up in the
@@ -136,7 +137,8 @@ const _assetsReady = new Promise(res => { _assetsResolve = res })
     '/beyond-the-net-scroll/7.jpg',
     '/beyond-the-net-scroll/8.jpg',
     workPreviewImage,
-    beyondTheNetImage
+    beyondTheNetImage,
+    troxImage
   ]
 
   let loaded = 0
@@ -210,7 +212,8 @@ const workItems = [
     year: '2026',
     description:
       'TROX: The Reversal is a first-person psychological horror game set in a dystopian post-war world, where players uncover disturbing truths through atmospheric exploration, environmental storytelling, and puzzle-solving.',
-    tags: ['GAME UI', 'UX DESIGN', 'HUD DESIGN']
+    tags: ['GAME UI', 'UX DESIGN', 'HUD DESIGN'],
+    image: troxImage
   }
 ]
 
