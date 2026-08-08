@@ -2024,12 +2024,23 @@ a {
     height: 100%;
   }
 
-  /* Shared title — rotated 90° on mobile hero */
+  /* Shared title — stacked vertically on mobile hero, no rotation */
   .shared-title {
     font-size: clamp(68px, 22vw, 102px) !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0 !important;
     white-space: nowrap !important;
     flex-wrap: nowrap !important;
-    transform-origin: center center;
+    line-height: 1 !important;
+    transform-origin: left bottom;
+  }
+
+  /* Individual name groups — allow independent transforms for staggered animation */
+  .shared-title .name-group {
+    display: block;
+    transform-origin: left bottom;
+    will-change: transform, opacity, filter;
   }
 
   .mobile-scroll-spinner {
