@@ -98,7 +98,9 @@ body {
 }
 
 body.is-scroll-locked {
-  overflow: hidden;
+  overflow: hidden !important;
+  height: 100vh !important;
+  touch-action: none !important;
 }
 
 a {

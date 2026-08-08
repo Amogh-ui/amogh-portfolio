@@ -515,6 +515,11 @@ const lenis = reducedMotion
     })
 
 if (lenis) {
+  if (!reducedMotion && !window.location.hash) {
+    lenis.stop()
+    document.body.classList.add('is-scroll-locked')
+  }
+
   // Intercept anchor clicks starting with '#' for smooth scrolling
   document.addEventListener('click', (e) => {
     const anchor = e.target.closest('a[href^="#"]')
@@ -944,6 +949,13 @@ const runAnimation = () => {
   if (!introScene || !sweepScene || !heroScene || !sharedTitle || !heroBg) {
     return
   }
+
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual'
+  }
+  document.body.classList.add('is-scroll-locked')
+  lenis?.stop()
+  window.scrollTo(0, 0)
 
   const isMobile = window.matchMedia('(max-width: 768px)').matches
   const { left, top } = getHeroTitleTarget()
