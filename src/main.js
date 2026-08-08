@@ -898,14 +898,14 @@ const setReducedMotionState = () => {
   
   if (isMobile) {
     gsap.set(sharedTitle, {
-      left: 'var(--page-gutter, 24px)',
-      bottom: '64px',
+      left: 24 + (sharedTitle.offsetHeight / 2),
+      bottom: 64 + (sharedTitle.offsetWidth / 2) - sharedTitle.offsetHeight,
       top: 'auto',
-      xPercent: 0,
-      yPercent: 0,
-      transformOrigin: 'left bottom',
+      xPercent: -50,
+      yPercent: -50,
+      transformOrigin: '50% 50%',
       scale: 1,
-      rotation: 0,
+      rotation: 90,
       color: '#f4ecdf'
     })
   } else {
@@ -1093,54 +1093,26 @@ const runAnimation = () => {
   timeline.to(sweepScene, { yPercent: 0, duration: 0.68, ease: 'power4.inOut' }, outTime)
 
   if (isMobile) {
-    // Get references to the individual name groups for separate animation
-    const nameFirst = sharedTitle.querySelector('.name-first')
-    const nameLast  = sharedTitle.querySelector('.name-last')
-
-    // Just before the transition: snap name groups to starting state for expand animation
-    timeline.call(() => {
-      if (nameFirst) gsap.set(nameFirst, { scale: 0.52, opacity: 0, filter: 'blur(18px)', transformOrigin: 'left bottom' })
-      if (nameLast)  gsap.set(nameLast,  { scale: 0.52, opacity: 0, filter: 'blur(18px)', transformOrigin: 'left bottom' })
-    }, null, outTime - 0.02)
-
-    // Move the container to its final bottom-left position (no rotation)
     timeline.to(sharedTitle, {
-      left: 'var(--page-gutter, 24px)',
-      top: 'auto',
-      bottom: '64px',
-      xPercent: 0,
-      yPercent: 0,
-      transformOrigin: 'left bottom',
+      left: () => 24 + (sharedTitle.offsetHeight / 2),
+      top: () => window.innerHeight - 64 - (sharedTitle.offsetWidth / 2),
+      xPercent: -50,
+      yPercent: -50,
+      transformOrigin: '50% 50%',
       scale: 1,
-      rotation: 0,
+      rotation: 90,
       color: '#f4ecdf',
-      duration: 0.01,
-      ease: 'none',
+      duration: 0.68,
+      ease: 'power4.inOut',
+      onComplete: () => {
+        // Swap to bottom-relative positioning after animation to survive address bar hides
+        gsap.set(sharedTitle, {
+          top: 'auto',
+          bottom: 64 + (sharedTitle.offsetWidth / 2) - sharedTitle.offsetHeight
+        })
+      }
     }, outTime)
-
-    // Shete. expands in first
-    if (nameLast) {
-      timeline.to(nameLast, {
-        scale: 1,
-        opacity: 1,
-        filter: 'blur(0px)',
-        duration: 0.72,
-        ease: 'power4.out'
-      }, outTime)
-    }
-
-    // Amogh starts simultaneously (very small stagger so Shete leads)
-    if (nameFirst) {
-      timeline.to(nameFirst, {
-        scale: 1,
-        opacity: 1,
-        filter: 'blur(0px)',
-        duration: 0.72,
-        ease: 'power4.out'
-      }, outTime + 0.06)
-    }
   } else {
-
     timeline.to(sharedTitle, {
       left,
       top,
@@ -1153,7 +1125,6 @@ const runAnimation = () => {
       ease: 'power4.inOut'
     }, outTime)
   }
-
 
   timeline.to(heroScene, { autoAlpha: 1, duration: 0.5 }, outTime + 1.24)
   timeline.to(sweepScene, {
