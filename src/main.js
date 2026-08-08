@@ -508,7 +508,9 @@ const shaderCleanup = createShaderAnimation(heroBg, { reducedMotion })
 const lenis = reducedMotion
   ? null
   : new Lenis({
-      duration: 1.15,
+      duration: 1.8,
+      wheelMultiplier: 0.6,
+      touchMultiplier: 0.8,
       smoothWheel: true,
       smoothTouch: false,
       easing: (t) => 1 - Math.pow(2, -10 * t)
