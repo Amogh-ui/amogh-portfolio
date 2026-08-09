@@ -2016,12 +2016,12 @@ a {
     height: 100%;
   }
 
-  /* Shared title — rotated 90° on mobile hero */
+  /* Shared title — bottom-left horizontal on mobile hero */
   .shared-title {
     font-size: clamp(68px, 22vw, 102px) !important;
     white-space: nowrap !important;
     flex-wrap: nowrap !important;
-    transform-origin: center center;
+    transform-origin: 0% 100%;
   }
 
   .mobile-scroll-spinner {
