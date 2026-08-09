@@ -908,12 +908,12 @@ const setReducedMotionState = () => {
   
   if (isMobile) {
     gsap.set(sharedTitle, {
-      left: 24,
-      bottom: 48,
+      left: '50%',
+      bottom: 56,
       top: 'auto',
-      xPercent: 0,
+      xPercent: -50,
       yPercent: 0,
-      transformOrigin: '0% 100%',
+      transformOrigin: '50% 100%',
       scale: 1,
       rotation: 0,
       color: '#f4ecdf'
@@ -973,7 +973,7 @@ const runAnimation = () => {
       top: '50%',
       xPercent: -50,
       yPercent: -50,
-      scale: 0.78,
+      scale: 0.72,
       rotation: 0,
       color: '#0b61ff'
     })
@@ -1110,33 +1110,27 @@ const runAnimation = () => {
   timeline.to(sweepScene, { yPercent: 0, duration: 0.68, ease: 'power4.inOut' }, outTime)
 
   if (isMobile) {
-    // Animate text to bottom-left, horizontal (no rotation).
-    // First expand slightly (scale 1.08) then settle to 1.0 for a subtle "breathe" effect.
+    // Animate text to bottom-center, horizontal (no rotation).
+    // Uses back.out ease for a natural slight expand then settle effect.
     timeline.to(sharedTitle, {
-      left: 24,
-      top: () => window.innerHeight - 48,
-      xPercent: 0,
+      left: '50%',
+      top: () => window.innerHeight - 56,
+      xPercent: -50,
       yPercent: -100,
-      transformOrigin: '0% 100%',
-      scale: 1.08,
+      transformOrigin: '50% 100%',
+      scale: 1,
       rotation: 0,
       color: '#f4ecdf',
-      duration: 0.52,
-      ease: 'power4.inOut'
-    }, outTime)
-    // Settle: scale back down to 1.0 with a gentle ease
-    timeline.to(sharedTitle, {
-      scale: 1,
-      duration: 0.4,
-      ease: 'power2.out',
+      duration: 0.82,
+      ease: 'back.out(1.4)',
       onComplete: () => {
         // Swap to bottom-relative positioning after animation to survive address bar hides
         gsap.set(sharedTitle, {
           top: 'auto',
-          bottom: 48
+          bottom: 56
         })
       }
-    }, outTime + 0.52)
+    }, outTime)
   } else {
     timeline.to(sharedTitle, {
       left,

@@ -2016,12 +2016,12 @@ a {
     height: 100%;
   }
 
-  /* Shared title — bottom-left horizontal on mobile hero */
+  /* Shared title — bottom-center horizontal on mobile hero */
   .shared-title {
     font-size: clamp(40px, 14vw, 58px) !important;
     white-space: nowrap !important;
     flex-wrap: nowrap !important;
-    transform-origin: 0% 100%;
+    transform-origin: 50% 100%;
   }
 
   /* Scroll spinner hidden on mobile home page */
