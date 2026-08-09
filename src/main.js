@@ -973,7 +973,7 @@ const runAnimation = () => {
       top: '50%',
       xPercent: -50,
       yPercent: -50,
-      scale: 0.56,
+      scale: 0.78,
       rotation: 0,
       color: '#0b61ff'
     })
@@ -1171,28 +1171,6 @@ const runAnimation = () => {
           y: 0,
           duration: 0.62,
           ease: 'power3.out'
-        })
-      }
-      const mobileScrollSpinner = document.querySelector('.mobile-scroll-spinner')
-      if (mobileScrollSpinner) {
-        gsap.fromTo(mobileScrollSpinner, {
-          autoAlpha: 0,
-          y: 12
-        }, {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.62,
-          ease: 'power3.out'
-        })
-        
-        gsap.to(mobileScrollSpinner, {
-          autoAlpha: 0,
-          scrollTrigger: {
-            trigger: '.scene-hero',
-            start: 'center center',
-            end: 'bottom center',
-            scrub: true
-          }
         })
       }
     }, null, outTime + 1.5)
