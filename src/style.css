@@ -909,30 +909,6 @@ a {
   background-color: rgba(255, 255, 255, 0.05);
 }
 
-.work-card:hover[data-work-id="screen-calorie"]::before {
-  background-color: rgba(11, 97, 255, 0.05);
-}
-
-.work-card:hover[data-work-id="beyond-the-net"]::before {
-  background-color: rgba(36, 160, 230, 0.05);
-}
-
-.work-card:hover[data-work-id="paalan"]::before {
-  background-color: rgba(155, 100, 245, 0.045);
-}
-
-.work-card:hover[data-work-id="popclozet"]::before {
-  background-color: rgba(240, 70, 140, 0.045);
-}
-
-.work-card:hover[data-work-id="ticketsure"]::before {
-  background-color: rgba(255, 150, 20, 0.045);
-}
-
-.work-card:hover[data-work-id="trox"]::before {
-  background-color: rgba(225, 45, 45, 0.05);
-}
-
 .work-card__copy {
   display: flex;
   flex-direction: column;
@@ -1030,9 +1006,10 @@ a {
   object-position: center;
 }
 
+.work-card[data-work-id="beyond-the-net"] .work-card__media img,
 .work-card[data-work-id="trox"] .work-card__media img {
   object-fit: cover;
-  transform: scale(1.18);
+  transform: scale(1.05);
 }
 
 /* ─── Works View Toggle ─────────────────────────────────────────────────── */
@@ -1111,58 +1088,9 @@ a {
 
 .works-grid-card:hover {
   transform: translateY(-5px);
-  border-color: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.16);
   background: rgba(255, 255, 255, 0.045);
-  box-shadow: 0 20px 48px -10px rgba(0, 0, 0, 0.5);
-}
-
-/* Subtle light ambient glows per work project on hover */
-.works-grid-card:hover[data-work-id="screen-calorie"] {
-  border-color: rgba(11, 97, 255, 0.38);
-  box-shadow: 0 20px 50px -12px rgba(11, 97, 255, 0.28), 0 0 35px -8px rgba(0, 180, 255, 0.15);
-}
-.works-grid-card:hover[data-work-id="screen-calorie"] .works-grid-card__arrow {
-  color: #0b61ff;
-}
-
-.works-grid-card:hover[data-work-id="beyond-the-net"] {
-  border-color: rgba(36, 160, 230, 0.38);
-  box-shadow: 0 20px 50px -12px rgba(36, 160, 230, 0.28), 0 0 35px -8px rgba(0, 200, 200, 0.15);
-}
-.works-grid-card:hover[data-work-id="beyond-the-net"] .works-grid-card__arrow {
-  color: #24a0e6;
-}
-
-.works-grid-card:hover[data-work-id="paalan"] {
-  border-color: rgba(155, 100, 245, 0.38);
-  box-shadow: 0 20px 50px -12px rgba(155, 100, 245, 0.25), 0 0 35px -8px rgba(200, 130, 255, 0.14);
-}
-.works-grid-card:hover[data-work-id="paalan"] .works-grid-card__arrow {
-  color: #9b64f5;
-}
-
-.works-grid-card:hover[data-work-id="popclozet"] {
-  border-color: rgba(240, 70, 140, 0.38);
-  box-shadow: 0 20px 50px -12px rgba(240, 70, 140, 0.25), 0 0 35px -8px rgba(255, 110, 180, 0.14);
-}
-.works-grid-card:hover[data-work-id="popclozet"] .works-grid-card__arrow {
-  color: #f0468c;
-}
-
-.works-grid-card:hover[data-work-id="ticketsure"] {
-  border-color: rgba(255, 150, 20, 0.38);
-  box-shadow: 0 20px 50px -12px rgba(255, 150, 20, 0.25), 0 0 35px -8px rgba(255, 190, 50, 0.14);
-}
-.works-grid-card:hover[data-work-id="ticketsure"] .works-grid-card__arrow {
-  color: #ff9614;
-}
-
-.works-grid-card:hover[data-work-id="trox"] {
-  border-color: rgba(225, 45, 45, 0.38);
-  box-shadow: 0 20px 50px -12px rgba(225, 45, 45, 0.28), 0 0 35px -8px rgba(255, 75, 45, 0.15);
-}
-.works-grid-card:hover[data-work-id="trox"] .works-grid-card__arrow {
-  color: #e12d2d;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
 }
 
 .works-grid-card:active {
@@ -1194,13 +1122,15 @@ a {
   transform: scale(1.04);
 }
 
+.works-grid-card[data-work-id="beyond-the-net"] .works-grid-card__media img,
 .works-grid-card[data-work-id="trox"] .works-grid-card__media img {
   object-fit: cover;
-  transform: scale(1.1);
+  transform: scale(1.02);
 }
 
+.works-grid-card:hover[data-work-id="beyond-the-net"] .works-grid-card__media img,
 .works-grid-card:hover[data-work-id="trox"] .works-grid-card__media img {
-  transform: scale(1.14);
+  transform: scale(1.08);
 }
 
 .works-grid-card__content {
