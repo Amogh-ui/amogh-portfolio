@@ -220,14 +220,14 @@ const workItems = [
 const worksMarkup = `
   <section class="works-section" id="work" aria-label="Works">
     <div class="works-view-toggle" aria-label="Switch view">
-      <button class="works-view-btn is-active" data-works-view="list" type="button" aria-label="List view" title="List view">
+      <button class="works-view-btn" data-works-view="list" type="button" aria-label="List view" title="List view">
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect x="0" y="1" width="18" height="2" rx="1" fill="currentColor"/>
           <rect x="0" y="8" width="18" height="2" rx="1" fill="currentColor"/>
           <rect x="0" y="15" width="18" height="2" rx="1" fill="currentColor"/>
         </svg>
       </button>
-      <button class="works-view-btn" data-works-view="grid" type="button" aria-label="Grid view" title="Grid view">
+      <button class="works-view-btn is-active" data-works-view="grid" type="button" aria-label="Grid view" title="Grid view">
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect x="0" y="0" width="5" height="5" rx="1" fill="currentColor"/>
           <rect x="6.5" y="0" width="5" height="5" rx="1" fill="currentColor"/>
@@ -243,7 +243,7 @@ const worksMarkup = `
     </div>
     <div class="works-section__inner">
       <div class="works-section__frame">
-        <div class="works-list" role="list">
+        <div class="works-list" role="list" style="display:none;">
           ${workItems
             .map(
               (item) => `
@@ -288,7 +288,7 @@ const worksMarkup = `
             .join('')}
         </div>
 
-        <div class="works-grid" role="list" style="display:none;">
+        <div class="works-grid" role="list">
           ${workItems
             .map(
               (item) => `
@@ -748,7 +748,7 @@ if (worksSection && workCards.length) {
 const viewToggleBtns = document.querySelectorAll('.works-view-btn')
 const worksList = document.querySelector('.works-list')
 const worksGrid = document.querySelector('.works-grid')
-let currentWorksView = 'list'
+let currentWorksView = 'grid'
 let _isToggling = false
 
 const pageMap = {
