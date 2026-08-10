@@ -219,6 +219,28 @@ const workItems = [
 
 const worksMarkup = `
   <section class="works-section" id="work" aria-label="Works">
+    <div class="works-view-toggle" aria-label="Switch view">
+      <button class="works-view-btn is-active" data-works-view="list" type="button" aria-label="List view" title="List view">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="1" width="18" height="2" rx="1" fill="currentColor"/>
+          <rect x="0" y="8" width="18" height="2" rx="1" fill="currentColor"/>
+          <rect x="0" y="15" width="18" height="2" rx="1" fill="currentColor"/>
+        </svg>
+      </button>
+      <button class="works-view-btn" data-works-view="grid" type="button" aria-label="Grid view" title="Grid view">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="0" width="5" height="5" rx="1" fill="currentColor"/>
+          <rect x="6.5" y="0" width="5" height="5" rx="1" fill="currentColor"/>
+          <rect x="13" y="0" width="5" height="5" rx="1" fill="currentColor"/>
+          <rect x="0" y="6.5" width="5" height="5" rx="1" fill="currentColor"/>
+          <rect x="6.5" y="6.5" width="5" height="5" rx="1" fill="currentColor"/>
+          <rect x="13" y="6.5" width="5" height="5" rx="1" fill="currentColor"/>
+          <rect x="0" y="13" width="5" height="5" rx="1" fill="currentColor"/>
+          <rect x="6.5" y="13" width="5" height="5" rx="1" fill="currentColor"/>
+          <rect x="13" y="13" width="5" height="5" rx="1" fill="currentColor"/>
+        </svg>
+      </button>
+    </div>
     <div class="works-section__inner">
       <div class="works-section__frame">
         <div class="works-list" role="list">
@@ -258,6 +280,30 @@ const worksMarkup = `
 
                     <div class="work-card__media">
                       <img src="${item.image || workPreviewImage}" alt="${item.title} preview" />
+                    </div>
+                  </div>
+                </button>
+              `
+            )
+            .join('')}
+        </div>
+
+        <div class="works-grid" role="list" style="display:none;">
+          ${workItems
+            .map(
+              (item) => `
+                <button class="works-grid-card" type="button" data-grid-card data-work-id="${item.id}">
+                  <div class="works-grid-card__media">
+                    <img src="${item.image || workPreviewImage}" alt="${item.title} preview" />
+                  </div>
+                  <div class="works-grid-card__content">
+                    <div class="works-grid-card__meta">
+                      <span class="works-grid-card__number">${item.number}</span>
+                      <span class="works-grid-card__year">${item.year}</span>
+                    </div>
+                    <h3 class="works-grid-card__title">${item.title}</h3>
+                    <div class="works-grid-card__tags">
+                      ${item.tags.map(tag => `<span class="works-grid-chip">${tag}</span>`).join('')}
                     </div>
                   </div>
                 </button>
@@ -692,6 +738,89 @@ if (worksSection && workCards.length) {
     }
   })
 }
+
+// ─── Works View Toggle (Desktop Only) ──────────────────────────────────────
+const viewToggleBtns = document.querySelectorAll('.works-view-btn')
+const worksList = document.querySelector('.works-list')
+const worksGrid = document.querySelector('.works-grid')
+let currentWorksView = 'list'
+let _isToggling = false
+
+const pageMap = {
+  'screen-calorie': '/screencalorie.html',
+  'beyond-the-net': '/beyondthenet.html',
+  'trox': '/trox.html'
+}
+
+// Grid card click handlers
+const gridCards = document.querySelectorAll('.works-grid-card[data-grid-card]')
+gridCards.forEach((card) => {
+  card.addEventListener('click', () => {
+    const workId = card.dataset.workId
+    const href = pageMap[workId]
+    if (href) window.location.href = href
+  })
+})
+
+const switchWorksView = (targetView) => {
+  if (targetView === currentWorksView || _isToggling) return
+  if (window.matchMedia('(max-width: 768px)').matches) return
+  if (!worksList || !worksGrid) return
+
+  _isToggling = true
+  const outgoing = targetView === 'grid' ? worksList : worksGrid
+  const incoming = targetView === 'grid' ? worksGrid : worksList
+
+  // Update toggle button active state
+  viewToggleBtns.forEach(btn => {
+    btn.classList.toggle('is-active', btn.dataset.worksView === targetView)
+  })
+
+  // Crossfade: fade out current view
+  gsap.to(outgoing, {
+    opacity: 0,
+    y: 12,
+    duration: 0.3,
+    ease: 'power2.in',
+    onComplete: () => {
+      outgoing.style.display = 'none'
+      gsap.set(outgoing, { clearProps: 'opacity,y' })
+
+      // Show incoming view
+      incoming.style.display = ''
+      const incomingCards = incoming.querySelectorAll('.work-card, .works-grid-card')
+
+      gsap.set(incoming, { opacity: 0 })
+      gsap.set(incomingCards, { opacity: 0, y: 20, scale: 0.98 })
+
+      gsap.to(incoming, {
+        opacity: 1,
+        duration: 0.2,
+        ease: 'power2.out'
+      })
+
+      gsap.to(incomingCards, {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.45,
+        stagger: 0.06,
+        ease: 'power3.out',
+        onComplete: () => {
+          _isToggling = false
+          currentWorksView = targetView
+          ScrollTrigger.refresh()
+        }
+      })
+    }
+  })
+}
+
+viewToggleBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    switchWorksView(btn.dataset.worksView)
+  })
+})
 
 const clamp = (value, min, max) => Math.min(Math.max(value, min), max)
 
