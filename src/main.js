@@ -305,6 +305,11 @@ const worksMarkup = `
                     <div class="works-grid-card__tags">
                       ${item.tags.map(tag => `<span class="works-grid-chip">${tag}</span>`).join('')}
                     </div>
+                    <div class="works-grid-card__arrow" aria-hidden="true">
+                      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.72308 16L0 14.2769L11.8154 2.46154H1.23077V0H16V14.7692H13.5385V4.18462L1.72308 16Z" fill="currentColor"/>
+                      </svg>
+                    </div>
                   </div>
                 </button>
               `
@@ -752,9 +757,25 @@ const pageMap = {
   'trox': '/trox.html'
 }
 
-// Grid card click handlers
+// Grid card interaction & cursor hover handlers
 const gridCards = document.querySelectorAll('.works-grid-card[data-grid-card]')
 gridCards.forEach((card) => {
+  card.addEventListener('pointerenter', () => {
+    if (window.matchMedia('(max-width: 768px)').matches) return
+    setWorkCursorHover(true)
+  })
+  card.addEventListener('pointerleave', () => {
+    if (window.matchMedia('(max-width: 768px)').matches) return
+    setWorkCursorHover(false)
+  })
+  card.addEventListener('focus', () => {
+    if (window.matchMedia('(max-width: 768px)').matches) return
+    setWorkCursorHover(true)
+  })
+  card.addEventListener('blur', () => {
+    if (window.matchMedia('(max-width: 768px)').matches) return
+    setWorkCursorHover(false)
+  })
   card.addEventListener('click', () => {
     const workId = card.dataset.workId
     const href = pageMap[workId]
@@ -767,6 +788,7 @@ const switchWorksView = (targetView) => {
   if (window.matchMedia('(max-width: 768px)').matches) return
   if (!worksList || !worksGrid) return
 
+  setWorkCursorHover(false)
   _isToggling = true
   const outgoing = targetView === 'grid' ? worksList : worksGrid
   const incoming = targetView === 'grid' ? worksGrid : worksList
