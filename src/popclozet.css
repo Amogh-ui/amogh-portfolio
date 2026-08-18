@@ -1,0 +1,1000 @@
+/* ──────────────────────────────────────────────────────────────────────────
+   ScreenCalorie Work Page — screencalorie.css
+   Layout source: Figma node 145-2 (1440×4921 frame, black bg)
+   ────────────────────────────────────────────────────────────────────────── */
+
+@font-face {
+  font-family: 'Geist';
+  src: url('/fonts/Geist-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('/fonts/Geist-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('/fonts/Geist-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('/fonts/Geist-Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('/fonts/PPEditorialNew-Regular-BF644b214ff145f.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('/fonts/PPEditorialNew-Italic-BF644b214fb0c0a.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ── Tokens ─────────────────────────────────────────────────────────────── */
+
+:root {
+  --bg: #000000;
+  --text-primary: #e0e0e0;
+  /* rgba(224,224,224,1) — Figma exact */
+  --text-muted: #656565;
+  /* rgba(101,101,101,1) — Figma exact */
+  --blue: #024bde;
+  /* rgba(2,75,222,1) — Figma brand icon */
+  --nav-w: 160px;
+  /* right section nav width */
+  --scroll-w: 846px;
+  /* Figma Frame 26 width */
+  color-scheme: dark;
+  font-family: 'Geist', system-ui, sans-serif;
+  color: var(--text-primary);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#app {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: var(--bg);
+}
+
+/* ── Page ───────────────────────────────────────────────────────────────── */
+
+.sc-page {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+/* ── Navbar (From Landing Page) ─────────────────────────────────────────── */
+.hero-topbar {
+  display: grid;
+  position: fixed;
+  inset: clamp(0.9rem, 7.4vh, 2rem) clamp(1.25rem, 5vw, 5rem) auto;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: start;
+  column-gap: 20px;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (min-width: 1280px) {
+  .hero-topbar {
+    inset: clamp(0.9rem, 7.4vh, 2rem) 80px auto;
+  }
+}
+
+.hero-topbar>* {
+  pointer-events: auto;
+}
+
+.liquid-glass {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.025);
+  backdrop-filter: blur(8px) saturate(150%);
+  -webkit-backdrop-filter: blur(8px) saturate(150%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    inset 1.8px 3px 0px -2px rgba(255, 255, 255, 0.3),
+    inset -2px -2px 0px -2px rgba(255, 255, 255, 0.24),
+    inset -3px -8px 1px -6px rgba(255, 255, 255, 0.16),
+    inset -0.3px -1px 4px 0px rgba(0, 0, 0, 0.14),
+    inset -1.5px 2.5px 0px -2px rgba(0, 0, 0, 0.2),
+    inset 0px 3px 4px -2px rgba(0, 0, 0, 0.2),
+    inset 2px -6.5px 1px -4px rgba(0, 0, 0, 0.1),
+    0px 1px 5px 0px rgba(0, 0, 0, 0.08),
+    0px 6px 16px 0px rgba(0, 0, 0, 0.06);
+  transition: transform 400ms cubic-bezier(1, 0, 0.4, 1), background-color 400ms cubic-bezier(1, 0, 0.4, 1), box-shadow 400ms cubic-bezier(1, 0, 0.4, 1), border-color 400ms cubic-bezier(1, 0, 0.4, 1);
+}
+
+.liquid-glass:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.hero-brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.58rem;
+  width: 100%;
+  max-width: 200px;
+  height: 64px;
+  padding: 0 18px;
+  border-radius: 16px;
+  color: #e0e0e0;
+  text-decoration: none;
+  white-space: nowrap;
+  justify-self: start;
+}
+
+/* On project pages: wider tile to accommodate the back chevron (Figma: 240×64) */
+.hero-brand.is-project-back {
+  max-width: 240px;
+  padding: 0 24px;
+  gap: 9px; /* Figma gap between Amogh↔icon↔Shete is ~8-10px */
+}
+
+.hero-brand__first,
+.hero-brand__last {
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.hero-brand__first {
+  font-family: 'Geist', system-ui, sans-serif;
+  font-weight: 500;
+}
+
+.hero-brand__last {
+  font-family: 'PP Editorial New', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.hero-brand__icon {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+
+/* Back chevron — always visible on project pages (Figma: 10×16 vector at x=24) */
+.hero-brand__back-arrow {
+  display: none; /* Hidden on landing page */
+}
+
+.hero-brand.is-project-back .hero-brand__back-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 10px;
+  height: 16px;
+  color: #e0e0e0;
+  margin-right: 11px; /* Figma: 20px total gap (chevron ends at x=34, Amogh starts at x=54) minus the flex gap */
+  transition: transform 240ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Subtle hover nudge on the chevron */
+.hero-brand.is-project-back:hover .hero-brand__back-arrow {
+  transform: translateX(-2px);
+}
+
+.hero-links {
+  display: grid;
+  justify-self: end;
+  padding-top: 16px;
+  align-self: start;
+  gap: clamp(1.5rem, 0.4vh, 4rem);
+  text-align: right;
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: clamp(1rem, 1.1vh, 1.5rem);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #e0e0e0;
+}
+
+.hero-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.55rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.hero-links a span:last-child {
+  display: inline-block;
+  transform-origin: center center;
+  transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1), opacity 220ms ease;
+}
+
+.hero-links a:hover span:last-child {
+  transform: translateX(6px) translateY(-4px) rotate(-20deg) scale(1.03);
+}
+
+@media (max-width: 900px) {
+  .hero-topbar {
+    grid-template-columns: 1fr;
+    row-gap: 1rem;
+    justify-items: start;
+  }
+
+  .hero-links {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 720px) {
+  .hero-topbar {
+    top: 1rem;
+    row-gap: 0.9rem;
+  }
+
+  .hero-brand {
+    max-width: 100%;
+    height: 56px;
+    padding: 0 14px;
+    gap: 0.45rem;
+  }
+
+  .hero-brand__first,
+  .hero-brand__last {
+    font-size: 1.05rem;
+  }
+
+  .hero-brand__icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .hero-links {
+    gap: 0.55rem;
+    font-size: 0.92rem;
+  }
+
+  .hero-links a {
+    gap: 0.4rem;
+  }
+}
+
+/* ── Page title ─────────────────────────────────────────────────────────── */
+/* Figma: TEXT "SCREENCALORIE" x=451 y=384 w=539 h=45
+   → centered horizontally; y=384 from frame top
+   font: Geist 900 64px, color #e0e0e0, ls=-1.28              */
+
+.sc-page-title {
+  width: 100%;
+  display: block;
+  text-align: center;
+  padding-top: clamp(140px, 24vh, 280px);
+  padding-bottom: clamp(60px, 10vh, 120px);
+  pointer-events: none;
+}
+
+.sc-page-title__text {
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: clamp(32px, 4.4vw, 64px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.project-solo-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 92, 255, 0.12);
+  color: #4da3ff;
+  border: 1px solid rgba(10, 92, 255, 0.4);
+  font-size: clamp(13px, 1.1vw, 16px);
+  font-weight: 500;
+  font-family: 'Geist', system-ui, sans-serif;
+  padding: 0.35em 1.2em;
+  border-radius: 2em;
+  margin-top: 12px;
+  letter-spacing: 0.01em;
+  box-shadow: 0 0 20px rgba(10, 92, 255, 0.15);
+  text-transform: none;
+}
+
+/* ── Main layout ────────────────────────────────────────────────────────── */
+/* Figma:
+   - Frame 26 (scroll area): x=297 y=549 w=846 h=2806
+   - Frame x offset from 1440 center: (1440-846)/2 = 297 ✓
+   - Section nav: x≈1250 y=804 (right side)
+   We map this to: scroll area centered (or slightly left), nav pinned right */
+
+.sc-layout {
+  position: relative;
+  width: 100%;
+  padding-bottom: 120px;
+  display: block;
+  /* Standard block layout */
+}
+
+/* ── Scroll container ───────────────────────────────────────────────────── */
+/* Figma: Frame 27 (outer frame) & Frame 34 (accent header) wrapping Frame 26 (scroll frame)
+   Frame 27/34 width: 878px. Scroll track Frame 26 width: 846px.
+   Offset is exactly 16px on all sides. */
+
+.sc-scroll-frame {
+  position: relative;
+  width: min(878px, 100%);
+  padding: 16px;
+  /* 16px offset padding around the scroll track */
+  padding-top: 16px;
+  margin-left: auto;
+  /* Bulletproof centering */
+  margin-right: auto;
+  /* Bulletproof centering */
+}
+
+/* Fading outer frame background (Figma Frame 34: 878x548 height, black border fading out at bottom) */
+.sc-scroll-frame-bg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 548px;
+  /* Height is exactly 548px matching Figma Frame 34 */
+  background: #101010;
+  /* Dark gray Figma frame fill */
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+  z-index: 1;
+  -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+}
+
+/* Beautiful cyan progressive blur top glow from Ellipse 22 (996x254, cyan, 360px blur, progressive layer blur) - ENHANCED */
+.sc-scroll-frame-bg::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 996px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(0, 203, 209, 0.28) 0%, rgba(0, 203, 209, 0.1) 45%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.sc-scroll-track {
+  position: relative;
+  width: 100%;
+  display: block;
+  z-index: 2;
+  /* Sits above the fading glow background */
+  background: #252525;
+  /* Inner scroll background matching Rectangle 10 */
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+  /* subtle shadow for the scroll track itself */
+}
+
+.sc-scroll-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-size: 0;
+  line-height: 0;
+}
+
+/* ── Right section navigator ────────────────────────────────────────────── */
+/* Figma:
+   Title 1 (active): w500 24px, color #e0e0e0 in a dark pill
+   Inactive items: color #656565
+   Active indicator: 24px line
+   Inactive indicator: 4x4px dot
+   Indicator is to the right of the title text inside the pill. */
+
+.sc-section-nav {
+  position: fixed;
+  left: clamp(1.25rem, 5vw, 80px);
+  /* Align with left margin of hero-topbar */
+  right: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  /* Vertically center aligned on the screen */
+  width: auto;
+  /* Width adapts dynamically to active pill content */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* Left-aligned */
+  pointer-events: auto;
+  z-index: 30;
+}
+
+.sc-section-nav__list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* Left-aligned */
+  gap: 8px;
+  /* Vertical gap between items */
+  position: relative;
+}
+
+.sc-section-nav__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  /* Spacing between indicator and title text */
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 8px 18px;
+  /* Capsule pill padding */
+  border-radius: 100px;
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: clamp(14px, 1.1vw, 18px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--text-muted);
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    color 300ms cubic-bezier(0.2, 0, 0, 1),
+    background-color 300ms cubic-bezier(0.2, 0, 0, 1),
+    border-color 300ms cubic-bezier(0.2, 0, 0, 1),
+    padding 300ms cubic-bezier(0.2, 0, 0, 1);
+  position: relative;
+}
+
+.sc-section-nav__item:last-child {
+  margin-bottom: 0;
+}
+
+/* Active item: dark pill container background with subtle stroke */
+.sc-section-nav__item.is-active {
+  color: var(--text-primary);
+  background: #121212;
+  /* Dark pill color matching Figma */
+  border-color: rgba(255, 255, 255, 0.08);
+  /* Subtle stroke */
+}
+
+/* The dot/line indicator inside the pill on the left */
+.sc-section-nav__indicator {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  transition:
+    width 300ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    height 300ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    border-radius 300ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    background-color 300ms cubic-bezier(0.2, 0, 0, 1);
+  flex-shrink: 0;
+  transform-origin: left center;
+  /* Grows left to right */
+}
+
+/* When active: dot morphs into a 24px line */
+.sc-section-nav__item.is-active .sc-section-nav__indicator {
+  width: 24px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--text-primary);
+}
+
+.sc-section-nav__item:hover:not(.is-active) {
+  color: rgba(224, 224, 224, 0.6);
+}
+
+/* ── Custom cursor ──────────────────────────────────────────────────────── */
+
+.sc-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: rgba(52, 124, 255, 0.95);
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  will-change: transform;
+  box-shadow: 0 0 0 1px rgba(52, 124, 255, 0.16), 0 6px 18px rgba(18, 78, 255, 0.14);
+  transition:
+    opacity 180ms ease,
+    width 200ms cubic-bezier(0.2, 0, 0, 1),
+    height 200ms cubic-bezier(0.2, 0, 0, 1),
+    border-radius 200ms cubic-bezier(0.2, 0, 0, 1),
+    background 200ms ease;
+}
+
+/* ── Ambient Background Glows ───────────────────────────────────────────── */
+.sc-page-glows {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  /* Sits behind everything */
+  overflow: hidden;
+}
+
+.sc-page-glows::before,
+.sc-page-glows::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.5;
+  mix-blend-mode: screen;
+  will-change: transform, opacity;
+  animation: glowPulse 12s ease-in-out infinite alternate;
+}
+
+.sc-page-glows::before {
+  top: 50%;
+  right: -15%;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(0, 203, 209, 0.28) 0%, transparent 70%);
+  /* Theme Cyan */
+  animation: glowPulseRight 12s ease-in-out infinite alternate;
+  animation-delay: 0s;
+}
+
+.sc-page-glows::after {
+  top: 50%;
+  left: -15%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 203, 209, 0.28) 0%, transparent 70%);
+  /* Theme Cyan */
+  animation: glowPulseLeft 16s ease-in-out infinite alternate;
+  animation-delay: -4s;
+}
+
+@keyframes glowPulseRight {
+  0% {
+    transform: translateY(-50%) translate(0, 0) scale(1);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translateY(-50%) translate(-6%, 6%) scale(1.15);
+    opacity: 0.7;
+  }
+}
+
+@keyframes glowPulseLeft {
+  0% {
+    transform: translateY(-50%) translate(0, 0) scale(1);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translateY(-50%) translate(6%, -6%) scale(1.15);
+    opacity: 0.7;
+  }
+}
+
+/* ── Glowing Page Sides (Vertical Left & Right Aura Only - Borderless) ──── */
+.sc-page-border {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  /* Sits just below the custom cursor overlay */
+  overflow: hidden;
+}
+
+/* Left glowing aura (Cyan theme) - Stretched along the whole left edge */
+.sc-page-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 140px;
+  /* Thinner width for a sleek, non-intrusive strip */
+  background: linear-gradient(to right, rgba(0, 203, 209, 0.25) 0%, rgba(0, 203, 209, 0.06) 40%, transparent 100%);
+  filter: blur(35px);
+  /* Creates the soft glow bleeding into the screen */
+  animation: borderGlowLeft 8s ease-in-out infinite alternate;
+  will-change: opacity, transform;
+  transform-origin: left center;
+}
+
+/* Right glowing aura (Cyan theme - Mirrored) - Stretched along the whole right edge */
+.sc-page-border::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 140px;
+  background: linear-gradient(to left, rgba(0, 203, 209, 0.25) 0%, rgba(0, 203, 209, 0.06) 40%, transparent 100%);
+  filter: blur(35px);
+  /* Creates the soft glow bleeding into the screen */
+  animation: borderGlowRight 8s ease-in-out infinite alternate;
+  will-change: opacity, transform;
+  transform-origin: right center;
+}
+
+@keyframes borderGlowLeft {
+  0% {
+    opacity: 0.45;
+    transform: scaleX(0.9);
+  }
+
+  100% {
+    opacity: 1.0;
+    transform: scaleX(1.2);
+    /* Softly bleeds deeper on pulse */
+  }
+}
+
+@keyframes borderGlowRight {
+  0% {
+    opacity: 0.45;
+    transform: scaleX(0.9);
+  }
+
+  100% {
+    opacity: 1.0;
+    transform: scaleX(1.2);
+    /* Softly bleeds deeper on pulse */
+  }
+}
+
+
+.sc-cursor.is-visible {
+  opacity: 1;
+}
+
+.sc-cursor.is-hovering {
+  width: 30px;
+  height: 30px;
+  background: rgba(52, 124, 255, 0.16);
+  box-shadow: 0 0 0 1.5px rgba(52, 124, 255, 0.45);
+}
+
+/* ── Responsive adjustments ─────────────────────────────────────────────── */
+
+@media (max-width: 1200px) {
+  .sc-navbar {
+    padding: 32px 40px 0;
+  }
+}
+
+@media (max-width: 900px) {
+  :root {
+    --nav-w: 120px;
+    --scroll-w: 680px;
+  }
+}
+
+/* ── Mobile Menu (ported from main style.css) ──────────────────────────── */
+
+.mobile-menu-btn {
+  display: none;
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 100px;
+  cursor: pointer;
+  z-index: 10000;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.mobile-menu-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 10001;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.mobile-menu-panel {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(85vw, 344px);
+  background: #fff;
+  z-index: 10002;
+  flex-direction: column;
+  padding: 48px 32px;
+  overflow-y: auto;
+  visibility: hidden;
+}
+
+.mobile-menu-brand-icon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  background-color: #024BDE;
+  -webkit-mask-image: url('/icons/shape.svg');
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-image: url('/icons/shape.svg');
+  mask-size: contain;
+  mask-repeat: no-repeat;
+}
+
+.mobile-menu-close {
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #000;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 64px;
+}
+
+.mobile-menu-content {
+  flex: 1;
+}
+
+.mobile-menu-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 48px;
+}
+
+.mobile-menu-section-link {
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 48px;
+  font-weight: 500;
+  color: #0a5cff;
+  text-decoration: none;
+  letter-spacing: -0.96px;
+  line-height: normal;
+  transition: opacity 200ms ease;
+}
+
+.mobile-menu-section-link:hover {
+  opacity: 0.7;
+}
+
+.mobile-menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.mobile-menu-links a {
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #656565;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  line-height: 1.3;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: opacity 200ms ease;
+}
+
+.mobile-menu-links a:hover {
+  opacity: 0.6;
+}
+
+.mobile-menu-brand {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: #000;
+  letter-spacing: -1.2px;
+  margin-top: auto;
+  padding-top: 40px;
+}
+
+.mobile-menu-brand span {
+  font-family: 'PP Editorial New', serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.72px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --nav-w: 0px;
+    --scroll-w: 100%;
+  }
+
+  body {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .sc-page {
+    height: auto;
+    overflow: visible;
+  }
+
+  /* Hide the desktop navbar entirely on mobile */
+  .hero-topbar {
+    display: none !important;
+  }
+
+  /* Show the back arrow */
+  .sc-mobile-back {
+    display: flex !important;
+  }
+
+  /* Show hamburger */
+  .mobile-menu-btn {
+    display: flex;
+  }
+
+  .mobile-menu-overlay {
+    display: block;
+  }
+
+  .mobile-menu-panel {
+    display: flex;
+  }
+
+  .sc-layout {
+    position: relative;
+    padding-top: 0;
+    flex-direction: column;
+    height: auto;
+    padding-bottom: 60px;
+  }
+
+  .sc-scroll-frame {
+    width: 100%;
+    padding: 16px;
+    transform: none; /* No right shift on mobile */
+  }
+
+  .sc-scroll-track {
+    width: 100%;
+  }
+
+  /* Hide the section nav sidebar completely on mobile */
+  .sc-section-nav {
+    display: none !important;
+  }
+
+  /* Position title down to match Figma (y=112px from top) */
+  .sc-page-title {
+    padding-top: 160px;
+    padding-bottom: 24px;
+    transform: none; /* No right shift on mobile */
+  }
+
+  .sc-page-title__text {
+    font-size: 32px;
+    letter-spacing: -0.64px;
+    text-align: left;
+    padding-left: 20px;
+  }
+
+  /* Hide the custom cursor on mobile */
+  .sc-cursor {
+    display: none !important;
+  }
+
+  /* Disable page border glows on mobile to prevent Android GPU/z-index clipping bugs */
+  .sc-page-border,
+  .sc-page-glows {
+    display: none !important;
+  }
+
+  /* Prevent horizontal overflow from the giant 996px cyan background glow */
+  .sc-scroll-frame-bg::before {
+    width: 100%;
+    filter: blur(40px); /* reduce blur size on mobile */
+  }
+}
+
+/* ── Mobile-only back arrow ────────────────────────────────────────────── */
+.sc-mobile-back {
+  display: none; /* Hidden by default, shown via mobile media query */
+  position: fixed;
+  top: 32px;
+  left: 32px;
+  z-index: 10000;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #e0e0e0;
+  padding: 0;
+  text-decoration: none;
+}
+
+.sc-mobile-back svg {
+  width: 13px;
+  height: 23px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sc-cursor {
+    display: none;
+  }
+
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

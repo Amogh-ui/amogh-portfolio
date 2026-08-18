@@ -196,7 +196,8 @@ const workItems = [
     year: '2026',
     description:
       'Popclozet explores a more editorial shopping flow for fashion discovery, mixing wardrobe curation, styling prompts, and a cleaner product presentation.',
-    tags: ['E-Commerce', 'Art Direction', 'Visual Identity']
+    tags: ['E-Commerce', 'Art Direction', 'Visual Identity'],
+    image: '/popclozet-thumbnail.png'
   },
   {
     id: 'ticketsure',
@@ -715,7 +716,8 @@ if (worksSection && workCards.length) {
       const pageMap = {
         'screen-calorie': '/screencalorie.html',
         'beyond-the-net': '/beyondthenet.html',
-        'trox': '/trox.html'
+        'trox': '/trox.html',
+        'popclozet': '/popclozet.html'
       }
       const href = pageMap[workId]
       if (href) {
@@ -750,7 +752,8 @@ let _isToggling = false
 const pageMap = {
   'screen-calorie': '/screencalorie.html',
   'beyond-the-net': '/beyondthenet.html',
-  'trox': '/trox.html'
+  'trox': '/trox.html',
+  'popclozet': '/popclozet.html'
 }
 
 // Grid card interaction & cursor hover handlers

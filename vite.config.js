@@ -9,6 +9,7 @@ export default defineConfig({
         screencalorie: resolve(__dirname, 'screencalorie.html'),
         beyondthenet: resolve(__dirname, 'beyondthenet.html'),
         trox: resolve(__dirname, 'trox.html'),
+        popclozet: resolve(__dirname, 'popclozet.html'),
       }
     }
   }
