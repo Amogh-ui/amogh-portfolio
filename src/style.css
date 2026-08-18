@@ -972,6 +972,11 @@ a {
   white-space: nowrap;
 }
 
+.work-chip--solo {
+  background: #0a5cff;
+  color: #ffffff;
+}
+
 .work-card__media {
   justify-self: end;
   width: 100%;
@@ -1211,6 +1216,11 @@ a {
   line-height: 1;
   letter-spacing: -0.01em;
   white-space: nowrap;
+}
+
+.works-grid-chip--solo {
+  background: #0a5cff;
+  color: #ffffff;
 }
 
 .works-grid-card__arrow {

@@ -166,7 +166,8 @@ const workItems = [
     year: '2025',
     description:
       'ScreenCalorie is a mental metabolism app that reframes screen time as balance instead of restriction. Using a calorie-based metaphor, the app tracks productive and unproductive usage through “sCals,” introducing smart nudges, micro-interruptions, and recovery prompts to help users build intentional digital habits without removing autonomy.',
-    tags: ['UI UX', 'APP DESIGN', 'BRAND IDENTITY']
+    tags: ['UI UX', 'APP DESIGN', 'BRAND IDENTITY'],
+    isSoloProject: true
   },
   {
     id: 'beyond-the-net',
@@ -176,7 +177,8 @@ const workItems = [
     description:
       'Beyond the Net is a sports experience concept that turns match stats into a sharper digital story, pairing live performance cues with clearer score-state feedback and a more deliberate visual hierarchy.',
     tags: ['PRODUCT DESIGN', 'DASHBOARD', 'VISUAL SYSTEM'],
-    image: beyondTheNetImage
+    image: beyondTheNetImage,
+    isSoloProject: true
   },
   {
     id: 'paalan',
@@ -203,7 +205,8 @@ const workItems = [
     year: '2025',
     description:
       'TicketSure is a ticketing concept focused on reducing friction in seat selection, purchase states, and post-booking clarity for faster event checkout.',
-    tags: ['MOBILE UX', 'BOOKING FLOW', 'BRAND SYSTEM']
+    tags: ['MOBILE UX', 'BOOKING FLOW', 'BRAND SYSTEM'],
+    isSoloProject: true
   },
   {
     id: 'trox',
@@ -213,7 +216,8 @@ const workItems = [
     description:
       'TROX: The Reversal is a first-person psychological horror game set in a dystopian post-war world, where players uncover disturbing truths through atmospheric exploration, environmental storytelling, and puzzle-solving.',
     tags: ['GAME UI', 'UX DESIGN', 'HUD DESIGN'],
-    image: troxImage
+    image: troxImage,
+    isSoloProject: true
   }
 ]
 
@@ -262,13 +266,13 @@ const worksMarkup = `
                   <div class="work-card__body">
                     <div class="work-card__copy">
                       <div class="work-card__tags">
-                        ${item.tags.reduce((acc, tag, i) => {
+                        ${[...(item.isSoloProject ? ['✦ Solo Project'] : []), ...item.tags].reduce((acc, tag, i) => {
                           if (i % 2 === 0) acc.push([]);
                           acc[acc.length - 1].push(tag);
                           return acc;
                         }, []).map(row => `
                           <div class="work-tags-row">
-                            ${row.map(tag => `<span class="work-chip">${tag}</span>`).join('')}
+                            ${row.map(tag => `<span class="work-chip ${tag === '✦ Solo Project' ? 'work-chip--solo' : ''}">${tag}</span>`).join('')}
                           </div>
                         `).join('')}
                       </div>
@@ -288,7 +292,7 @@ const worksMarkup = `
             .join('')}
         </div>
 
-        <div class="works-grid" role="list">
+        <div class="works-grid" role="list" style="display:none;">
           ${workItems
             .map(
               (item) => `
@@ -303,7 +307,7 @@ const worksMarkup = `
                     </div>
                     <h3 class="works-grid-card__title">${item.title}</h3>
                     <div class="works-grid-card__tags">
-                      ${item.tags.map(tag => `<span class="works-grid-chip">${tag}</span>`).join('')}
+                      ${[...(item.isSoloProject ? ['✦ Solo Project'] : []), ...item.tags].map(tag => `<span class="works-grid-chip ${tag === '✦ Solo Project' ? 'works-grid-chip--solo' : ''}">${tag}</span>`).join('')}
                     </div>
                     <div class="works-grid-card__arrow" aria-hidden="true">
                       <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
