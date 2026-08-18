@@ -166,7 +166,7 @@ const workItems = [
     year: '2025',
     description:
       'ScreenCalorie is a mental metabolism app that reframes screen time as balance instead of restriction. Using a calorie-based metaphor, the app tracks productive and unproductive usage through “sCals,” introducing smart nudges, micro-interruptions, and recovery prompts to help users build intentional digital habits without removing autonomy.',
-    tags: ['UI UX', 'APP DESIGN', 'BRAND IDENTITY'],
+    tags: ['UI/UX', 'App Design', 'Brand Identity'],
     isSoloProject: true
   },
   {
@@ -176,7 +176,7 @@ const workItems = [
     year: '2025',
     description:
       'Beyond the Net is a sports experience concept that turns match stats into a sharper digital story, pairing live performance cues with clearer score-state feedback and a more deliberate visual hierarchy.',
-    tags: ['PRODUCT DESIGN', 'DASHBOARD', 'VISUAL SYSTEM'],
+    tags: ['Product Design', 'Dashboard', 'Visual System'],
     image: beyondTheNetImage,
     isSoloProject: true
   },
@@ -187,7 +187,7 @@ const workItems = [
     year: '2026',
     description:
       'Paalan is a caregiving companion concept designed to make daily check-ins, support notes, and routine coordination feel calmer and easier to navigate.',
-    tags: ['UX DESIGN', 'SERVICE DESIGN', 'APP FLOW']
+    tags: ['UX Design', 'Service Design', 'App Flow']
   },
   {
     id: 'popclozet',
@@ -196,7 +196,7 @@ const workItems = [
     year: '2026',
     description:
       'Popclozet explores a more editorial shopping flow for fashion discovery, mixing wardrobe curation, styling prompts, and a cleaner product presentation.',
-    tags: ['E-COMMERCE', 'ART DIRECTION', 'VISUAL IDENTITY']
+    tags: ['E-Commerce', 'Art Direction', 'Visual Identity']
   },
   {
     id: 'ticketsure',
@@ -205,7 +205,7 @@ const workItems = [
     year: '2025',
     description:
       'TicketSure is a ticketing concept focused on reducing friction in seat selection, purchase states, and post-booking clarity for faster event checkout.',
-    tags: ['MOBILE UX', 'BOOKING FLOW', 'BRAND SYSTEM'],
+    tags: ['Mobile UX', 'Booking Flow', 'Brand System'],
     isSoloProject: true
   },
   {
@@ -215,7 +215,7 @@ const workItems = [
     year: '2026',
     description:
       'TROX: The Reversal is a first-person psychological horror game set in a dystopian post-war world, where players uncover disturbing truths through atmospheric exploration, environmental storytelling, and puzzle-solving.',
-    tags: ['GAME UI', 'UX DESIGN', 'HUD DESIGN'],
+    tags: ['Game UI', 'UX Design', 'HUD Design'],
     image: troxImage,
     isSoloProject: true
   }
@@ -266,15 +266,7 @@ const worksMarkup = `
                   <div class="work-card__body">
                     <div class="work-card__copy">
                       <div class="work-card__tags">
-                        ${[...(item.isSoloProject ? ['✦ Solo Project'] : []), ...item.tags].reduce((acc, tag, i) => {
-                          if (i % 2 === 0) acc.push([]);
-                          acc[acc.length - 1].push(tag);
-                          return acc;
-                        }, []).map(row => `
-                          <div class="work-tags-row">
-                            ${row.map(tag => `<span class="work-chip ${tag === '✦ Solo Project' ? 'work-chip--solo' : ''}">${tag}</span>`).join('')}
-                          </div>
-                        `).join('')}
+                        ${[...(item.isSoloProject ? ['✦ Solo Project'] : []), ...item.tags].map(tag => `<span class="work-chip ${tag === '✦ Solo Project' ? 'work-chip--solo' : ''}">${tag}</span>`).join('')}
                       </div>
                       <div class="work-card__details">
                         <p class="work-card__eyebrow">Overview:</p>
@@ -292,7 +284,7 @@ const worksMarkup = `
             .join('')}
         </div>
 
-        <div class="works-grid" role="list" style="display:none;">
+        <div class="works-grid" role="list">
           ${workItems
             .map(
               (item) => `

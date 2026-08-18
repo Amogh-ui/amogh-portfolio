@@ -945,16 +945,11 @@ a {
 
 .work-card__tags {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: 0;
   margin-bottom: 1rem;
-}
-
-.work-tags-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
 }
 
 .work-chip {
@@ -2348,6 +2343,10 @@ a {
   /* ── Mobile Work Section Overrides ── */
   .works-view-toggle {
     display: none !important;
+  }
+
+  .works-list {
+    display: block !important;
   }
 
   .works-grid {
