@@ -233,7 +233,8 @@ a {
   color: var(--ink);
   pointer-events: none;
   z-index: 4;
-  will-change: transform, left, top, color;
+  will-change: transform, opacity;
+  transform: translateZ(0);
   transform-origin: center center;
   overflow: visible;
   isolation: isolate;

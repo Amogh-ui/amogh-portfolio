@@ -1262,23 +1262,30 @@ const runAnimation = () => {
 
   if (isMobile) {
     // Animate text to bottom-center, horizontal (no rotation).
-    // Uses back.out ease for a natural slight expand then settle effect.
+    // Uses y-based transform for GPU-composited smoothness — no layout thrashing.
+    const targetY = window.innerHeight - 56
+    const currentCenter = window.innerHeight / 2
+
     timeline.to(sharedTitle, {
-      left: '50%',
-      top: () => window.innerHeight - 56,
-      xPercent: -50,
+      y: targetY - currentCenter,
       yPercent: -100,
       transformOrigin: '50% 100%',
       scale: 1,
       rotation: 0,
       color: '#f4ecdf',
-      duration: 0.82,
-      ease: 'back.out(1.4)',
+      duration: 0.92,
+      ease: 'power3.out',
       onComplete: () => {
-        // Swap to bottom-relative positioning after animation to survive address bar hides
-        gsap.set(sharedTitle, {
-          top: 'auto',
-          bottom: 56
+        // Swap to bottom-relative positioning after animation to survive address bar hides.
+        // Use rAF to batch the layout change off the animation frame.
+        requestAnimationFrame(() => {
+          gsap.set(sharedTitle, {
+            top: 'auto',
+            bottom: 56,
+            y: 0,
+            yPercent: 0,
+            clearProps: 'y'
+          })
         })
       }
     }, outTime)
