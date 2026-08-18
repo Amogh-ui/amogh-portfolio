@@ -1276,15 +1276,19 @@ const runAnimation = () => {
       duration: 0.92,
       ease: 'power3.out',
       onComplete: () => {
-        // Swap to bottom-relative positioning after animation to survive address bar hides.
-        // Use rAF to batch the layout change off the animation frame.
+        // Swap to bottom-relative positioning to survive mobile address bar resizes.
+        // Explicitly set ALL final-state properties to avoid transform state loss.
         requestAnimationFrame(() => {
           gsap.set(sharedTitle, {
+            left: '50%',
             top: 'auto',
             bottom: 56,
-            y: 0,
+            xPercent: -50,
             yPercent: 0,
-            clearProps: 'y'
+            y: 0,
+            scale: 1,
+            rotation: 0,
+            transformOrigin: '50% 100%'
           })
         })
       }
