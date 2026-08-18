@@ -962,9 +962,9 @@ a {
   align-items: center;
   min-height: 32px;
   padding: 0.1rem 1rem 0;
-  border: 1px solid #0a5cff;
+  border: 1px solid #d4d4d4;
   border-radius: 16px;
-  color: #0250ec;
+  color: #666666;
   font-family: 'Geist', system-ui, sans-serif;
   font-size: 16px;
   line-height: 1;
@@ -1208,9 +1208,9 @@ a {
   align-items: center;
   min-height: 26px;
   padding: 0 10px;
-  border: 1px solid #0a5cff;
+  border: 1px solid #333333;
   border-radius: 14px;
-  color: #0250ec;
+  color: #999999;
   font-family: 'Geist', system-ui, sans-serif;
   font-size: 12px;
   line-height: 1;

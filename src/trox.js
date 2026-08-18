@@ -82,7 +82,7 @@ app.innerHTML = `
 
     <!-- ── TROX Content ── -->
     <div class="trox-content">
-      <h1 class="trox-title">TROX: THE REVERSAL</h1>
+      <h1 class="trox-title">TROX: THE REVERSAL <span class="project-solo-badge">✦ Solo Project</span></h1>
       
       <div class="trox-video-container">
         <video class="trox-video" src="/WhatsApp Video 2026-07-29 at 11.52.01-2.mp4" autoplay loop muted playsinline></video>

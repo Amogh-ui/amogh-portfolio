@@ -95,7 +95,7 @@ app.innerHTML = `
 
     <!-- ── Page title ── -->
     <div class="sc-page-title" aria-label="Project name">
-      <h1 class="sc-page-title__text">SCREENCALORIE</h1>
+      <h1 class="sc-page-title__text">SCREENCALORIE <span class="project-solo-badge">✦ Solo Project</span></h1>
     </div>
 
     <!-- ── Main layout: scroll area + right nav ── -->
