@@ -402,7 +402,7 @@ body {
   mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
 }
 
-/* Beautiful cyan progressive blur top glow from Ellipse 22 (996x254, cyan, 360px blur, progressive layer blur) - ENHANCED */
+/* Beautiful coral progressive blur top glow from Ellipse 22 (996x254, coral, 360px blur, progressive layer blur) - ENHANCED */
 .sc-scroll-frame-bg::before {
   content: '';
   position: absolute;
@@ -411,7 +411,7 @@ body {
   transform: translateX(-50%);
   width: 996px;
   height: 280px;
-  background: radial-gradient(circle, rgba(0, 203, 209, 0.28) 0%, rgba(0, 203, 209, 0.1) 45%, transparent 70%);
+  background: radial-gradient(circle, rgba(242, 84, 109, 0.28) 0%, rgba(242, 84, 109, 0.1) 45%, transparent 70%);
   filter: blur(80px);
   pointer-events: none;
 }
@@ -548,12 +548,12 @@ body {
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background: rgba(52, 124, 255, 0.95);
+  background: rgba(242, 84, 109, 0.95);
   pointer-events: none;
   z-index: 9999;
   opacity: 0;
   will-change: transform;
-  box-shadow: 0 0 0 1px rgba(52, 124, 255, 0.16), 0 6px 18px rgba(18, 78, 255, 0.14);
+  box-shadow: 0 0 0 1px rgba(242, 84, 109, 0.16), 0 6px 18px rgba(115, 34, 49, 0.25);
   transition:
     opacity 180ms ease,
     width 200ms cubic-bezier(0.2, 0, 0, 1),
@@ -589,8 +589,8 @@ body {
   right: -15%;
   width: 700px;
   height: 700px;
-  background: radial-gradient(circle, rgba(0, 203, 209, 0.28) 0%, transparent 70%);
-  /* Theme Cyan */
+  background: radial-gradient(circle, rgba(242, 84, 109, 0.22) 0%, transparent 70%);
+  /* Theme Coral */
   animation: glowPulseRight 12s ease-in-out infinite alternate;
   animation-delay: 0s;
 }
@@ -600,8 +600,8 @@ body {
   left: -15%;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(0, 203, 209, 0.28) 0%, transparent 70%);
-  /* Theme Cyan */
+  background: radial-gradient(circle, rgba(115, 34, 49, 0.28) 0%, transparent 70%);
+  /* Theme Plum */
   animation: glowPulseLeft 16s ease-in-out infinite alternate;
   animation-delay: -4s;
 }
@@ -640,7 +640,7 @@ body {
   overflow: hidden;
 }
 
-/* Left glowing aura (Cyan theme) - Stretched along the whole left edge */
+/* Left glowing aura (Coral theme) - Stretched along the whole left edge */
 .sc-page-border::before {
   content: '';
   position: absolute;
@@ -649,7 +649,7 @@ body {
   bottom: 0;
   width: 140px;
   /* Thinner width for a sleek, non-intrusive strip */
-  background: linear-gradient(to right, rgba(0, 203, 209, 0.25) 0%, rgba(0, 203, 209, 0.06) 40%, transparent 100%);
+  background: linear-gradient(to right, rgba(242, 84, 109, 0.2) 0%, rgba(242, 84, 109, 0.05) 40%, transparent 100%);
   filter: blur(35px);
   /* Creates the soft glow bleeding into the screen */
   animation: borderGlowLeft 8s ease-in-out infinite alternate;
@@ -657,7 +657,7 @@ body {
   transform-origin: left center;
 }
 
-/* Right glowing aura (Cyan theme - Mirrored) - Stretched along the whole right edge */
+/* Right glowing aura (Coral theme - Mirrored) - Stretched along the whole right edge */
 .sc-page-border::after {
   content: '';
   position: absolute;
@@ -665,7 +665,7 @@ body {
   right: 0;
   bottom: 0;
   width: 140px;
-  background: linear-gradient(to left, rgba(0, 203, 209, 0.25) 0%, rgba(0, 203, 209, 0.06) 40%, transparent 100%);
+  background: linear-gradient(to left, rgba(242, 84, 109, 0.2) 0%, rgba(242, 84, 109, 0.05) 40%, transparent 100%);
   filter: blur(35px);
   /* Creates the soft glow bleeding into the screen */
   animation: borderGlowRight 8s ease-in-out infinite alternate;
@@ -707,8 +707,8 @@ body {
 .sc-cursor.is-hovering {
   width: 30px;
   height: 30px;
-  background: rgba(52, 124, 255, 0.16);
-  box-shadow: 0 0 0 1.5px rgba(52, 124, 255, 0.45);
+  background: rgba(242, 84, 109, 0.16);
+  box-shadow: 0 0 0 1.5px rgba(242, 84, 109, 0.45);
 }
 
 /* ── Responsive adjustments ─────────────────────────────────────────────── */

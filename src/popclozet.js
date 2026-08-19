@@ -5,8 +5,19 @@ import Lenis from 'lenis'
 const app = document.querySelector('#app')
 if (!app) throw new Error('App root not found.')
 
-const sectionTitles = []
-const sectionNavMarkup = ''
+// Section titles for the side indicator
+const sectionTitles = ['Overview', 'Approach', 'Features', 'SUS Score', 'Branding']
+
+const sectionNavMarkup = sectionTitles
+  .map((title, i) => `
+    <button class="sc-section-nav__item${i === 0 ? ' is-active' : ''}" 
+            data-section="${i}" 
+            type="button">
+      <span class="sc-section-nav__indicator"></span>
+      <span class="sc-section-nav__text">${title}</span>
+    </button>
+  `)
+  .join('')
 
 app.innerHTML = `
   <div class="sc-page">
@@ -97,12 +108,82 @@ app.innerHTML = `
           <img
             class="sc-scroll-img"
             src="/popclozet-scroll/1.jpg"
-            alt="Popclozet Documentation"
+            alt="Overview — Popclozet concept and problem space"
             data-section="0"
+            width="1692"
+            height="3418"
             loading="eager"
+            decoding="async"
+          />
+          <img
+            class="sc-scroll-img"
+            src="/popclozet-scroll/2.jpg"
+            alt="Overview — Timeline and digital wardrobe model"
+            data-section="0"
+            width="1692"
+            height="2392"
+            loading="eager"
+            decoding="async"
+          />
+          <img
+            class="sc-scroll-img"
+            src="/popclozet-scroll/3.jpg"
+            alt="Approach — Research, user journey and pain points"
+            data-section="1"
+            width="1692"
+            height="2025"
+            loading="eager"
+            decoding="async"
+          />
+          <img
+            class="sc-scroll-img"
+            src="/popclozet-scroll/4.jpg"
+            alt="Features — Live closet system"
+            data-section="2"
+            width="1692"
+            height="3042"
+            loading="eager"
+            decoding="async"
+          />
+          <img
+            class="sc-scroll-img"
+            src="/popclozet-scroll/5.jpg"
+            alt="Features — Smart return scheduling and outfit maker"
+            data-section="2"
+            width="1692"
+            height="2794"
+            loading="eager"
+            decoding="async"
+          />
+          <img
+            class="sc-scroll-img"
+            src="/popclozet-scroll/6.jpg"
+            alt="SUS Score — Usability testing evaluation and metrics"
+            data-section="3"
+            width="1692"
+            height="1059"
+            loading="eager"
+            decoding="async"
+          />
+          <img
+            class="sc-scroll-img"
+            src="/popclozet-scroll/7.jpg"
+            alt="Branding — Visual identity, logo, colors and typography"
+            data-section="4"
+            width="1692"
+            height="5410"
+            loading="eager"
+            decoding="async"
           />
         </div>
       </div>
+
+      <!-- Right section indicator -->
+      <aside class="sc-section-nav" aria-label="Section navigator">
+        <nav class="sc-section-nav__list">
+          ${sectionNavMarkup}
+        </nav>
+      </aside>
 
     </div>
 
@@ -133,12 +214,60 @@ if (lenis) {
   requestAnimationFrame(raf)
 }
 
+// ─── Section nav indicator ────────────────────────────────────────────────────
+
+const sectionNavItems = document.querySelectorAll('.sc-section-nav__item')
+const scrollImgs = document.querySelectorAll('.sc-scroll-img')
+
+const setActiveSection = (index) => {
+  sectionNavItems.forEach((item, i) => {
+    item.classList.toggle('is-active', i === index)
+  })
+}
+
+// When clicking a section nav button, scroll to that section's first image
+sectionNavItems.forEach((btn, i) => {
+  btn.addEventListener('click', () => {
+    const target = Array.from(scrollImgs).find(img => Number(img.dataset.section) === i)
+    if (target) {
+      if (lenis) {
+        lenis.scrollTo(target, { offset: -160, duration: 1.2 })
+      } else {
+        const rect = target.getBoundingClientRect()
+        const scrollTop = window.scrollY || document.documentElement.scrollTop
+        const imgTop = rect.top + scrollTop - 160
+        window.scrollTo({ top: imgTop, behavior: 'smooth' })
+      }
+    }
+  })
+})
+
+// IntersectionObserver to update active section on scroll
+const sectionObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const section = Number(entry.target.dataset.section)
+        setActiveSection(section)
+      }
+    })
+  },
+  {
+    root: null, // Use viewport
+    rootMargin: '-20% 0px -50% 0px', // Trigger when image reaches upper half of screen
+    threshold: 0
+  }
+)
+
+scrollImgs.forEach(img => sectionObserver.observe(img))
+
 // ─── Entrance animation ───────────────────────────────────────────────────────
 
 const navbar = document.querySelector('.hero-topbar')
 const mobileBack = document.querySelector('.sc-mobile-back')
 const mobileMenuBtnSC = document.querySelector('.sc-mobile-menu-btn')
 const pageTitle = document.querySelector('.sc-page-title')
+const sectionNav = document.querySelector('.sc-section-nav')
 const scrollFrame = document.querySelector('.sc-scroll-frame')
 const isMobileSC = window.matchMedia('(max-width: 768px)').matches
 
@@ -151,11 +280,12 @@ if (!reducedMotion) {
     tl.to(pageTitle, { autoAlpha: 1, y: 0, duration: 0.8 }, 0.22)
     tl.to(scrollFrame, { autoAlpha: 1, y: 0, duration: 0.8 }, 0.38)
   } else {
-    gsap.set([navbar, pageTitle, scrollFrame], { autoAlpha: 0, y: 16 })
+    gsap.set([navbar, pageTitle, scrollFrame, sectionNav], { autoAlpha: 0, y: 16 })
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
     tl.to(navbar, { autoAlpha: 1, y: 0, duration: 0.7 }, 0.1)
     tl.to(pageTitle, { autoAlpha: 1, y: 0, duration: 0.8 }, 0.22)
     tl.to(scrollFrame, { autoAlpha: 1, y: 0, duration: 0.8 }, 0.38)
+    tl.to(sectionNav, { autoAlpha: 1, y: 0, duration: 0.7 }, 0.5)
   }
 }
 
@@ -164,6 +294,7 @@ if (isMobileSC && reducedMotion && mobileMenuBtnSC) {
   mobileMenuBtnSC.style.opacity = '1'
   mobileMenuBtnSC.style.visibility = 'visible'
 }
+
 // ─── Custom cursor ────────────────────────────────────────────────────────────
 
 const cursor = document.querySelector('.sc-cursor')
@@ -226,7 +357,7 @@ const interactables = 'a, button, [role="button"]'
 document.addEventListener('pointerover', e => { if (e.target.closest(interactables)) cursor?.classList.add('is-hovering') }, true)
 document.addEventListener('pointerout', e => { if (e.target.closest(interactables)) cursor?.classList.remove('is-hovering') }, true)
 
-// ─── Mobile menu open/close (same logic as hero section) ──────────────────────
+// ─── Mobile menu open/close ──────────────────────────────────────────────────
 
 const scMenuBtn = document.querySelector('.sc-mobile-menu-btn')
 const scMenuPanel = document.querySelector('.mobile-menu-panel')
