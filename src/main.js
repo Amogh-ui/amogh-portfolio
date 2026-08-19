@@ -1050,11 +1050,14 @@ const getHeroTitleTarget = () => {
 }
 
 const setReducedMotionState = () => {
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual'
+  }
   const { left, top } = getHeroTitleTarget()
   const isMobile = window.matchMedia('(max-width: 768px)').matches
 
   gsap.set([introScene, sweepScene], { autoAlpha: 0 })
-  gsap.set(heroScene, { autoAlpha: 1 })
+  gsap.set(heroScene, { autoAlpha: 1, clearProps: 'opacity,filter' })
   
   if (isMobile) {
     gsap.set(sharedTitle, {
@@ -1095,6 +1098,8 @@ const setReducedMotionState = () => {
   }
   applyIntroScrollState(1)
   document.body.classList.remove('is-scroll-locked')
+  lenis?.start()
+  lenis?.resize()
 }
 
 const runAnimation = () => {
@@ -1360,12 +1365,38 @@ const runAnimation = () => {
   }, 4.7)
 }
 
+const jumpToHash = (immediate = true) => {
+  const hash = window.location.hash
+  if (!hash) return
+  let targetElement = document.querySelector(hash)
+  if (hash === '#info' && window.matchMedia('(max-width: 768px)').matches) {
+    targetElement = footerSection
+  }
+  if (targetElement) {
+    lenis?.resize()
+    if (lenis) {
+      lenis.scrollTo(targetElement, { immediate, offset: 0 })
+    } else {
+      if (immediate) {
+        window.scrollTo(0, targetElement.offsetTop)
+      } else {
+        targetElement.scrollIntoView({ behavior: 'smooth' })
+      }
+    }
+    syncScrollState()
+  }
+}
+
 const boot = () => {
   if (booted) {
     return
   }
 
   booted = true
+
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual'
+  }
 
   const navEntries = performance.getEntriesByType('navigation')
   const isReload = navEntries.length > 0 && navEntries[0].type === 'reload'
@@ -1384,29 +1415,17 @@ const boot = () => {
   }
 
   if (isWorkHash || isInfoHash) {
-    // Skip intro and position at #work instantly
+    // Skip intro and position at #work or #info instantly
     setReducedMotionState()
     shaderCleanup.start()
     cursorReady = true
     appRoot?.classList.add('is-cursor-active')
     
-    // Allow a tiny delay for layout measurements, then scroll to #work or footer
-    setTimeout(() => {
-      let targetElement = document.querySelector(window.location.hash)
-      
-      // Phone version scrolls to footer for #info
-      if (isInfoHash && window.matchMedia('(max-width: 768px)').matches) {
-        targetElement = footerSection
-      }
-      
-      if (targetElement) {
-        if (lenis) {
-          lenis.scrollTo(targetElement, { immediate: true })
-        } else {
-          targetElement.scrollIntoView()
-        }
-      }
-    }, 50)
+    // Jump immediately and retry across layout settling cycles
+    jumpToHash(true)
+    requestAnimationFrame(() => jumpToHash(true))
+    setTimeout(() => jumpToHash(true), 80)
+    setTimeout(() => jumpToHash(true), 250)
     return
   }
 
@@ -1423,6 +1442,48 @@ window.addEventListener('resize', syncScrollState)
 window.addEventListener('scroll', syncScrollState, { passive: true })
 startScrollLoop()
 requestAnimationFrame(boot)
+
+// Handle desktop pill navigation clicks smoothly
+const heroPillLinks = document.querySelectorAll('.hero-pill__item')
+heroPillLinks.forEach((link) => {
+  link.addEventListener('click', (e) => {
+    const href = link.getAttribute('href')
+    if (href && href.startsWith('#')) {
+      e.preventDefault()
+      const isMobile = window.matchMedia('(max-width: 768px)').matches
+      let targetElement = document.querySelector(href)
+      if (href === '#info' && isMobile) {
+        targetElement = footerSection
+      }
+      if (targetElement) {
+        lenis?.resize()
+        if (lenis) {
+          lenis.scrollTo(targetElement, { duration: 1.2, offset: 0 })
+        } else {
+          targetElement.scrollIntoView({ behavior: 'smooth' })
+        }
+      }
+    }
+  })
+})
+
+// Handle bfcache back-forward navigation & hash changes
+window.addEventListener('pageshow', (event) => {
+  if (event.persisted) {
+    lenis?.start()
+    lenis?.resize()
+    syncScrollState()
+    if (window.location.hash === '#work' || window.location.hash === '#info') {
+      jumpToHash(true)
+    }
+  }
+})
+
+window.addEventListener('hashchange', () => {
+  if (window.location.hash === '#work' || window.location.hash === '#info') {
+    jumpToHash(false)
+  }
+})
 
 // --- Cursor follower inertia + hover interactions (intro) ---
 if (cursorFollower && appRoot) {
