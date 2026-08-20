@@ -941,13 +941,20 @@ body {
     padding-top: 160px;
     padding-bottom: 24px;
     transform: none; /* No right shift on mobile */
+    text-align: left;
+    padding-left: 20px;
   }
 
   .sc-page-title__text {
     font-size: 32px;
     letter-spacing: -0.64px;
     text-align: left;
-    padding-left: 20px;
+    padding-left: 0;
+  }
+
+  .project-solo-badge {
+    margin-top: 8px;
+    font-size: 13px;
   }
 
   /* Hide the custom cursor on mobile */

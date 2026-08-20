@@ -2508,6 +2508,13 @@ a {
     font-weight: 400 !important;
   }
 
+  .work-chip--solo {
+    background: #0a5cff !important;
+    color: #ffffff !important;
+    border-color: #0a5cff !important;
+    font-weight: 500 !important;
+  }
+
   .work-card__media {
     width: 100% !important;
     height: auto !important;
