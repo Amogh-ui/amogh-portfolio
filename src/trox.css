@@ -174,13 +174,6 @@ body {
   justify-self: start;
 }
 
-/* On project pages: wider tile to accommodate the back chevron (Figma: 240×64) */
-.hero-brand.is-project-back {
-  max-width: 240px;
-  padding: 0 24px;
-  gap: 9px; /* Figma gap between Amogh↔icon↔Shete is ~8-10px */
-}
-
 .hero-brand__first,
 .hero-brand__last {
   font-size: 24px;
@@ -204,28 +197,6 @@ body {
   width: 16px;
   height: 16px;
   flex: none;
-}
-
-/* Back chevron — always visible on project pages (Figma: 10×16 vector at x=24) */
-.hero-brand__back-arrow {
-  display: none; /* Hidden on landing page */
-}
-
-.hero-brand.is-project-back .hero-brand__back-arrow {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  width: 10px;
-  height: 16px;
-  color: #e0e0e0;
-  margin-right: 11px; /* Figma: 20px total gap (chevron ends at x=34, Amogh starts at x=54) minus the flex gap */
-  transition: transform 240ms cubic-bezier(0.2, 0, 0, 1);
-}
-
-/* Subtle hover nudge on the chevron */
-.hero-brand.is-project-back:hover .hero-brand__back-arrow {
-  transform: translateX(-2px);
 }
 
 .hero-links {
