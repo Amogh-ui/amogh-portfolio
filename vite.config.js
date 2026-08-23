@@ -10,6 +10,7 @@ export default defineConfig({
         beyondthenet: resolve(__dirname, 'beyondthenet.html'),
         trox: resolve(__dirname, 'trox.html'),
         popclozet: resolve(__dirname, 'popclozet.html'),
+        ticketsure: resolve(__dirname, 'ticketsure.html'),
       }
     }
   }

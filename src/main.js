@@ -105,6 +105,7 @@ const glassAsset = (fileName) => `/icons/glass/${encodeURIComponent(fileName)}`
 const workPreviewImage = new URL('../images/AM-FREEBIES-IP-005 1.png', import.meta.url).href
 const beyondTheNetImage = new URL('../images/beyond-the-net-thumbnail.png', import.meta.url).href
 const troxImage = new URL('../images/trox-thumbnail.png', import.meta.url).href
+const ticketsureImage = new URL('../images/ticketsure-thumbnail.jpg', import.meta.url).href
 
 // ─── Real Asset Preloader ─────────────────────────────────────────────────────
 // Kick off all critical image loads immediately so they're warmed up in the
@@ -138,7 +139,8 @@ const _assetsReady = new Promise(res => { _assetsResolve = res })
     '/beyond-the-net-scroll/8.jpg',
     workPreviewImage,
     beyondTheNetImage,
-    troxImage
+    troxImage,
+    ticketsureImage
   ]
 
   let loaded = 0
@@ -207,6 +209,7 @@ const workItems = [
     description:
       'TicketSure is a ticketing concept focused on reducing friction in seat selection, purchase states, and post-booking clarity for faster event checkout.',
     tags: ['Mobile UX', 'Booking Flow', 'Brand System'],
+    image: ticketsureImage,
     isSoloProject: true
   },
   {
@@ -717,7 +720,8 @@ if (worksSection && workCards.length) {
         'screen-calorie': '/screencalorie.html',
         'beyond-the-net': '/beyondthenet.html',
         'trox': '/trox.html',
-        'popclozet': '/popclozet.html'
+        'popclozet': '/popclozet.html',
+        'ticketsure': '/ticketsure.html'
       }
       const href = pageMap[workId]
       if (href) {
@@ -753,7 +757,8 @@ const pageMap = {
   'screen-calorie': '/screencalorie.html',
   'beyond-the-net': '/beyondthenet.html',
   'trox': '/trox.html',
-  'popclozet': '/popclozet.html'
+  'popclozet': '/popclozet.html',
+  'ticketsure': '/ticketsure.html'
 }
 
 // Grid card interaction & cursor hover handlers
