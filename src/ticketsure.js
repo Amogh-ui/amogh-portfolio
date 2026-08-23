@@ -5,6 +5,20 @@ import Lenis from 'lenis'
 const app = document.querySelector('#app')
 if (!app) throw new Error('App root not found.')
 
+// Section titles for the right-side indicator
+const sectionTitles = ['Overview', 'Features', 'User Flow', 'Screens', 'Thank You']
+
+const sectionNavMarkup = sectionTitles
+  .map((title, i) => `
+    <button class="sc-section-nav__item${i === 0 ? ' is-active' : ''}" 
+            data-section="${i}" 
+            type="button">
+      <span class="sc-section-nav__indicator"></span>
+      <span class="sc-section-nav__text">${title}</span>
+    </button>
+  `)
+  .join('')
+
 app.innerHTML = `
   <div class="sc-page">
     <div class="sc-page-glows" aria-hidden="true"></div>
@@ -46,7 +60,7 @@ app.innerHTML = `
       </svg>
     </a>
 
-    <!-- ── Mobile-only: hamburger + menu panel ── -->
+    <!-- ── Mobile-only: hamburger + menu panel (same as hero section) ── -->
     <button class="mobile-menu-btn liquid-glass sc-mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
       <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
         <line x1="1" y1="1" x2="19" y2="1" stroke="white" stroke-width="2" stroke-linecap="round"/>
@@ -69,9 +83,9 @@ app.innerHTML = `
           <a href="/#info" class="mobile-menu-section-link">Info</a>
         </div>
         <div class="mobile-menu-links">
-          <a href="https://behance.net" target="_blank" rel="noopener noreferrer">BEHANCE</a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
-          <a href="#resume">RESUME</a>
+          <a href="https://behance.net" target="_blank" rel="noopener noreferrer">BEHANCE <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.29231 12L0 10.7077L8.86154 1.84615H0.923077V0H12V11.0769H10.1538V3.13846L1.29231 12Z" fill="#656565"/></svg></a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LINKEDIN <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.29231 12L0 10.7077L8.86154 1.84615H0.923077V0H12V11.0769H10.1538V3.13846L1.29231 12Z" fill="#656565"/></svg></a>
+          <a href="#resume">RESUME <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.29231 12L0 10.7077L8.86154 1.84615H0.923077V0H12V11.0769H10.1538V3.13846L1.29231 12Z" fill="#656565"/></svg></a>
         </div>
       </div>
       <div class="mobile-menu-brand">
@@ -85,9 +99,113 @@ app.innerHTML = `
       <div><span class="project-solo-badge">✦ Solo Project</span></div>
     </div>
 
-    <!-- ── Main layout: PDF ── -->
-    <div class="sc-layout" style="display: block; width: 100%; max-width: 1400px; margin: 0 auto; padding: 2rem; position: relative; z-index: 2;">
-      <iframe src="/ticketsure.pdf" width="100%" height="85vh" style="border: none; border-radius: 20px; min-height: 800px; display: block; background: #fff;" allowfullscreen></iframe>
+    <!-- ── Main layout: scroll area + right nav ── -->
+    <div class="sc-layout">
+
+      <!-- Scroll container frame (accent border & top glow background wrapper) -->
+      <div class="sc-scroll-frame">
+        <div class="sc-scroll-frame-bg"></div>
+        <div class="sc-scroll-track" id="sc-scroll-track">
+          <img
+            class="sc-scroll-img"
+            src="/ticketsure-scroll/1.jpg"
+            alt="Overview — TicketSure concept, hero and problem space"
+            data-section="0"
+            width="1692"
+            height="2500"
+            loading="eager"
+            decoding="async"
+          />
+          <img
+            class="sc-scroll-img"
+            src="/ticketsure-scroll/2.jpg"
+            alt="Overview — Solution and smart waitlist introduction"
+            data-section="0"
+            width="1692"
+            height="2500"
+            loading="eager"
+            decoding="async"
+          />
+          <img
+            class="sc-scroll-img"
+            src="/ticketsure-scroll/3.jpg"
+            alt="Features — Tagging system, calendar and ticket details"
+            data-section="1"
+            width="1692"
+            height="2500"
+            loading="eager"
+            decoding="async"
+          />
+          <img
+            class="sc-scroll-img"
+            src="/ticketsure-scroll/4.jpg"
+            alt="User Flow — Rohan's booking journey through the app"
+            data-section="2"
+            width="1692"
+            height="2500"
+            loading="eager"
+            decoding="async"
+          />
+          <img
+            class="sc-scroll-img"
+            src="/ticketsure-scroll/5.jpg"
+            alt="User Flow — Movie selection and seat booking"
+            data-section="2"
+            width="1692"
+            height="2500"
+            loading="eager"
+            decoding="async"
+          />
+          <img
+            class="sc-scroll-img"
+            src="/ticketsure-scroll/6.jpg"
+            alt="Screens — Seat selection and time slot screens"
+            data-section="3"
+            width="1692"
+            height="2500"
+            loading="eager"
+            decoding="async"
+          />
+          <img
+            class="sc-scroll-img"
+            src="/ticketsure-scroll/7.jpg"
+            alt="Screens — Waitlist flow and booking summary"
+            data-section="3"
+            width="1692"
+            height="2500"
+            loading="eager"
+            decoding="async"
+          />
+          <img
+            class="sc-scroll-img"
+            src="/ticketsure-scroll/8.jpg"
+            alt="Screens — Payment confirmation and ticket view"
+            data-section="3"
+            width="1692"
+            height="2500"
+            loading="eager"
+            decoding="async"
+          />
+          <img
+            class="sc-scroll-img"
+            src="/ticketsure-scroll/9.jpg"
+            alt="Thank You — Project credits"
+            data-section="4"
+            width="1692"
+            height="415"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+      </div>
+
+      <!-- Right section indicator -->
+      <aside class="sc-section-nav" aria-label="Section navigator">
+        <nav class="sc-section-nav__list">
+          ${sectionNavMarkup}
+        </nav>
+      </aside>
+
     </div>
 
     <!-- Cursor -->
@@ -96,15 +214,84 @@ app.innerHTML = `
   </div>
 `
 
+// ─── Lenis smooth scroll ──────────────────────────────────────────────────────
+
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+const lenis = reducedMotion ? null : new Lenis({
+  duration: 1.8,
+  wheelMultiplier: 0.6,
+  touchMultiplier: 0.8,
+  smoothWheel: true,
+  smoothTouch: false,
+  easing: (t) => 1 - Math.pow(2, -10 * t)
+})
+
+if (lenis) {
+  const raf = (time) => {
+    lenis.raf(time)
+    requestAnimationFrame(raf)
+  }
+  requestAnimationFrame(raf)
+}
+
+// ─── Section nav indicator ────────────────────────────────────────────────────
+
+const sectionNavItems = document.querySelectorAll('.sc-section-nav__item')
+const scrollImgs = document.querySelectorAll('.sc-scroll-img')
+
+const setActiveSection = (index) => {
+  sectionNavItems.forEach((item, i) => {
+    item.classList.toggle('is-active', i === index)
+  })
+}
+
+// When clicking a section nav button, scroll to that image
+sectionNavItems.forEach((btn, i) => {
+  btn.addEventListener('click', () => {
+    // Find first image with that section index
+    const target = Array.from(scrollImgs).find(img => Number(img.dataset.section) === i)
+    if (target) {
+      if (lenis) {
+        lenis.scrollTo(target, { offset: -160, duration: 1.2 })
+      } else {
+        const rect = target.getBoundingClientRect()
+        const scrollTop = window.scrollY || document.documentElement.scrollTop
+        const imgTop = rect.top + scrollTop - 160
+        window.scrollTo({ top: imgTop, behavior: 'smooth' })
+      }
+    }
+  })
+})
+
+// IntersectionObserver to update active section on scroll
+const sectionObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const section = Number(entry.target.dataset.section)
+        setActiveSection(section)
+      }
+    })
+  },
+  {
+    root: null, // Use viewport
+    rootMargin: '-20% 0px -50% 0px', // Trigger when image reaches upper half of screen
+    threshold: 0
+  }
+)
+
+scrollImgs.forEach(img => sectionObserver.observe(img))
+
 // ─── Entrance animation ───────────────────────────────────────────────────────
 
 const navbar = document.querySelector('.hero-topbar')
 const mobileBack = document.querySelector('.sc-mobile-back')
 const mobileMenuBtnSC = document.querySelector('.sc-mobile-menu-btn')
 const pageTitle = document.querySelector('.sc-page-title')
-const scrollFrame = document.querySelector('.sc-layout')
+const sectionNav = document.querySelector('.sc-section-nav')
+const scrollFrame = document.querySelector('.sc-scroll-frame')
 const isMobileSC = window.matchMedia('(max-width: 768px)').matches
-const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
 if (!reducedMotion) {
   if (isMobileSC) {
@@ -115,11 +302,12 @@ if (!reducedMotion) {
     tl.to(pageTitle, { autoAlpha: 1, y: 0, duration: 0.8 }, 0.22)
     tl.to(scrollFrame, { autoAlpha: 1, y: 0, duration: 0.8 }, 0.38)
   } else {
-    gsap.set([navbar, pageTitle, scrollFrame], { autoAlpha: 0, y: 16 })
+    gsap.set([navbar, pageTitle, scrollFrame, sectionNav], { autoAlpha: 0, y: 16 })
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
     tl.to(navbar, { autoAlpha: 1, y: 0, duration: 0.7 }, 0.1)
     tl.to(pageTitle, { autoAlpha: 1, y: 0, duration: 0.8 }, 0.22)
     tl.to(scrollFrame, { autoAlpha: 1, y: 0, duration: 0.8 }, 0.38)
+    tl.to(sectionNav, { autoAlpha: 1, y: 0, duration: 0.7 }, 0.5)
   }
 }
 
@@ -128,7 +316,6 @@ if (isMobileSC && reducedMotion && mobileMenuBtnSC) {
   mobileMenuBtnSC.style.opacity = '1'
   mobileMenuBtnSC.style.visibility = 'visible'
 }
-
 // ─── Custom cursor ────────────────────────────────────────────────────────────
 
 const cursor = document.querySelector('.sc-cursor')
@@ -145,59 +332,94 @@ let wasVisible = false
 window.addEventListener('pointermove', (e) => {
   follow.tx = e.clientX
   follow.ty = e.clientY
-  
-  if (!wasVisible) {
-    cursor.style.opacity = 1
-    cursor.style.transform = `translate3d(${follow.tx}px, ${follow.ty}px, 0)`
-    follow.x = follow.tx
-    follow.y = follow.ty
-    wasVisible = true
+  if (!cursorVisible) {
+    cursorVisible = true
+    cursor?.classList.add('is-visible')
   }
+}, { passive: true })
+
+window.addEventListener('pointerleave', () => {
+  cursorVisible = false
+  cursor?.classList.remove('is-visible')
 })
 
-const renderCursor = () => {
-  if (wasVisible) {
-    follow.x += (follow.tx - follow.x) * 0.15
-    follow.y += (follow.ty - follow.y) * 0.15
-    cursor.style.transform = `translate3d(${follow.x}px, ${follow.y}px, 0)`
-  }
-  requestAnimationFrame(renderCursor)
-}
-renderCursor()
+let lastTime = performance.now()
+const updateFollow = (now) => {
+  const dt = Math.min(64, now - lastTime) / 16.666
+  lastTime = now
 
-const links = document.querySelectorAll('a, button, .sc-section-nav__item')
-links.forEach(link => {
-  link.addEventListener('mouseenter', () => cursor.classList.add('is-hovering'))
-  link.addEventListener('mouseleave', () => cursor.classList.remove('is-hovering'))
-})
-
-// ─── Mobile Menu Logic ────────────────────────────────────────────────────────
-const mobileMenuBtn = document.querySelector('.mobile-menu-btn')
-const mobileMenuClose = document.querySelector('.mobile-menu-close')
-const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay')
-const mobileMenuPanel = document.querySelector('.mobile-menu-panel')
-const mobileMenuLinks = document.querySelectorAll('.mobile-menu-section-link, .mobile-menu-links a')
-
-let isMenuOpen = false
-
-function toggleMobileMenu() {
-  isMenuOpen = !isMenuOpen
-  mobileMenuBtn.setAttribute('aria-expanded', isMenuOpen)
-  
-  if (isMenuOpen) {
-    mobileMenuOverlay.classList.add('is-active')
-    mobileMenuPanel.classList.add('is-active')
-    document.body.style.overflow = 'hidden'
+  if (cursorVisible) {
+    if (!wasVisible) {
+      follow.x = follow.tx
+      follow.y = follow.ty
+      wasVisible = true
+    } else {
+      const lerpFactor = 0.12
+      follow.x += (follow.tx - follow.x) * lerpFactor * dt
+      follow.y += (follow.ty - follow.y) * lerpFactor * dt
+    }
   } else {
-    mobileMenuOverlay.classList.remove('is-active')
-    mobileMenuPanel.classList.remove('is-active')
-    document.body.style.overflow = ''
+    wasVisible = false
+    const lerpFactor = 0.12
+    follow.x += (follow.tx - follow.x) * lerpFactor * dt
+    follow.y += (follow.ty - follow.y) * lerpFactor * dt
   }
+
+  if (cursor) {
+    cursor.style.transform = `translate(${Math.round(follow.x)}px, ${Math.round(follow.y)}px) translate(-50%, -50%)`
+  }
+
+  requestAnimationFrame(updateFollow)
 }
 
-mobileMenuBtn?.addEventListener('click', toggleMobileMenu)
-mobileMenuClose?.addEventListener('click', toggleMobileMenu)
-mobileMenuOverlay?.addEventListener('click', toggleMobileMenu)
-mobileMenuLinks.forEach(link => {
-  link.addEventListener('click', toggleMobileMenu)
+requestAnimationFrame(updateFollow)
+
+const interactables = 'a, button, [role="button"]'
+document.addEventListener('pointerover', e => { if (e.target.closest(interactables)) cursor?.classList.add('is-hovering') }, true)
+document.addEventListener('pointerout', e => { if (e.target.closest(interactables)) cursor?.classList.remove('is-hovering') }, true)
+
+// ─── Mobile menu open/close (same logic as hero section) ──────────────────────
+
+const scMenuBtn = document.querySelector('.sc-mobile-menu-btn')
+const scMenuPanel = document.querySelector('.mobile-menu-panel')
+const scMenuOverlay = document.querySelector('.mobile-menu-overlay')
+const scMenuClose = document.querySelector('.mobile-menu-close')
+
+let scMenuTimeline = null
+
+const initSCMobileMenu = () => {
+  if (!scMenuPanel || !scMenuOverlay) return
+
+  const menuItems = scMenuPanel.querySelectorAll('.mobile-menu-section-link, .mobile-menu-links a, .mobile-menu-brand, .mobile-menu-close')
+
+  scMenuTimeline = gsap.timeline({ paused: true })
+  scMenuTimeline.set(scMenuOverlay, { visibility: 'visible' }, 0)
+  scMenuTimeline.set(scMenuPanel, { visibility: 'visible' }, 0)
+  scMenuTimeline.to(scMenuOverlay, { opacity: 1, duration: 0.3, ease: 'power2.out' }, 0)
+  scMenuTimeline.fromTo(scMenuPanel, { xPercent: 100 }, { xPercent: 0, duration: 0.5, ease: 'power3.out' }, 0)
+  scMenuTimeline.fromTo(menuItems, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.05, ease: 'power2.out' }, 0.2)
+}
+
+const openSCMenu = () => {
+  if (!scMenuTimeline) initSCMobileMenu()
+  scMenuPanel?.setAttribute('aria-hidden', 'false')
+  scMenuBtn?.setAttribute('aria-expanded', 'true')
+  document.body.style.overflow = 'hidden'
+  scMenuTimeline?.restart()
+}
+
+const closeSCMenu = () => {
+  scMenuPanel?.setAttribute('aria-hidden', 'true')
+  scMenuBtn?.setAttribute('aria-expanded', 'false')
+  document.body.style.overflow = ''
+  scMenuTimeline?.reverse()
+}
+
+scMenuBtn?.addEventListener('click', openSCMenu)
+scMenuClose?.addEventListener('click', closeSCMenu)
+scMenuOverlay?.addEventListener('click', closeSCMenu)
+
+// Close menu on link click
+scMenuPanel?.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', closeSCMenu)
 })
