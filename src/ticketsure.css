@@ -309,9 +309,9 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: rgba(10, 92, 255, 0.12);
-  color: #4da3ff;
-  border: 1px solid rgba(10, 92, 255, 0.4);
+  background: rgba(239, 71, 62, 0.12);
+  color: #ff7b72;
+  border: 1px solid rgba(239, 71, 62, 0.4);
   font-size: clamp(13px, 1.1vw, 16px);
   font-weight: 500;
   font-family: 'Geist', system-ui, sans-serif;
@@ -319,7 +319,7 @@ body {
   border-radius: 2em;
   margin-top: 12px;
   letter-spacing: 0.01em;
-  box-shadow: 0 0 20px rgba(10, 92, 255, 0.15);
+  box-shadow: 0 0 20px rgba(239, 71, 62, 0.15);
   text-transform: none;
 }
 
@@ -377,7 +377,7 @@ body {
   mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
 }
 
-/* Beautiful cyan progressive blur top glow from Ellipse 22 (996x254, cyan, 360px blur, progressive layer blur) - ENHANCED */
+/* Beautiful TicketSure coral/red progressive blur top glow */
 .sc-scroll-frame-bg::before {
   content: '';
   position: absolute;
@@ -386,7 +386,7 @@ body {
   transform: translateX(-50%);
   width: 996px;
   height: 280px;
-  background: radial-gradient(circle, rgba(0, 102, 255, 0.35) 0%, rgba(0, 102, 255, 0.15) 45%, transparent 70%);
+  background: radial-gradient(circle, rgba(239, 71, 62, 0.35) 0%, rgba(239, 71, 62, 0.15) 45%, transparent 70%);
   filter: blur(80px);
   pointer-events: none;
 }
@@ -505,9 +505,11 @@ body {
 /* When active: dot morphs into a 24px line */
 .sc-section-nav__item.is-active .sc-section-nav__indicator {
   width: 24px;
-  height: 2px;
-  border-radius: 2px;
-  background: var(--text-primary);
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(239, 71, 62, 0.95);
+  border-color: transparent;
+  box-shadow: 0 0 0 1px rgba(239, 71, 62, 0.2), 0 6px 18px rgba(239, 71, 62, 0.3);
 }
 
 .sc-section-nav__item:hover:not(.is-active) {
@@ -564,8 +566,8 @@ body {
   right: -15%;
   width: 700px;
   height: 700px;
-  background: radial-gradient(circle, rgba(0, 102, 255, 0.35) 0%, transparent 70%);
-  /* Theme Blue */
+  background: radial-gradient(circle, rgba(239, 71, 62, 0.28) 0%, transparent 70%);
+  /* Theme Red/Coral */
   animation: glowPulseRight 12s ease-in-out infinite alternate;
   animation-delay: 0s;
 }
@@ -575,8 +577,8 @@ body {
   left: -15%;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(0, 102, 255, 0.35) 0%, transparent 70%);
-  /* Theme Blue */
+  background: radial-gradient(circle, rgba(220, 50, 45, 0.25) 0%, transparent 70%);
+  /* Theme Warm Red */
   animation: glowPulseLeft 16s ease-in-out infinite alternate;
   animation-delay: -4s;
 }
@@ -615,7 +617,7 @@ body {
   overflow: hidden;
 }
 
-/* Left glowing aura (Cyan theme) - Stretched along the whole left edge */
+/* Left glowing aura (TicketSure Coral Red theme) - Stretched along the whole left edge */
 .sc-page-border::before {
   content: '';
   position: absolute;
@@ -624,7 +626,7 @@ body {
   bottom: 0;
   width: 140px;
   /* Thinner width for a sleek, non-intrusive strip */
-  background: linear-gradient(to right, rgba(0, 102, 255, 0.35) 0%, rgba(0, 102, 255, 0.1) 40%, transparent 100%);
+  background: linear-gradient(to right, rgba(239, 71, 62, 0.28) 0%, rgba(239, 71, 62, 0.08) 40%, transparent 100%);
   filter: blur(35px);
   /* Creates the soft glow bleeding into the screen */
   animation: borderGlowLeft 8s ease-in-out infinite alternate;
@@ -632,7 +634,7 @@ body {
   transform-origin: left center;
 }
 
-/* Right glowing aura (Cyan theme - Mirrored) - Stretched along the whole right edge */
+/* Right glowing aura (TicketSure Coral Red theme - Mirrored) - Stretched along the whole right edge */
 .sc-page-border::after {
   content: '';
   position: absolute;
@@ -640,7 +642,7 @@ body {
   right: 0;
   bottom: 0;
   width: 140px;
-  background: linear-gradient(to left, rgba(0, 102, 255, 0.35) 0%, rgba(0, 102, 255, 0.1) 40%, transparent 100%);
+  background: linear-gradient(to left, rgba(239, 71, 62, 0.28) 0%, rgba(239, 71, 62, 0.08) 40%, transparent 100%);
   filter: blur(35px);
   /* Creates the soft glow bleeding into the screen */
   animation: borderGlowRight 8s ease-in-out infinite alternate;
@@ -682,8 +684,8 @@ body {
 .sc-cursor.is-hovering {
   width: 30px;
   height: 30px;
-  background: rgba(52, 124, 255, 0.16);
-  box-shadow: 0 0 0 1.5px rgba(52, 124, 255, 0.45);
+  background: rgba(239, 71, 62, 0.16);
+  box-shadow: 0 0 0 1.5px rgba(239, 71, 62, 0.45);
 }
 
 /* ── Responsive adjustments ─────────────────────────────────────────────── */
