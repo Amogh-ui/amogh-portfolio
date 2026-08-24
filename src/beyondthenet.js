@@ -101,62 +101,9 @@ app.innerHTML = `
       <div class="sc-scroll-frame">
         <div class="sc-scroll-frame-bg"></div>
         <div class="sc-scroll-track" id="sc-scroll-track">
-          <img
-            class="sc-scroll-img"
-            src="/beyond-the-net-scroll/1.jpg"
-            alt="Overview — Beyond the Net concept and problem space"
-            data-section="0"
-            loading="eager"
-          />
-          <img
-            class="sc-scroll-img"
-            src="/beyond-the-net-scroll/2.jpg"
-            alt="Discover — context and insights"
-            data-section="1"
-            loading="eager"
-          />
-          <img
-            class="sc-scroll-img"
-            src="/beyond-the-net-scroll/3.jpg"
-            alt="Formulating Pillars & Data Flow"
-            data-section="1"
-            loading="eager"
-          />
-          <img
-            class="sc-scroll-img"
-            src="/beyond-the-net-scroll/4.jpg"
-            alt="Features — interactive match simulation"
-            data-section="2"
-            loading="eager"
-          />
-          <img
-            class="sc-scroll-img"
-            src="/beyond-the-net-scroll/5.jpg"
-            alt="Features — tactical metrics and player profiles"
-            data-section="2"
-            loading="eager"
-          />
-          <img
-            class="sc-scroll-img"
-            src="/beyond-the-net-scroll/6.jpg"
-            alt="Development — creating a digital court"
-            data-section="3"
-            loading="eager"
-          />
-          <img
-            class="sc-scroll-img"
-            src="/beyond-the-net-scroll/7.jpg"
-            alt="User flow — coach's journey"
-            data-section="4"
-            loading="eager"
-          />
-          <img
-            class="sc-scroll-img"
-            src="/beyond-the-net-scroll/8.jpg"
-            alt="User flow & Next Steps"
-            data-section="4"
-            loading="eager"
-          />
+          ${Array.from({ length: 11 }, (_, i) => `
+            <img class="sc-scroll-img" src="/beyond-the-net-scroll/${i + 1}.jpg" alt="Scroll slice ${i + 1}" data-section="${Math.floor(i / 2.2)}" loading="eager" decoding="async" />
+          `).join('')}
         </div>
       </div>
 

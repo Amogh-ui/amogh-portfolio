@@ -101,96 +101,9 @@ app.innerHTML = `
       <div class="sc-scroll-frame">
         <div class="sc-scroll-frame-bg"></div>
         <div class="sc-scroll-track" id="sc-scroll-track">
-          <img
-            class="sc-scroll-img"
-            src="/ticketsure-scroll/1.jpg"
-            alt="Overview — TicketSure concept, hero and problem space"
-            data-section="0"
-            width="1692"
-            height="2500"
-            loading="eager"
-            decoding="async"
-          />
-          <img
-            class="sc-scroll-img"
-            src="/ticketsure-scroll/2.jpg"
-            alt="Overview — Solution and smart waitlist introduction"
-            data-section="0"
-            width="1692"
-            height="2500"
-            loading="eager"
-            decoding="async"
-          />
-          <img
-            class="sc-scroll-img"
-            src="/ticketsure-scroll/3.jpg"
-            alt="Features — Tagging system, calendar and ticket details"
-            data-section="1"
-            width="1692"
-            height="2500"
-            loading="eager"
-            decoding="async"
-          />
-          <img
-            class="sc-scroll-img"
-            src="/ticketsure-scroll/4.jpg"
-            alt="User Flow — Rohan's booking journey through the app"
-            data-section="2"
-            width="1692"
-            height="2500"
-            loading="eager"
-            decoding="async"
-          />
-          <img
-            class="sc-scroll-img"
-            src="/ticketsure-scroll/5.jpg"
-            alt="User Flow — Movie selection and seat booking"
-            data-section="2"
-            width="1692"
-            height="2500"
-            loading="eager"
-            decoding="async"
-          />
-          <img
-            class="sc-scroll-img"
-            src="/ticketsure-scroll/6.jpg"
-            alt="Screens — Seat selection and time slot screens"
-            data-section="3"
-            width="1692"
-            height="2500"
-            loading="eager"
-            decoding="async"
-          />
-          <img
-            class="sc-scroll-img"
-            src="/ticketsure-scroll/7.jpg"
-            alt="Screens — Waitlist flow and booking summary"
-            data-section="3"
-            width="1692"
-            height="2500"
-            loading="eager"
-            decoding="async"
-          />
-          <img
-            class="sc-scroll-img"
-            src="/ticketsure-scroll/8.jpg"
-            alt="Screens — Payment confirmation and ticket view"
-            data-section="3"
-            width="1692"
-            height="2500"
-            loading="eager"
-            decoding="async"
-          />
-          <img
-            class="sc-scroll-img"
-            src="/ticketsure-scroll/9.jpg"
-            alt="Thank You — Project credits"
-            data-section="4"
-            width="1692"
-            height="415"
-            loading="eager"
-            decoding="async"
-          />
+          ${Array.from({ length: 6 }, (_, i) => `
+            <img class="sc-scroll-img" src="/ticketsure-scroll/${i + 1}.jpg" alt="Scroll slice ${i + 1}" data-section="${Math.floor(i / 1.2)}" loading="eager" decoding="async" />
+          `).join('')}
         </div>
       </div>
 
