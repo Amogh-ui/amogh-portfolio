@@ -955,21 +955,22 @@ a {
 .work-chip {
   display: inline-flex;
   align-items: center;
-  min-height: 32px;
-  padding: 0.1rem 1rem 0;
-  border: 1px solid #d4d4d4;
-  border-radius: 16px;
-  color: #666666;
+  min-height: 28px;
+  padding: 0 12px;
+  border: 1px solid #333333;
+  border-radius: 14px;
+  color: #999999;
   font-family: 'Geist', system-ui, sans-serif;
-  font-size: 16px;
+  font-size: 13px;
   line-height: 1;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   white-space: nowrap;
 }
 
 .work-chip--solo {
   background: #0a5cff;
   color: #ffffff;
+  border-color: #0a5cff;
 }
 
 .work-card__media {
@@ -1091,10 +1092,10 @@ a {
   -webkit-appearance: none;
   appearance: none;
   transition:
-    transform 500ms cubic-bezier(0.16, 1, 0.3, 1),
-    border-color 450ms ease,
-    background-color 450ms ease,
-    box-shadow 550ms cubic-bezier(0.16, 1, 0.3, 1);
+    transform 800ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 800ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .works-grid-card:hover {
@@ -1126,7 +1127,7 @@ a {
   height: 100%;
   object-fit: contain;
   object-position: center;
-  transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 1200ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .works-grid-card:hover .works-grid-card__media img {
@@ -1246,8 +1247,8 @@ a {
   height: 20px;
   color: #656565;
   transition:
-    transform 450ms cubic-bezier(0.16, 1, 0.3, 1),
-    color 350ms ease;
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 600ms cubic-bezier(0.22, 1, 0.36, 1);
   pointer-events: none;
 }
 
