@@ -419,6 +419,44 @@ video.sc-scroll-video {
   background: #252525;
 }
 
+.sc-video-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.sc-audio-toggle {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #e0e0e0;
+  cursor: pointer;
+  transition: background 300ms ease, border-color 300ms ease, transform 200ms ease;
+  -webkit-appearance: none;
+  appearance: none;
+  padding: 0;
+}
+
+.sc-audio-toggle:hover {
+  background: rgba(0, 0, 0, 0.75);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.08);
+}
+
+.sc-audio-toggle:active {
+  transform: scale(0.95);
+}
+
 /* ── Right section navigator ────────────────────────────────────────────── */
 /* Figma:
    Title 1 (active): w500 24px, color #e0e0e0 in a dark pill

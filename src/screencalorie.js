@@ -143,15 +143,29 @@ app.innerHTML = `
             data-section="3"
             loading="eager"
           />
-          <video
-            class="sc-scroll-img sc-scroll-video"
-            src="/screencalorie-scroll/video.mp4"
-            data-section="4"
-            muted
-            playsinline
-            preload="metadata"
-            loop
-          ></video>
+          <div class="sc-video-wrap">
+            <video
+              class="sc-scroll-img sc-scroll-video"
+              src="/screencalorie-scroll/video.mp4"
+              data-section="4"
+              muted
+              playsinline
+              preload="metadata"
+              loop
+            ></video>
+            <button class="sc-audio-toggle" type="button" aria-label="Unmute video" data-muted="true">
+              <svg class="sc-audio-icon sc-audio-icon--off" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <svg class="sc-audio-icon sc-audio-icon--on" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:none">
+                <path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -263,6 +277,20 @@ if (scrollVideo) {
     }
   )
   videoObserver.observe(scrollVideo)
+
+  // Audio toggle
+  const audioToggle = document.querySelector('.sc-audio-toggle')
+  if (audioToggle) {
+    const iconOff = audioToggle.querySelector('.sc-audio-icon--off')
+    const iconOn = audioToggle.querySelector('.sc-audio-icon--on')
+    audioToggle.addEventListener('click', () => {
+      scrollVideo.muted = !scrollVideo.muted
+      audioToggle.dataset.muted = String(scrollVideo.muted)
+      audioToggle.setAttribute('aria-label', scrollVideo.muted ? 'Unmute video' : 'Mute video')
+      iconOff.style.display = scrollVideo.muted ? '' : 'none'
+      iconOn.style.display = scrollVideo.muted ? 'none' : ''
+    })
+  }
 }
 
 // ─── Entrance animation ───────────────────────────────────────────────────────
