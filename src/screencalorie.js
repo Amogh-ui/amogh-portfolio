@@ -6,7 +6,7 @@ const app = document.querySelector('#app')
 if (!app) throw new Error('App root not found.')
 
 // Section titles for the right-side indicator (matching Figma "Title 1–4" placeholders)
-const sectionTitles = ['Overview', 'Research', 'Prototyping', 'Branding']
+const sectionTitles = ['Overview', 'Research', 'Prototyping', 'Branding', 'Demo']
 
 const sectionNavMarkup = sectionTitles
   .map((title, i) => `
@@ -143,6 +143,15 @@ app.innerHTML = `
             data-section="3"
             loading="eager"
           />
+          <video
+            class="sc-scroll-img sc-scroll-video"
+            src="/screencalorie-scroll/video.mp4"
+            data-section="4"
+            muted
+            playsinline
+            preload="metadata"
+            loop
+          ></video>
         </div>
       </div>
 
@@ -229,6 +238,32 @@ const sectionObserver = new IntersectionObserver(
 )
 
 scrollImgs.forEach(img => sectionObserver.observe(img))
+
+// Also observe the video for section nav
+const scrollVideo = document.querySelector('.sc-scroll-video')
+if (scrollVideo) sectionObserver.observe(scrollVideo)
+
+// ─── Video autoplay on scroll ─────────────────────────────────────────────────
+
+if (scrollVideo) {
+  const videoObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          scrollVideo.play().catch(() => {})
+        } else {
+          scrollVideo.pause()
+        }
+      })
+    },
+    {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.3
+    }
+  )
+  videoObserver.observe(scrollVideo)
+}
 
 // ─── Entrance animation ───────────────────────────────────────────────────────
 
