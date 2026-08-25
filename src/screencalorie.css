@@ -411,6 +411,14 @@ body {
   line-height: 0;
 }
 
+video.sc-scroll-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  background: #252525;
+}
+
 /* ── Right section navigator ────────────────────────────────────────────── */
 /* Figma:
    Title 1 (active): w500 24px, color #e0e0e0 in a dark pill
