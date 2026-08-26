@@ -328,14 +328,14 @@ const peripheryMarkup = `
         <!-- Floating Elements Container -->
         <div class="periphery-orbit">
           <!-- Floating Work Thumbnails -->
-          <div class="periphery-item p-img-1" data-depth="40"><div class="p-anim periphery-img" data-work-id="screen-calorie" data-work-href="/screencalorie.html" data-work-title="ScreenCalorie"><img src="${workPreviewImage}" alt="ScreenCalorie" /><span class="periphery-img__label">ScreenCalorie</span></div></div>
-          <div class="periphery-item p-img-2" data-depth="60"><div class="p-anim periphery-img" data-work-id="beyond-the-net" data-work-href="/beyondthenet.html" data-work-title="Beyond the Net"><img src="${beyondTheNetImage}" alt="Beyond the Net" /><span class="periphery-img__label">Beyond the Net</span></div></div>
-          <div class="periphery-item p-img-3" data-depth="20"><div class="p-anim periphery-img periphery-img--placeholder" data-work-title="Paalan"><span class="periphery-img__placeholder-text">Coming Soon</span><span class="periphery-img__label">Paalan</span></div></div>
-          <div class="periphery-item p-img-4" data-depth="70"><div class="p-anim periphery-img" data-work-id="popclozet" data-work-href="/popclozet.html" data-work-title="Popclozet"><img src="/popclozet-thumbnail.png" alt="Popclozet" /><span class="periphery-img__label">Popclozet</span></div></div>
-          <div class="periphery-item p-img-5" data-depth="30"><div class="p-anim periphery-img" data-work-id="ticketsure" data-work-href="/ticketsure.html" data-work-title="TicketSure"><img src="${ticketsureImage}" alt="TicketSure" /><span class="periphery-img__label">TicketSure</span></div></div>
-          <div class="periphery-item p-img-6" data-depth="50"><div class="p-anim periphery-img" data-work-id="trox" data-work-href="/trox.html" data-work-title="TROX: The Reversal"><img src="${troxImage}" alt="TROX" /><span class="periphery-img__label">TROX</span></div></div>
-          <div class="periphery-item p-img-7" data-depth="80"><div class="p-anim periphery-img periphery-img--placeholder"><span class="periphery-img__placeholder-text">Coming Soon</span></div></div>
-          <div class="periphery-item p-img-8" data-depth="45"><div class="p-anim periphery-img periphery-img--placeholder"><span class="periphery-img__placeholder-text">Coming Soon</span></div></div>
+          <div class="periphery-item p-img-1" data-depth="40"><div class="p-anim periphery-img"><img src="${workPreviewImage}" alt="ScreenCalorie" /></div></div>
+          <div class="periphery-item p-img-2" data-depth="60"><div class="p-anim periphery-img"><img src="${beyondTheNetImage}" alt="Beyond the Net" /></div></div>
+          <div class="periphery-item p-img-3" data-depth="20"><div class="p-anim periphery-img"><img src="/beyond-the-net-scroll/3.jpg" alt="Documentation preview" /></div></div>
+          <div class="periphery-item p-img-4" data-depth="70"><div class="p-anim periphery-img"><img src="/popclozet-thumbnail.png" alt="Popclozet" /></div></div>
+          <div class="periphery-item p-img-5" data-depth="30"><div class="p-anim periphery-img"><img src="${ticketsureImage}" alt="TicketSure" /></div></div>
+          <div class="periphery-item p-img-6" data-depth="50"><div class="p-anim periphery-img"><img src="${troxImage}" alt="TROX" /></div></div>
+          <div class="periphery-item p-img-7" data-depth="80"><div class="p-anim periphery-img"><img src="/ticketsure-scroll/2.jpg" alt="Documentation preview" /></div></div>
+          <div class="periphery-item p-img-8" data-depth="45"><div class="p-anim periphery-img"><img src="/screencalorie-scroll/4.jpg" alt="Documentation preview" /></div></div>
 
           <!-- Floating Skill Tags -->
           <div class="periphery-item p-tag-1" data-depth="55"><div class="p-anim periphery-tag">PRODUCT DESIGN</div></div>
@@ -351,20 +351,6 @@ const peripheryMarkup = `
           satisfaction of understanding something<br>
           a little better than I did yesterday.
         </div>
-      </div>
-    </div>
-
-    <!-- Click-to-expand overlay -->
-    <div class="periphery-overlay" aria-hidden="true">
-      <div class="periphery-modal">
-        <h3 class="periphery-modal__title"></h3>
-        <div class="periphery-modal__frame">
-          <img class="periphery-modal__img" src="" alt="" />
-        </div>
-        <a class="periphery-modal__cta" href="#">
-          View Work
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M1.72308 16L0 14.2769L11.8154 2.46154H1.23077V0H16V14.7692H13.5385V4.18462L1.72308 16Z" fill="currentColor"/></svg>
-        </a>
       </div>
     </div>
   </section>
@@ -1662,153 +1648,22 @@ const initPeripheryAnimation = () => {
 
   // 3. Start continuous slow rotation independently of the scroll timeline
   const orbit = document.querySelector('.periphery-orbit')
-  let orbitTween = null
-  let counterTween = null
   if (orbit) {
     // Forward orbit rotation runs forever
-    orbitTween = gsap.to(orbit, {
+    gsap.to(orbit, {
       rotation: 360,
       duration: 80,
       ease: 'none',
       repeat: -1
     })
     // Counter rotation to keep items upright runs forever
-    counterTween = gsap.to(pAnims, {
+    gsap.to(pAnims, {
       rotation: -360,
       duration: 80,
       ease: 'none',
       repeat: -1
     })
   }
-
-  // ─── Hover interactions ───────────────────────────────────────────────────
-  const peripheryImgs = document.querySelectorAll('.periphery-img:not(.periphery-img--placeholder)')
-
-  peripheryImgs.forEach(img => {
-    img.addEventListener('mouseenter', () => {
-      gsap.to(img, {
-        scale: 1.18,
-        boxShadow: '0 8px 32px rgba(10, 92, 255, 0.25), 0 0 0 1px rgba(255,255,255,0.15)',
-        duration: 0.45,
-        ease: 'power2.out'
-      })
-    })
-    img.addEventListener('mouseleave', () => {
-      gsap.to(img, {
-        scale: 1,
-        boxShadow: '0 0 0 0 transparent, 0 0 0 0 transparent',
-        duration: 0.5,
-        ease: 'power2.inOut'
-      })
-    })
-    img.style.cursor = 'pointer'
-  })
-
-  // Also give placeholders a subtle hover
-  const placeholders = document.querySelectorAll('.periphery-img--placeholder')
-  placeholders.forEach(ph => {
-    ph.addEventListener('mouseenter', () => {
-      gsap.to(ph, { scale: 1.06, duration: 0.4, ease: 'power2.out' })
-    })
-    ph.addEventListener('mouseleave', () => {
-      gsap.to(ph, { scale: 1, duration: 0.45, ease: 'power2.inOut' })
-    })
-  })
-
-  // ─── Click-to-expand modal ────────────────────────────────────────────────
-  const overlay = document.querySelector('.periphery-overlay')
-  const modal = document.querySelector('.periphery-modal')
-  const modalTitle = document.querySelector('.periphery-modal__title')
-  const modalImg = document.querySelector('.periphery-modal__img')
-  const modalCta = document.querySelector('.periphery-modal__cta')
-  let modalOpen = false
-
-  const openModal = (imgEl) => {
-    const title = imgEl.dataset.workTitle || ''
-    const href = imgEl.dataset.workHref || '#'
-    const imgSrc = imgEl.querySelector('img')?.src || ''
-
-    modalTitle.textContent = title
-    modalImg.src = imgSrc
-    modalImg.alt = title
-    modalCta.href = href
-
-    // Pause orbit
-    if (orbitTween) orbitTween.pause()
-    if (counterTween) counterTween.pause()
-
-    // Show overlay
-    overlay.setAttribute('aria-hidden', 'false')
-    gsap.to(overlay, {
-      autoAlpha: 1,
-      duration: 0.4,
-      ease: 'power2.out'
-    })
-
-    // Animate modal in
-    gsap.fromTo(modal, {
-      scale: 0.85,
-      y: 30,
-      autoAlpha: 0
-    }, {
-      scale: 1,
-      y: 0,
-      autoAlpha: 1,
-      duration: 0.5,
-      ease: 'back.out(1.4)',
-      delay: 0.1
-    })
-
-    modalOpen = true
-  }
-
-  const closeModal = () => {
-    if (!modalOpen) return
-
-    gsap.to(modal, {
-      scale: 0.9,
-      y: 20,
-      autoAlpha: 0,
-      duration: 0.3,
-      ease: 'power2.in'
-    })
-
-    gsap.to(overlay, {
-      autoAlpha: 0,
-      duration: 0.35,
-      ease: 'power2.in',
-      delay: 0.05,
-      onComplete: () => {
-        overlay.setAttribute('aria-hidden', 'true')
-      }
-    })
-
-    // Resume orbit
-    if (orbitTween) orbitTween.resume()
-    if (counterTween) counterTween.resume()
-
-    modalOpen = false
-  }
-
-  // Click on work frames to open modal
-  peripheryImgs.forEach(img => {
-    img.addEventListener('click', (e) => {
-      e.stopPropagation()
-      openModal(img)
-    })
-  })
-
-  // Click overlay backdrop to close
-  if (overlay) {
-    overlay.addEventListener('click', (e) => {
-      if (e.target === overlay) closeModal()
-    })
-  }
-
-  // Escape key to close
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modalOpen) closeModal()
-  })
 }
 const initBelowIntroAnimationMobile = () => {
   if (!belowIntro || !window.matchMedia('(max-width: 768px)').matches) return
