@@ -56,7 +56,7 @@ const topNavLinks = [
 const topNavMarkup = topNavLinks
   .map(
     ({ label, href }) => `
-      <a href="${href}">
+      <a href="${href}" ${href.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}>
         <span>${label}</span>
         <span aria-hidden="true">↗</span>
       </a>
