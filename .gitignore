@@ -38,5 +38,4 @@ refs/
 ref/
 
 # Large media files (originals excluded, compressed versions committed)
-public/trox-video.mp4
 public/ticketsure.pdf
