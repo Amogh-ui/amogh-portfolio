@@ -459,14 +459,12 @@ body {
   transform-origin: left center;
 }
 
-/* When active: dot morphs into a 24px line — Procreate Blue */
+/* When active: dot morphs into a 24px line */
 .sc-section-nav__item.is-active .sc-section-nav__indicator {
   width: 24px;
-  height: 6px;
-  border-radius: 3px;
-  background: rgba(0, 118, 255, 0.95);
-  border-color: transparent;
-  box-shadow: 0 0 0 1px rgba(0, 118, 255, 0.2), 0 6px 18px rgba(0, 118, 255, 0.3);
+  height: 2px;
+  border-radius: 2px;
+  background: var(--text-primary);
 }
 
 .sc-section-nav__item:hover:not(.is-active) {
