@@ -231,8 +231,7 @@ const workItems = [
     description:
       'Rethinking Procreate is an ergonomic evaluation and redesign of Procreate\'s interface, reimagining usability patterns, tool accessibility, and creative workflow to better serve digital artists.',
     tags: ['UX Research', 'Ergonomic Design', 'Redesign'],
-    image: '/procreate-thumbnail.jpg',
-    isSoloProject: true
+    image: '/procreate-thumbnail.jpg'
   }
 ]
 

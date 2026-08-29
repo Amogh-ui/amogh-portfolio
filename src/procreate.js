@@ -88,10 +88,8 @@ app.innerHTML = `
       </div>
     </div>
 
-    <!-- ── Page title ── -->
     <div class="sc-page-title" aria-label="Project name">
       <h1 class="sc-page-title__text">RETHINKING PROCREATE</h1>
-      <div><span class="project-solo-badge">✦ Solo Project</span></div>
     </div>
 
     <!-- ── Main layout: scroll area + right nav ── -->

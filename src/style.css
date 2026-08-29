@@ -1155,12 +1155,14 @@ a {
 }
 
 .works-grid-card[data-work-id="ticketsure"] .works-grid-card__media img,
-.works-grid-card[data-work-id="popclozet"] .works-grid-card__media img {
+.works-grid-card[data-work-id="popclozet"] .works-grid-card__media img,
+.works-grid-card[data-work-id="procreate"] .works-grid-card__media img {
   object-fit: cover;
 }
 
 .works-grid-card:hover[data-work-id="ticketsure"] .works-grid-card__media img,
-.works-grid-card:hover[data-work-id="popclozet"] .works-grid-card__media img {
+.works-grid-card:hover[data-work-id="popclozet"] .works-grid-card__media img,
+.works-grid-card:hover[data-work-id="procreate"] .works-grid-card__media img {
   transform: scale(1.05);
 }
 
