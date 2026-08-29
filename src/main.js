@@ -102,8 +102,8 @@ const createIntroWordMarkup = (text, className = '') =>
   `<span class="intro-word ${className}">${createIntroGlyphMarkup(text)}</span>`
 const glassAsset = (fileName) => `/icons/glass/${encodeURIComponent(fileName)}`
 
-const workPreviewImage = new URL('../images/AM-FREEBIES-IP-005 1.png', import.meta.url).href
-const beyondTheNetImage = new URL('../images/beyond-the-net-thumbnail.png', import.meta.url).href
+const workPreviewImage = new URL('../images/AM-FREEBIES-IP-005 1.jpg', import.meta.url).href
+const beyondTheNetImage = new URL('../images/beyond-the-net-thumbnail.jpg', import.meta.url).href
 const troxImage = new URL('../images/trox-thumbnail.png', import.meta.url).href
 const ticketsureImage = new URL('../images/ticketsure-thumbnail.jpg', import.meta.url).href
 
@@ -199,7 +199,7 @@ const workItems = [
     description:
       'Popclozet explores a more editorial shopping flow for fashion discovery, mixing wardrobe curation, styling prompts, and a cleaner product presentation.',
     tags: ['E-Commerce', 'Art Direction', 'Visual Identity'],
-    image: '/popclozet-thumbnail.png'
+    image: '/popclozet-thumbnail.jpg'
   },
   {
     id: 'ticketsure',
@@ -231,7 +231,7 @@ const workItems = [
     description:
       'Rethinking Procreate is an ergonomic evaluation and redesign of Procreate\'s interface, reimagining usability patterns, tool accessibility, and creative workflow to better serve digital artists.',
     tags: ['UX Research', 'Ergonomic Design', 'Redesign'],
-    image: '/procreate-thumbnail.png',
+    image: '/procreate-thumbnail.jpg',
     isSoloProject: true
   }
 ]
