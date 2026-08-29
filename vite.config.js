@@ -11,6 +11,7 @@ export default defineConfig({
         trox: resolve(__dirname, 'trox.html'),
         popclozet: resolve(__dirname, 'popclozet.html'),
         ticketsure: resolve(__dirname, 'ticketsure.html'),
+        procreate: resolve(__dirname, 'procreate.html'),
       }
     }
   }

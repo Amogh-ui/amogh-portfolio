@@ -222,6 +222,17 @@ const workItems = [
     tags: ['Game UI', 'UX Design', 'HUD Design'],
     image: troxImage,
     isSoloProject: true
+  },
+  {
+    id: 'procreate',
+    number: '07',
+    title: 'Rethinking Procreate',
+    year: '2026',
+    description:
+      'Rethinking Procreate is an ergonomic evaluation and redesign of Procreate\'s interface, reimagining usability patterns, tool accessibility, and creative workflow to better serve digital artists.',
+    tags: ['UX Research', 'Ergonomic Design', 'Redesign'],
+    image: '/procreate-thumbnail.png',
+    isSoloProject: true
   }
 ]
 
@@ -721,7 +732,8 @@ if (worksSection && workCards.length) {
         'beyond-the-net': '/beyondthenet.html',
         'trox': '/trox.html',
         'popclozet': '/popclozet.html',
-        'ticketsure': '/ticketsure.html'
+        'ticketsure': '/ticketsure.html',
+        'procreate': '/procreate.html'
       }
       const href = pageMap[workId]
       if (href) {
@@ -758,7 +770,8 @@ const pageMap = {
   'beyond-the-net': '/beyondthenet.html',
   'trox': '/trox.html',
   'popclozet': '/popclozet.html',
-  'ticketsure': '/ticketsure.html'
+  'ticketsure': '/ticketsure.html',
+  'procreate': '/procreate.html'
 }
 
 // Grid card interaction & cursor hover handlers
