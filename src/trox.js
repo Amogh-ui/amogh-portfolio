@@ -24,7 +24,7 @@ app.innerHTML = `
       </nav>
 
       <nav class="hero-links" aria-label="Secondary">
-        <a href="#behance">
+        <a href="https://www.behance.net/Amogh-Shete" target="_blank" rel="noopener noreferrer">
           <span>BEHANCE</span>
           <span aria-hidden="true">↗</span>
         </a>
@@ -65,7 +65,7 @@ app.innerHTML = `
           <a href="/#info" class="mobile-menu-section-link">Info</a>
         </div>
         <div class="mobile-menu-links">
-          <a href="https://behance.net" target="_blank" rel="noopener noreferrer">BEHANCE <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.29231 12L0 10.7077L8.86154 1.84615H0.923077V0H12V11.0769H10.1538V3.13846L1.29231 12Z" fill="#656565"/></svg></a>
+          <a href="https://www.behance.net/Amogh-Shete" target="_blank" rel="noopener noreferrer">BEHANCE <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.29231 12L0 10.7077L8.86154 1.84615H0.923077V0H12V11.0769H10.1538V3.13846L1.29231 12Z" fill="#656565"/></svg></a>
           <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LINKEDIN <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.29231 12L0 10.7077L8.86154 1.84615H0.923077V0H12V11.0769H10.1538V3.13846L1.29231 12Z" fill="#656565"/></svg></a>
           <a href="#resume">RESUME <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.29231 12L0 10.7077L8.86154 1.84615H0.923077V0H12V11.0769H10.1538V3.13846L1.29231 12Z" fill="#656565"/></svg></a>
         </div>
