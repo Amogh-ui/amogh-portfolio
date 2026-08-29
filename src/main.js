@@ -341,10 +341,10 @@ const peripheryMarkup = `
           <div class="periphery-item p-img-1" data-depth="40"><div class="p-anim periphery-img"><img src="${workPreviewImage}" alt="ScreenCalorie" /></div></div>
           <div class="periphery-item p-img-2" data-depth="60"><div class="p-anim periphery-img"><img src="${beyondTheNetImage}" alt="Beyond the Net" /></div></div>
           <div class="periphery-item p-img-3" data-depth="20"><div class="p-anim periphery-img"><img src="/beyond-the-net-scroll/3.jpg" alt="Documentation preview" /></div></div>
-          <div class="periphery-item p-img-4" data-depth="70"><div class="p-anim periphery-img"><img src="/popclozet-thumbnail.png" alt="Popclozet" /></div></div>
+          <div class="periphery-item p-img-4" data-depth="70"><div class="p-anim periphery-img"><img src="/popclozet-thumbnail.jpg" alt="Popclozet" /></div></div>
           <div class="periphery-item p-img-5" data-depth="30"><div class="p-anim periphery-img"><img src="${ticketsureImage}" alt="TicketSure" /></div></div>
           <div class="periphery-item p-img-6" data-depth="50"><div class="p-anim periphery-img"><img src="${troxImage}" alt="TROX" /></div></div>
-          <div class="periphery-item p-img-7" data-depth="80"><div class="p-anim periphery-img"><img src="/ticketsure-scroll/2.jpg" alt="Documentation preview" /></div></div>
+          <div class="periphery-item p-img-7" data-depth="80"><div class="p-anim periphery-img"><img src="/procreate-thumbnail.jpg" alt="Rethinking Procreate" /></div></div>
           <div class="periphery-item p-img-8" data-depth="45"><div class="p-anim periphery-img"><img src="/screencalorie-scroll/4.jpg" alt="Documentation preview" /></div></div>
 
           <!-- Floating Skill Tags -->
