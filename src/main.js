@@ -1659,7 +1659,23 @@ const initPeripheryAnimation = () => {
   }, '-=0.3')
 
   // 3. Start continuous slow rotation independently of the scroll timeline
-  // 3. (Continuous rotation is now handled by hardware-accelerated CSS animations in style.css)
+  const orbit = document.querySelector('.periphery-orbit')
+  if (orbit) {
+    // Forward orbit rotation runs forever
+    gsap.to(orbit, {
+      rotation: 360,
+      duration: 80,
+      ease: 'none',
+      repeat: -1
+    })
+    // Counter rotation to keep items upright runs forever
+    gsap.to(pAnims, {
+      rotation: -360,
+      duration: 80,
+      ease: 'none',
+      repeat: -1
+    })
+  }
 }
 const initBelowIntroAnimationMobile = () => {
   if (!belowIntro || !window.matchMedia('(max-width: 768px)').matches) return
