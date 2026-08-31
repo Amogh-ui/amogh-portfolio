@@ -168,6 +168,14 @@ body {
   white-space: nowrap;
   justify-self: start;
 }
+.hero-brand__back-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: -4px;
+  transform: translateY(1px);
+}
+
 
 .hero-brand__first,
 .hero-brand__last {
@@ -284,7 +292,7 @@ body {
   pointer-events: none;
   margin-left: auto;
   margin-right: auto;
-  transform: none;
+  transform: translateX(5vw);
 }
 
 .sc-page-title__text {
@@ -335,7 +343,7 @@ body {
   max-width: 878px;
   padding: 16px;
   padding-top: 16px;
-  transform: none;
+  transform: translateX(5vw);
 }
 
 /* Fading outer frame background */
