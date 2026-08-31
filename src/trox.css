@@ -87,11 +87,10 @@ html,
 body,
 #app {
   width: 100%;
-  height: 100%;
 }
 
 body {
-  overflow-y: auto;
+  
   overflow-x: hidden;
   background: var(--bg);
 }
@@ -832,7 +831,7 @@ body {
 
   body {
     overflow-x: hidden;
-    overflow-y: auto;
+    
   }
 
   .sc-page {
