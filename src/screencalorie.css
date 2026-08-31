@@ -284,14 +284,15 @@ body {
    font: Geist 900 64px, color #e0e0e0, ls=-1.28              */
 
 .sc-page-title {
-  width: 100%;
+  width: auto;
   display: block;
   text-align: center;
   padding-top: clamp(140px, 24vh, 280px);
   padding-bottom: clamp(60px, 10vh, 120px);
   pointer-events: none;
-  transform: translateX(48px);
-  /* Shift right to balance the left sidebar */
+  margin-left: max(320px, 25vw);
+  margin-right: clamp(1.25rem, 5vw, 80px);
+  transform: none;
 }
 
 .sc-page-title__text {
@@ -345,16 +346,12 @@ body {
 
 .sc-scroll-frame {
   position: relative;
-  width: min(878px, 100%);
+  width: auto;
+  margin-left: max(320px, 25vw);
+  margin-right: clamp(1.25rem, 5vw, 80px);
   padding: 16px;
-  /* 16px offset padding around the scroll track */
   padding-top: 16px;
-  margin-left: auto;
-  /* Bulletproof centering */
-  margin-right: auto;
-  /* Bulletproof centering */
-  transform: translateX(48px);
-  /* Shift right to balance the left sidebar */
+  transform: none;
 }
 
 /* Fading outer frame background (Figma Frame 34: 878x548 height, black border fading out at bottom) */
@@ -941,6 +938,8 @@ video.sc-scroll-video {
   .sc-scroll-frame {
     width: 100%;
     padding: 16px;
+    margin-left: 0;
+    margin-right: 0;
     transform: none; /* No right shift on mobile */
   }
 
@@ -957,6 +956,8 @@ video.sc-scroll-video {
   .sc-page-title {
     padding-top: 160px;
     padding-bottom: 24px;
+    margin-left: 0;
+    margin-right: 0;
     transform: none; /* No right shift on mobile */
     text-align: left;
     padding-left: 20px;

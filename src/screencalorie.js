@@ -41,16 +41,6 @@ app.innerHTML = `
         <!-- Hidden pill to keep grid layout identical to landing page -->
       </nav>
 
-      <nav class="hero-links" aria-label="Secondary">
-        <a href="https://www.behance.net/Amogh-Shete" target="_blank" rel="noopener noreferrer">
-          <span>BEHANCE</span>
-          <span aria-hidden="true">↗</span>
-        </a>
-        <a href="#resume">
-          <span>RESUME</span>
-          <span aria-hidden="true">↗</span>
-        </a>
-      </nav>
     </header>
 
     <!-- ── Mobile-only: back arrow ── -->
