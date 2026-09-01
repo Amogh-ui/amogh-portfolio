@@ -1,12 +1,12 @@
-import './screencalorie.css'
+import './oneflow.css'
 import gsap from 'gsap'
 import Lenis from 'lenis'
 
 const app = document.querySelector('#app')
 if (!app) throw new Error('App root not found.')
 
-// Section titles for the right-side indicator (matching Figma "Title 1–4" placeholders)
-const sectionTitles = ['Overview', 'Research', 'Prototyping', 'Branding', 'Demo']
+// Section titles for the right-side indicator
+const sectionTitles = ['Overview', 'Foundation', 'Components', 'Patterns', 'Showcase']
 
 const sectionNavMarkup = sectionTitles
   .map((title, i) => `
@@ -94,10 +94,9 @@ app.innerHTML = `
       </div>
     </div>
 
-    <!-- ── Page title ── -->
     <div class="sc-page-title" aria-label="Project name">
-      <h1 class="sc-page-title__text">SCREENCALORIE</h1>
-      <div><span class="project-solo-badge">✦ Solo Project</span></div>
+      <h1 class="sc-page-title__text">ONE FLOW</h1>
+      <div><span class="project-ds-badge">IIT Bombay Intranet Design System</span></div>
     </div>
 
     <!-- ── Main layout: scroll area + right nav ── -->
@@ -107,69 +106,9 @@ app.innerHTML = `
       <div class="sc-scroll-frame">
         <div class="sc-scroll-frame-bg"></div>
         <div class="sc-scroll-track" id="sc-scroll-track">
-          <img
-            class="sc-scroll-img"
-            src="/screencalorie-scroll/1.jpg"
-            alt="Overview — ScreenCalorie concept and problem space"
-            data-section="0"
-            loading="eager"
-          />
-          <img
-            class="sc-scroll-img"
-            src="/screencalorie-scroll/2.jpg"
-            alt="Research — process and quantitative research"
-            data-section="1"
-            loading="eager"
-          />
-          <img
-            class="sc-scroll-img"
-            src="/screencalorie-scroll/3.jpg"
-            alt="Research — insights and concept testing"
-            data-section="1"
-            loading="eager"
-          />
-          <img
-            class="sc-scroll-img"
-            src="/screencalorie-scroll/4.jpg"
-            alt="Prototyping — user journey mapping"
-            data-section="2"
-            loading="eager"
-          />
-          <img
-            class="sc-scroll-img"
-            src="/screencalorie-scroll/5.jpg"
-            alt="Prototyping — design decisions"
-            data-section="2"
-            loading="eager"
-          />
-          <img
-            class="sc-scroll-img"
-            src="/screencalorie-scroll/6.jpg"
-            alt="Branding — typography, colors, beta testing"
-            data-section="3"
-            loading="eager"
-          />
-          <img
-            class="sc-scroll-img"
-            src="/screencalorie-scroll/7.jpg"
-            alt="Branding — visual identity details"
-            data-section="3"
-            loading="eager"
-          />
-          <img
-            class="sc-scroll-img"
-            src="/screencalorie-scroll/8.jpg"
-            alt="Demo — final screens and interactions"
-            data-section="4"
-            loading="eager"
-          />
-          <img
-            class="sc-scroll-img"
-            src="/screencalorie-scroll/9.jpg"
-            alt="Demo — final prototype walkthrough"
-            data-section="4"
-            loading="eager"
-          />
+          ${Array.from({ length: 9 }, (_, i) => `
+            <img class="sc-scroll-img" src="/design-system-scroll/${i + 1}.jpg" alt="One Flow design system — scroll slice ${i + 1}" data-section="${Math.floor(i / 1.8)}" loading="eager" decoding="async" />
+          `).join('')}
         </div>
       </div>
 
@@ -249,53 +188,13 @@ const sectionObserver = new IntersectionObserver(
     })
   },
   {
-    root: null, // Use viewport
-    rootMargin: '-20% 0px -50% 0px', // Trigger when image reaches upper half of screen
+    root: null,
+    rootMargin: '-20% 0px -50% 0px',
     threshold: 0
   }
 )
 
 scrollImgs.forEach(img => sectionObserver.observe(img))
-
-// Also observe the video for section nav
-const scrollVideo = document.querySelector('.sc-scroll-video')
-if (scrollVideo) sectionObserver.observe(scrollVideo)
-
-// ─── Video autoplay on scroll ─────────────────────────────────────────────────
-
-if (scrollVideo) {
-  const videoObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          scrollVideo.play().catch(() => {})
-        } else {
-          scrollVideo.pause()
-        }
-      })
-    },
-    {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.3
-    }
-  )
-  videoObserver.observe(scrollVideo)
-
-  // Audio toggle
-  const audioToggle = document.querySelector('.sc-audio-toggle')
-  if (audioToggle) {
-    const iconOff = audioToggle.querySelector('.sc-audio-icon--off')
-    const iconOn = audioToggle.querySelector('.sc-audio-icon--on')
-    audioToggle.addEventListener('click', () => {
-      scrollVideo.muted = !scrollVideo.muted
-      audioToggle.dataset.muted = String(scrollVideo.muted)
-      audioToggle.setAttribute('aria-label', scrollVideo.muted ? 'Unmute video' : 'Mute video')
-      iconOff.style.display = scrollVideo.muted ? '' : 'none'
-      iconOn.style.display = scrollVideo.muted ? 'none' : ''
-    })
-  }
-}
 
 // ─── Entrance animation ───────────────────────────────────────────────────────
 

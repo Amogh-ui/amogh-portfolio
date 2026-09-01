@@ -12,6 +12,7 @@ export default defineConfig({
         popclozet: resolve(__dirname, 'popclozet.html'),
         ticketsure: resolve(__dirname, 'ticketsure.html'),
         procreate: resolve(__dirname, 'procreate.html'),
+        oneflow: resolve(__dirname, 'oneflow.html'),
       }
     }
   }

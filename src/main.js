@@ -106,6 +106,7 @@ const workPreviewImage = new URL('../images/AM-FREEBIES-IP-005 1.jpg', import.me
 const beyondTheNetImage = new URL('../images/beyond-the-net-thumbnail.jpg', import.meta.url).href
 const troxImage = new URL('../images/trox-thumbnail.png', import.meta.url).href
 const ticketsureImage = new URL('../images/ticketsure-thumbnail.jpg', import.meta.url).href
+const designSystemThumbnail = '/design-system-thumbnail.png'
 
 // ─── Real Asset Preloader ─────────────────────────────────────────────────────
 // Kick off all critical image loads immediately so they're warmed up in the
@@ -129,6 +130,12 @@ const _assetsReady = new Promise(res => { _assetsResolve = res })
     '/screencalorie-scroll/4.jpg',
     '/screencalorie-scroll/5.jpg',
     '/screencalorie-scroll/6.jpg',
+    '/screencalorie-scroll/7.jpg',
+    '/screencalorie-scroll/8.jpg',
+    '/screencalorie-scroll/9.jpg',
+    '/design-system-scroll/1.jpg',
+    '/design-system-scroll/2.jpg',
+    '/design-system-scroll/3.jpg',
     '/beyond-the-net-scroll/1.jpg',
     '/beyond-the-net-scroll/2.jpg',
     '/beyond-the-net-scroll/3.jpg',
@@ -232,6 +239,17 @@ const workItems = [
       'Rethinking Procreate is an ergonomic evaluation and redesign of Procreate\'s interface, reimagining usability patterns, tool accessibility, and creative workflow to better serve digital artists.',
     tags: ['UX Research', 'Ergonomic Design', 'Redesign'],
     image: '/procreate-thumbnail.jpg'
+  },
+  {
+    id: 'one-flow',
+    number: '08',
+    title: 'One Flow',
+    year: '2026',
+    description:
+      'One Flow is the comprehensive design system and component library for the IIT Bombay intranet, establishing visual language, interaction patterns, and reusable UI foundations for a unified campus digital experience.',
+    tags: ['Design System', 'UI Library', 'UX Design'],
+    image: designSystemThumbnail,
+    hasSpinner: true
   }
 ]
 
@@ -315,11 +333,29 @@ const worksMarkup = `
                     <div class="works-grid-card__tags">
                       ${[...(item.isSoloProject ? ['✦ Solo Project'] : []), ...item.tags].map(tag => `<span class="works-grid-chip ${tag === '✦ Solo Project' ? 'works-grid-chip--solo' : ''}">${tag}</span>`).join('')}
                     </div>
+                    ${item.hasSpinner ? `
+                    <div class="works-grid-card__spinner" aria-hidden="true">
+                      <svg class="works-grid-card__spinner-ring" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                          <path id="spinner-circle-${item.id}" d="M 40,40 m -28,0 a 28,28 0 1,1 56,0 a 28,28 0 1,1 -56,0"/>
+                        </defs>
+                        <text font-family="Geist, system-ui, sans-serif" font-size="9.5" letter-spacing="2.5" fill="currentColor" font-weight="500">
+                          <textPath href="#spinner-circle-${item.id}" startOffset="0%">VIEW PROJECT · VIEW PROJECT · </textPath>
+                        </text>
+                      </svg>
+                      <div class="works-grid-card__spinner-arrow">
+                        <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M1.72308 16L0 14.2769L11.8154 2.46154H1.23077V0H16V14.7692H13.5385V4.18462L1.72308 16Z" fill="currentColor"/>
+                        </svg>
+                      </div>
+                    </div>
+                    ` : `
                     <div class="works-grid-card__arrow" aria-hidden="true">
                       <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1.72308 16L0 14.2769L11.8154 2.46154H1.23077V0H16V14.7692H13.5385V4.18462L1.72308 16Z" fill="currentColor"/>
                       </svg>
                     </div>
+                    `}
                   </div>
                 </button>
               `
@@ -732,7 +768,8 @@ if (worksSection && workCards.length) {
         'trox': '/trox.html',
         'popclozet': '/popclozet.html',
         'ticketsure': '/ticketsure.html',
-        'procreate': '/procreate.html'
+        'procreate': '/procreate.html',
+        'one-flow': '/oneflow.html'
       }
       const href = pageMap[workId]
       if (href) {
@@ -770,7 +807,8 @@ const pageMap = {
   'trox': '/trox.html',
   'popclozet': '/popclozet.html',
   'ticketsure': '/ticketsure.html',
-  'procreate': '/procreate.html'
+  'procreate': '/procreate.html',
+  'one-flow': '/oneflow.html'
 }
 
 // Grid card interaction & cursor hover handlers
