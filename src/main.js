@@ -169,18 +169,8 @@ const _assetsReady = new Promise(res => { _assetsResolve = res })
 
 const workItems = [
   {
-    id: 'screen-calorie',
-    number: '01',
-    title: 'ScreenCalorie',
-    year: '2025',
-    description:
-      'ScreenCalorie is a mental metabolism app that reframes screen time as balance instead of restriction. Using a calorie-based metaphor, the app tracks productive and unproductive usage through “sCals,” introducing smart nudges, micro-interruptions, and recovery prompts to help users build intentional digital habits without removing autonomy.',
-    tags: ['UI/UX', 'App Design', 'Brand Identity'],
-    isSoloProject: true
-  },
-  {
     id: 'beyond-the-net',
-    number: '02',
+    number: '01',
     title: 'Beyond the Net',
     year: '2025',
     description:
@@ -191,7 +181,7 @@ const workItems = [
   },
   {
     id: 'paalan',
-    number: '03',
+    number: '02',
     title: 'Paalan',
     year: '2026',
     description:
@@ -199,14 +189,24 @@ const workItems = [
     tags: ['UX Design', 'Service Design', 'App Flow']
   },
   {
-    id: 'popclozet',
+    id: 'screen-calorie',
+    number: '03',
+    title: 'ScreenCalorie',
+    year: '2025',
+    description:
+      'ScreenCalorie is a mental metabolism app that reframes screen time as balance instead of restriction. Using a calorie-based metaphor, the app tracks productive and unproductive usage through “sCals,” introducing smart nudges, micro-interruptions, and recovery prompts to help users build intentional digital habits without removing autonomy.',
+    tags: ['UI/UX', 'App Design', 'Brand Identity'],
+    isSoloProject: true
+  },
+  {
+    id: 'procreate',
     number: '04',
-    title: 'Popclozet',
+    title: 'Rethinking Procreate',
     year: '2026',
     description:
-      'Popclozet explores a more editorial shopping flow for fashion discovery, mixing wardrobe curation, styling prompts, and a cleaner product presentation.',
-    tags: ['E-Commerce', 'Art Direction', 'Visual Identity'],
-    image: '/popclozet-thumbnail.jpg'
+      'Rethinking Procreate is an ergonomic evaluation and redesign of Procreate\'s interface, reimagining usability patterns, tool accessibility, and creative workflow to better serve digital artists.',
+    tags: ['UX Research', 'Ergonomic Design', 'Redesign'],
+    image: '/procreate-thumbnail.jpg'
   },
   {
     id: 'ticketsure',
@@ -220,8 +220,28 @@ const workItems = [
     isSoloProject: true
   },
   {
-    id: 'trox',
+    id: 'one-flow',
     number: '06',
+    title: 'One Flow',
+    year: '2026',
+    description:
+      'One Flow is the comprehensive design system and component library for the IIT Bombay intranet, establishing visual language, interaction patterns, and reusable UI foundations for a unified campus digital experience.',
+    tags: ['Design System', 'UI Library', 'UX Design'],
+    image: designSystemThumbnail
+  },
+  {
+    id: 'popclozet',
+    number: '07',
+    title: 'Popclozet',
+    year: '2026',
+    description:
+      'Popclozet explores a more editorial shopping flow for fashion discovery, mixing wardrobe curation, styling prompts, and a cleaner product presentation.',
+    tags: ['E-Commerce', 'Art Direction', 'Visual Identity'],
+    image: '/popclozet-thumbnail.jpg'
+  },
+  {
+    id: 'trox',
+    number: '08',
     title: 'TROX: The Reversal',
     year: '2026',
     description:
@@ -229,26 +249,6 @@ const workItems = [
     tags: ['Game UI', 'UX Design', 'HUD Design'],
     image: troxImage,
     isSoloProject: true
-  },
-  {
-    id: 'procreate',
-    number: '07',
-    title: 'Rethinking Procreate',
-    year: '2026',
-    description:
-      'Rethinking Procreate is an ergonomic evaluation and redesign of Procreate\'s interface, reimagining usability patterns, tool accessibility, and creative workflow to better serve digital artists.',
-    tags: ['UX Research', 'Ergonomic Design', 'Redesign'],
-    image: '/procreate-thumbnail.jpg'
-  },
-  {
-    id: 'one-flow',
-    number: '08',
-    title: 'One Flow',
-    year: '2026',
-    description:
-      'One Flow is the comprehensive design system and component library for the IIT Bombay intranet, establishing visual language, interaction patterns, and reusable UI foundations for a unified campus digital experience.',
-    tags: ['Design System', 'UI Library', 'UX Design'],
-    image: designSystemThumbnail
   }
 ]
 
@@ -357,7 +357,7 @@ const peripheryMarkup = `
           <!-- Floating Work Thumbnails -->
           <div class="periphery-item p-img-1" data-depth="40"><div class="p-anim periphery-img"><img src="${workPreviewImage}" alt="ScreenCalorie" /></div></div>
           <div class="periphery-item p-img-2" data-depth="60"><div class="p-anim periphery-img"><img src="${beyondTheNetImage}" alt="Beyond the Net" /></div></div>
-          <div class="periphery-item p-img-3" data-depth="20"><div class="p-anim periphery-img"><img src="/beyond-the-net-scroll/3.jpg" alt="Documentation preview" /></div></div>
+          <div class="periphery-item p-img-3" data-depth="20"><div class="p-anim periphery-img"><img src="${designSystemThumbnail}" alt="One Flow" /></div></div>
           <div class="periphery-item p-img-4" data-depth="70"><div class="p-anim periphery-img"><img src="/popclozet-thumbnail.jpg" alt="Popclozet" /></div></div>
           <div class="periphery-item p-img-5" data-depth="30"><div class="p-anim periphery-img"><img src="${ticketsureImage}" alt="TicketSure" /></div></div>
           <div class="periphery-item p-img-6" data-depth="50"><div class="p-anim periphery-img"><img src="${troxImage}" alt="TROX" /></div></div>
