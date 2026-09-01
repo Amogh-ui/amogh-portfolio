@@ -1,6 +1,6 @@
 /* ──────────────────────────────────────────────────────────────────────────
    One Flow Work Page — oneflow.css
-   Glow theme: #7C3AED (Design System Violet)
+   Glow theme: #2FBFB1 (Design System Teal)
    ────────────────────────────────────────────────────────────────────────── */
 
 @font-face {
@@ -57,8 +57,8 @@
   --bg: #000000;
   --text-primary: #e0e0e0;
   --text-muted: #656565;
-  --blue: #5b21b6;
-  --accent: #7C3AED;
+  --blue: #1a9b8f;
+  --accent: #2FBFB1;
   --nav-w: 160px;
   --scroll-w: 846px;
   color-scheme: dark;
@@ -172,7 +172,7 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-right: -4px;
+  margin-right: 10px;
   transform: translateY(1px);
 }
 
@@ -310,9 +310,9 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: rgba(124, 58, 237, 0.12);
-  color: #5eaaff;
-  border: 1px solid rgba(124, 58, 237, 0.4);
+  background: rgba(47, 191, 177, 0.12);
+  color: #5EDDD0;
+  border: 1px solid rgba(47, 191, 177, 0.4);
   font-size: clamp(13px, 1.1vw, 16px);
   font-weight: 500;
   font-family: 'Geist', system-ui, sans-serif;
@@ -320,7 +320,25 @@ body {
   border-radius: 2em;
   margin-top: 12px;
   letter-spacing: 0.01em;
-  box-shadow: 0 0 20px rgba(124, 58, 237, 0.15);
+  box-shadow: 0 0 20px rgba(47, 191, 177, 0.15);
+  text-transform: none;
+}
+
+.project-ds-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(47, 191, 177, 0.12);
+  color: #5EDDD0;
+  border: 1px solid rgba(47, 191, 177, 0.4);
+  font-size: clamp(13px, 1.1vw, 16px);
+  font-weight: 500;
+  font-family: 'Geist', system-ui, sans-serif;
+  padding: 0.35em 1.2em;
+  border-radius: 2em;
+  margin-top: 12px;
+  letter-spacing: 0.01em;
+  box-shadow: 0 0 20px rgba(47, 191, 177, 0.15);
   text-transform: none;
 }
 
@@ -373,7 +391,7 @@ body {
   transform: translateX(-50%);
   width: 996px;
   height: 280px;
-  background: radial-gradient(circle, rgba(124, 58, 237, 0.35) 0%, rgba(124, 58, 237, 0.15) 45%, transparent 70%);
+  background: radial-gradient(circle, rgba(47, 191, 177, 0.35) 0%, rgba(47, 191, 177, 0.15) 45%, transparent 70%);
   filter: blur(80px);
   pointer-events: none;
 }
@@ -490,12 +508,12 @@ body {
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background: rgba(124, 58, 237, 0.95);
+  background: rgba(47, 191, 177, 0.95);
   pointer-events: none;
   z-index: 9999;
   opacity: 0;
   will-change: transform;
-  box-shadow: 0 0 0 1px rgba(124, 58, 237, 0.16), 0 6px 18px rgba(124, 58, 237, 0.14);
+  box-shadow: 0 0 0 1px rgba(47, 191, 177, 0.16), 0 6px 18px rgba(47, 191, 177, 0.14);
   transition:
     opacity 180ms ease,
     width 200ms cubic-bezier(0.2, 0, 0, 1),
@@ -530,7 +548,7 @@ body {
   right: -15%;
   width: 700px;
   height: 700px;
-  background: radial-gradient(circle, rgba(124, 58, 237, 0.28) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(47, 191, 177, 0.28) 0%, transparent 70%);
   animation: glowPulseRight 12s ease-in-out infinite alternate;
   animation-delay: 0s;
 }
@@ -540,7 +558,7 @@ body {
   left: -15%;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(109, 40, 217, 0.25) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(30, 160, 150, 0.25) 0%, transparent 70%);
   animation: glowPulseLeft 16s ease-in-out infinite alternate;
   animation-delay: -4s;
 }
@@ -578,7 +596,7 @@ body {
   overflow: hidden;
 }
 
-/* Left glowing aura — Design System Violet theme */
+/* Left glowing aura — Design System Teal theme */
 .sc-page-border::before {
   content: '';
   position: absolute;
@@ -586,14 +604,14 @@ body {
   left: 0;
   bottom: 0;
   width: 140px;
-  background: linear-gradient(to right, rgba(124, 58, 237, 0.28) 0%, rgba(124, 58, 237, 0.08) 40%, transparent 100%);
+  background: linear-gradient(to right, rgba(47, 191, 177, 0.28) 0%, rgba(47, 191, 177, 0.08) 40%, transparent 100%);
   filter: blur(35px);
   animation: borderGlowLeft 8s ease-in-out infinite alternate;
   will-change: opacity, transform;
   transform-origin: left center;
 }
 
-/* Right glowing aura — Design System Violet theme */
+/* Right glowing aura — Design System Teal theme */
 .sc-page-border::after {
   content: '';
   position: absolute;
@@ -601,7 +619,7 @@ body {
   right: 0;
   bottom: 0;
   width: 140px;
-  background: linear-gradient(to left, rgba(124, 58, 237, 0.28) 0%, rgba(124, 58, 237, 0.08) 40%, transparent 100%);
+  background: linear-gradient(to left, rgba(47, 191, 177, 0.28) 0%, rgba(47, 191, 177, 0.08) 40%, transparent 100%);
   filter: blur(35px);
   animation: borderGlowRight 8s ease-in-out infinite alternate;
   will-change: opacity, transform;
@@ -640,8 +658,8 @@ body {
 .sc-cursor.is-hovering {
   width: 30px;
   height: 30px;
-  background: rgba(124, 58, 237, 0.16);
-  box-shadow: 0 0 0 1.5px rgba(124, 58, 237, 0.45);
+  background: rgba(47, 191, 177, 0.16);
+  box-shadow: 0 0 0 1.5px rgba(47, 191, 177, 0.45);
 }
 
 /* ── Responsive adjustments ─────────────────────────────────────────────── */
@@ -709,7 +727,7 @@ body {
   width: 16px;
   height: 16px;
   display: inline-block;
-  background-color: #5B21B6;
+  background-color: #1A9B8F;
   -webkit-mask-image: url('/icons/shape.svg');
   -webkit-mask-size: contain;
   -webkit-mask-repeat: no-repeat;
@@ -747,7 +765,7 @@ body {
   font-family: 'Geist', system-ui, sans-serif;
   font-size: 48px;
   font-weight: 500;
-  color: #0a5cff;
+  color: #2FBFB1;
   text-decoration: none;
   letter-spacing: -0.96px;
   line-height: normal;

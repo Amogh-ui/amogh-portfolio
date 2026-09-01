@@ -248,8 +248,7 @@ const workItems = [
     description:
       'One Flow is the comprehensive design system and component library for the IIT Bombay intranet, establishing visual language, interaction patterns, and reusable UI foundations for a unified campus digital experience.',
     tags: ['Design System', 'UI Library', 'UX Design'],
-    image: designSystemThumbnail,
-    hasSpinner: true
+    image: designSystemThumbnail
   }
 ]
 
@@ -333,29 +332,11 @@ const worksMarkup = `
                     <div class="works-grid-card__tags">
                       ${[...(item.isSoloProject ? ['✦ Solo Project'] : []), ...item.tags].map(tag => `<span class="works-grid-chip ${tag === '✦ Solo Project' ? 'works-grid-chip--solo' : ''}">${tag}</span>`).join('')}
                     </div>
-                    ${item.hasSpinner ? `
-                    <div class="works-grid-card__spinner" aria-hidden="true">
-                      <svg class="works-grid-card__spinner-ring" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                          <path id="spinner-circle-${item.id}" d="M 40,40 m -28,0 a 28,28 0 1,1 56,0 a 28,28 0 1,1 -56,0"/>
-                        </defs>
-                        <text font-family="Geist, system-ui, sans-serif" font-size="9.5" letter-spacing="2.5" fill="currentColor" font-weight="500">
-                          <textPath href="#spinner-circle-${item.id}" startOffset="0%">VIEW PROJECT · VIEW PROJECT · </textPath>
-                        </text>
-                      </svg>
-                      <div class="works-grid-card__spinner-arrow">
-                        <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M1.72308 16L0 14.2769L11.8154 2.46154H1.23077V0H16V14.7692H13.5385V4.18462L1.72308 16Z" fill="currentColor"/>
-                        </svg>
-                      </div>
-                    </div>
-                    ` : `
                     <div class="works-grid-card__arrow" aria-hidden="true">
                       <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1.72308 16L0 14.2769L11.8154 2.46154H1.23077V0H16V14.7692H13.5385V4.18462L1.72308 16Z" fill="currentColor"/>
                       </svg>
                     </div>
-                    `}
                   </div>
                 </button>
               `
