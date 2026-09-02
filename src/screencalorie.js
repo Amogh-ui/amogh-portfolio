@@ -288,10 +288,27 @@ if (scrollVideo) sectionObserver.observe(scrollVideo)
 // ─── Video autoplay on scroll ─────────────────────────────────────────────────
 
 if (scrollVideo) {
+  const VIDEO_START = 22
+
+  // Set start time once metadata is ready
+  scrollVideo.addEventListener('loadedmetadata', () => {
+    scrollVideo.currentTime = VIDEO_START
+  }, { once: true })
+
+  // Loop back to 22s instead of 0s
+  scrollVideo.addEventListener('timeupdate', () => {
+    if (scrollVideo.currentTime < VIDEO_START) {
+      scrollVideo.currentTime = VIDEO_START
+    }
+  })
+
   const videoObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
+          if (scrollVideo.currentTime < VIDEO_START) {
+            scrollVideo.currentTime = VIDEO_START
+          }
           scrollVideo.play().catch(() => {})
         } else {
           scrollVideo.pause()
