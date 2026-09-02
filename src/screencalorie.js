@@ -175,9 +175,10 @@ app.innerHTML = `
               class="sc-scroll-img sc-scroll-video"
               src="/screencalorie-scroll/video.mp4"
               data-section="4"
+              autoplay
               muted
               playsinline
-              preload="metadata"
+              preload="auto"
               loop
             ></video>
             <button class="sc-audio-toggle" type="button" aria-label="Unmute video" data-muted="true">
