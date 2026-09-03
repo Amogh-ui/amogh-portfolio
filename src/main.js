@@ -49,7 +49,7 @@ if (typeof document !== 'undefined') {
 
 const topNavLinks = [
   { label: 'BEHANCE', href: 'https://www.behance.net/Amogh-Shete' },
-  { label: 'RESUME', href: '#resume' }
+  { label: 'RESUME', href: 'https://drive.google.com/drive/folders/1_byu6DyYM6W24F_0wwyaZfAJ-zN6VX1p?usp=share_link' }
 ]
 
 const topNavMarkup = topNavLinks
@@ -329,7 +329,7 @@ const worksMarkup = `
 `
 
 const peripheryMarkup = `
-  <section class="periphery-section" aria-label="Introduction" id="info">
+  <section class="periphery-section" aria-label="Introduction">
     <div class="periphery-stage">
       <div class="periphery-inner">
         <!-- Floating Elements Container -->
@@ -364,7 +364,7 @@ const peripheryMarkup = `
 `
 
 const curiousByNatureMarkup = `
-  <section class="below-intro" aria-label="Introduction">
+  <section class="below-intro" aria-label="Introduction" id="info">
     <div class="below-intro__stage">
       <div class="below-intro__copy">
         <div class="below-intro__line below-intro__line--one">
@@ -467,7 +467,7 @@ app.innerHTML = `
           <div class="mobile-menu-links">
             <a href="https://www.behance.net/Amogh-Shete" target="_blank" rel="noopener noreferrer">BEHANCE <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.29231 12L0 10.7077L8.86154 1.84615H0.923077V0H12V11.0769H10.1538V3.13846L1.29231 12Z" fill="#656565"/></svg></a>
             <a href="https://www.linkedin.com/in/amogh-shete-5133bb303/" target="_blank" rel="noopener noreferrer">LINKEDIN <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.29231 12L0 10.7077L8.86154 1.84615H0.923077V0H12V11.0769H10.1538V3.13846L1.29231 12Z" fill="#656565"/></svg></a>
-            <a href="#resume">RESUME <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.29231 12L0 10.7077L8.86154 1.84615H0.923077V0H12V11.0769H10.1538V3.13846L1.29231 12Z" fill="#656565"/></svg></a>
+            <a href="https://drive.google.com/drive/folders/1_byu6DyYM6W24F_0wwyaZfAJ-zN6VX1p?usp=share_link" target="_blank" rel="noopener noreferrer">RESUME <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.29231 12L0 10.7077L8.86154 1.84615H0.923077V0H12V11.0769H10.1538V3.13846L1.29231 12Z" fill="#656565"/></svg></a>
           </div>
         </div>
         <div class="mobile-menu-brand">
@@ -514,7 +514,7 @@ app.innerHTML = `
         <div class="footer_links_row">
           <div class="footer_nav_links">
             <a href="https://www.linkedin.com/in/amogh-shete-5133bb303/" target="_blank" rel="noopener noreferrer">LINKEDIN <span>↗</span></a>
-            <a href="#resume">RESUME <span>↗</span></a>
+            <a href="https://drive.google.com/drive/folders/1_byu6DyYM6W24F_0wwyaZfAJ-zN6VX1p?usp=share_link" target="_blank" rel="noopener noreferrer">RESUME <span>↗</span></a>
             <a href="https://www.behance.net/Amogh-Shete" target="_blank" rel="noopener noreferrer">BEHANCE <span>↗</span></a>
           </div>
           <div class="footer_developed_in">Developed in VS Code</div>
@@ -1389,10 +1389,7 @@ const runAnimation = () => {
 const jumpToHash = (immediate = true) => {
   const hash = window.location.hash
   if (!hash) return
-  let targetElement = document.querySelector(hash)
-  if (hash === '#info' && window.matchMedia('(max-width: 768px)').matches) {
-    targetElement = footerSection
-  }
+  const targetElement = document.querySelector(hash)
   if (targetElement) {
     lenis?.resize()
     if (lenis) {
@@ -1471,11 +1468,7 @@ heroPillLinks.forEach((link) => {
     const href = link.getAttribute('href')
     if (href && href.startsWith('#')) {
       e.preventDefault()
-      const isMobile = window.matchMedia('(max-width: 768px)').matches
-      let targetElement = document.querySelector(href)
-      if (href === '#info' && isMobile) {
-        targetElement = footerSection
-      }
+      const targetElement = document.querySelector(href)
       if (targetElement) {
         lenis?.resize()
         if (lenis) {
@@ -2054,8 +2047,7 @@ mobileNavLinks.forEach((link) => {
       window.scrollTo({ top: worksSection.offsetTop, behavior: 'smooth' })
     }
     if (target === '#info') {
-      const isMobile = window.matchMedia('(max-width: 768px)').matches
-      const targetElement = isMobile ? footerSection : document.querySelector('#info')
+      const targetElement = document.querySelector('#info')
       if (targetElement) {
         window.scrollTo({ top: targetElement.offsetTop, behavior: 'smooth' })
       }

@@ -46,7 +46,7 @@ app.innerHTML = `
           <span>BEHANCE</span>
           <span aria-hidden="true">↗</span>
         </a>
-        <a href="/#resume">
+        <a href="https://drive.google.com/drive/folders/1_byu6DyYM6W24F_0wwyaZfAJ-zN6VX1p?usp=share_link" target="_blank" rel="noopener noreferrer">
           <span>RESUME</span>
           <span aria-hidden="true">↗</span>
         </a>
@@ -86,7 +86,7 @@ app.innerHTML = `
         <div class="mobile-menu-links">
           <a href="https://www.behance.net/Amogh-Shete" target="_blank" rel="noopener noreferrer">BEHANCE <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.29231 12L0 10.7077L8.86154 1.84615H0.923077V0H12V11.0769H10.1538V3.13846L1.29231 12Z" fill="#656565"/></svg></a>
           <a href="https://www.linkedin.com/in/amogh-shete-5133bb303/" target="_blank" rel="noopener noreferrer">LINKEDIN <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.29231 12L0 10.7077L8.86154 1.84615H0.923077V0H12V11.0769H10.1538V3.13846L1.29231 12Z" fill="#656565"/></svg></a>
-          <a href="/#resume">RESUME <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.29231 12L0 10.7077L8.86154 1.84615H0.923077V0H12V11.0769H10.1538V3.13846L1.29231 12Z" fill="#656565"/></svg></a>
+          <a href="https://drive.google.com/drive/folders/1_byu6DyYM6W24F_0wwyaZfAJ-zN6VX1p?usp=share_link" target="_blank" rel="noopener noreferrer">RESUME <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.29231 12L0 10.7077L8.86154 1.84615H0.923077V0H12V11.0769H10.1538V3.13846L1.29231 12Z" fill="#656565"/></svg></a>
         </div>
       </div>
       <div class="mobile-menu-brand">
