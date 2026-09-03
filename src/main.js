@@ -2,8 +2,7 @@ import './style.css'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Lenis from 'lenis'
-import { createShaderAnimation } from './shaderAnimation.js'
-import { createHalftoneAnimation } from './halftoneAnimation.js'
+// Lazy-loaded later to avoid blocking the main bundle with Three.js
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -124,26 +123,6 @@ const _assetsReady = new Promise(res => { _assetsResolve = res })
     '/icons/glass/gradient%20glass%20(21).png',
     '/icons/glass/gradient%20glass%20(8).png',
     '/icons/glass/dispersion%20glass%20(16).png',
-    '/screencalorie-scroll/1.jpg',
-    '/screencalorie-scroll/2.jpg',
-    '/screencalorie-scroll/3.jpg',
-    '/screencalorie-scroll/4.jpg',
-    '/screencalorie-scroll/5.jpg',
-    '/screencalorie-scroll/6.jpg',
-    '/screencalorie-scroll/7.jpg',
-    '/screencalorie-scroll/8.jpg',
-    '/screencalorie-scroll/9.jpg',
-    '/design-system-scroll/1.jpg',
-    '/design-system-scroll/2.jpg',
-    '/design-system-scroll/3.jpg',
-    '/beyond-the-net-scroll/1.jpg',
-    '/beyond-the-net-scroll/2.jpg',
-    '/beyond-the-net-scroll/3.jpg',
-    '/beyond-the-net-scroll/4.jpg',
-    '/beyond-the-net-scroll/5.jpg',
-    '/beyond-the-net-scroll/6.jpg',
-    '/beyond-the-net-scroll/7.jpg',
-    '/beyond-the-net-scroll/8.jpg',
     workPreviewImage,
     beyondTheNetImage,
     troxImage,
@@ -582,7 +561,10 @@ const heroBg = document.querySelector('.hero-bg')
 const worksSection = document.querySelector('.works-section')
 const footerSection = document.querySelector('.footer_wrap_main')
 const workCards = gsap.utils.toArray('.work-card')
-const shaderCleanup = createShaderAnimation(heroBg, { reducedMotion })
+let shaderCleanup = { start: () => {}, stop: () => {} }
+import('./shaderAnimation.js').then(({ createShaderAnimation }) => {
+  shaderCleanup = createShaderAnimation(heroBg, { reducedMotion })
+}).catch(err => console.warn('Failed to load shader animation:', err))
 const lenis = reducedMotion
   ? null
   : new Lenis({
@@ -1873,19 +1855,21 @@ if (footerContainer && footerCanvas) {
     setWorkCursorHover(false)
   })
 
-  createHalftoneAnimation(footerContainer, footerCanvas, {
-    reducedMotion,
-    bg: '#4469B4',   // Milder blue requested by user
-    fg: '#02040a',   // Dark foreground dots matching site background
-    pixelSize: 3,
-    gooeyness: 0.58,
-    contrast: 1.5,
-    bias: 0.0,
-    invert: 1,
-    amplitude: 0.8,
-    timeSpeed: 0.0045,
-    interactive: true
-  })
+  import('./halftoneAnimation.js').then(({ createHalftoneAnimation }) => {
+    createHalftoneAnimation(footerContainer, footerCanvas, {
+      reducedMotion,
+      bg: '#4469B4',   // Milder blue requested by user
+      fg: '#02040a',   // Dark foreground dots matching site background
+      pixelSize: 3,
+      gooeyness: 0.58,
+      contrast: 1.5,
+      bias: 0.0,
+      invert: 1,
+      amplitude: 0.8,
+      timeSpeed: 0.0045,
+      interactive: true
+    })
+  }).catch(err => console.warn('Failed to load halftone animation:', err))
 
   // Footer Entrance Animation
   const footerElements = document.querySelectorAll('.footer_top_row, .footer_links_row, .footer_canvas_brand, .footer_canvas_icon')

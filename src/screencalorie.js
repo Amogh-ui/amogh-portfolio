@@ -119,56 +119,56 @@ app.innerHTML = `
             src="/screencalorie-scroll/2.jpg"
             alt="Research — process and quantitative research"
             data-section="1"
-            loading="eager"
+            loading="lazy"
           />
           <img
             class="sc-scroll-img"
             src="/screencalorie-scroll/3.jpg"
             alt="Research — insights and concept testing"
             data-section="1"
-            loading="eager"
+            loading="lazy"
           />
           <img
             class="sc-scroll-img"
             src="/screencalorie-scroll/4.jpg"
             alt="Prototyping — user journey mapping"
             data-section="2"
-            loading="eager"
+            loading="lazy"
           />
           <img
             class="sc-scroll-img"
             src="/screencalorie-scroll/5.jpg"
             alt="Prototyping — design decisions"
             data-section="2"
-            loading="eager"
+            loading="lazy"
           />
           <img
             class="sc-scroll-img"
             src="/screencalorie-scroll/6.jpg"
             alt="Branding — typography, colors, beta testing"
             data-section="3"
-            loading="eager"
+            loading="lazy"
           />
           <img
             class="sc-scroll-img"
             src="/screencalorie-scroll/7.jpg"
             alt="Branding — visual identity details"
             data-section="3"
-            loading="eager"
+            loading="lazy"
           />
           <img
             class="sc-scroll-img"
             src="/screencalorie-scroll/8.jpg"
             alt="Demo — final screens and interactions"
             data-section="4"
-            loading="eager"
+            loading="lazy"
           />
           <img
             class="sc-scroll-img"
             src="/screencalorie-scroll/9.jpg"
             alt="Demo — final prototype walkthrough"
             data-section="4"
-            loading="eager"
+            loading="lazy"
           />
           <div class="sc-video-wrap">
             <video
@@ -178,7 +178,7 @@ app.innerHTML = `
               autoplay
               muted
               playsinline
-              preload="auto"
+              preload="metadata"
               loop
             ></video>
             <button class="sc-audio-toggle" type="button" aria-label="Unmute video" data-muted="true">
