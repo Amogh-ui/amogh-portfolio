@@ -6,6 +6,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
+        paalan: resolve(__dirname, 'paalan.html'),
         screencalorie: resolve(__dirname, 'screencalorie.html'),
         beyondthenet: resolve(__dirname, 'beyondthenet.html'),
         trox: resolve(__dirname, 'trox.html'),

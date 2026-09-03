@@ -165,7 +165,8 @@ const workItems = [
     year: '2026',
     description:
       'Paalan is a caregiving companion concept designed to make daily check-ins, support notes, and routine coordination feel calmer and easier to navigate.',
-    tags: ['UX Design', 'Service Design', 'App Flow']
+    tags: ['UX Design', 'Service Design', 'App Flow'],
+    image: '/paalan-thumbnail.png'
   },
   {
     id: 'screen-calorie',
@@ -726,6 +727,7 @@ if (worksSection && workCards.length) {
       setActiveWorkCard(card)
       const workId = card.dataset.workId
       const pageMap = {
+        'paalan': '/paalan.html',
         'screen-calorie': '/screencalorie.html',
         'beyond-the-net': '/beyondthenet.html',
         'trox': '/trox.html',
@@ -765,6 +767,7 @@ let currentWorksView = 'grid'
 let _isToggling = false
 
 const pageMap = {
+  'paalan': '/paalan.html',
   'screen-calorie': '/screencalorie.html',
   'beyond-the-net': '/beyondthenet.html',
   'trox': '/trox.html',
