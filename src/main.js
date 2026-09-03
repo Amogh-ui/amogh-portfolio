@@ -106,6 +106,7 @@ const beyondTheNetImage = new URL('../images/beyond-the-net-thumbnail.jpg', impo
 const troxImage = new URL('../images/trox-thumbnail.png', import.meta.url).href
 const ticketsureImage = new URL('../images/ticketsure-thumbnail.jpg', import.meta.url).href
 const designSystemThumbnail = '/design-system-thumbnail.png'
+const paalanThumbnail = '/paalan-thumbnail.png'
 
 // ─── Real Asset Preloader ─────────────────────────────────────────────────────
 // Kick off all critical image loads immediately so they're warmed up in the
@@ -126,7 +127,8 @@ const _assetsReady = new Promise(res => { _assetsResolve = res })
     workPreviewImage,
     beyondTheNetImage,
     troxImage,
-    ticketsureImage
+    ticketsureImage,
+    paalanThumbnail
   ]
 
   let loaded = 0
@@ -166,7 +168,7 @@ const workItems = [
     description:
       'Paalan is a caregiving companion concept designed to make daily check-ins, support notes, and routine coordination feel calmer and easier to navigate.',
     tags: ['UX Design', 'Service Design', 'App Flow'],
-    image: '/paalan-thumbnail.png'
+    image: paalanThumbnail
   },
   {
     id: 'screen-calorie',
@@ -342,7 +344,7 @@ const peripheryMarkup = `
           <div class="periphery-item p-img-5" data-depth="30"><div class="p-anim periphery-img"><img src="${ticketsureImage}" alt="TicketSure" /></div></div>
           <div class="periphery-item p-img-6" data-depth="50"><div class="p-anim periphery-img"><img src="${troxImage}" alt="TROX" /></div></div>
           <div class="periphery-item p-img-7" data-depth="80"><div class="p-anim periphery-img"><img src="/procreate-thumbnail.jpg" alt="Rethinking Procreate" /></div></div>
-          <div class="periphery-item p-img-8" data-depth="45"><div class="p-anim periphery-img"><img src="/screencalorie-scroll/4.jpg" alt="Documentation preview" /></div></div>
+          <div class="periphery-item p-img-8" data-depth="45"><div class="p-anim periphery-img"><img src="${paalanThumbnail}" alt="Paalan" /></div></div>
 
           <!-- Floating Skill Tags -->
           <div class="periphery-item p-tag-1" data-depth="55"><div class="p-anim periphery-tag">PRODUCT DESIGN</div></div>
