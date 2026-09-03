@@ -106,26 +106,20 @@ app.innerHTML = `
       <div class="sc-scroll-frame">
         <div class="sc-scroll-frame-bg"></div>
         <div class="sc-scroll-track" id="sc-scroll-track">
-          <!-- 14 dynamically sliced images of the main PDF -->
-          ${[...Array(14)].map((_, i) => {
-            const num = i + 1;
-            // Distribute 14 images roughly across 6 sections
-            let section = 0;
-            if (num >= 3 && num <= 4) section = 1;
-            else if (num >= 5 && num <= 6) section = 2;
-            else if (num >= 7 && num <= 8) section = 3;
-            else if (num >= 9 && num <= 10) section = 4;
-            else if (num >= 11) section = 5;
-
-            return \`<img
-              class="sc-scroll-img"
-              src="/paalan-scroll/\${num}.jpg"
-              alt="Paalan process image \${num}"
-              data-section="\${section}"
-              \${num === 1 ? 'loading="eager"' : 'loading="lazy"'}
-              decoding="async"
-            />\`
-          }).join('\\n          ')}
+          <img class="sc-scroll-img" src="/paalan-scroll/1.jpg" alt="Paalan Overview" data-section="0" width="1600" height="3233" loading="eager" decoding="async" />
+          <img class="sc-scroll-img" src="/paalan-scroll/2.jpg" alt="Paalan Brief" data-section="0" width="1600" height="3233" loading="eager" decoding="async" />
+          <img class="sc-scroll-img" src="/paalan-scroll/3.jpg" alt="Paalan Research" data-section="1" width="1600" height="3233" loading="lazy" decoding="async" />
+          <img class="sc-scroll-img" src="/paalan-scroll/4.jpg" alt="Paalan Field Study" data-section="1" width="1600" height="3234" loading="lazy" decoding="async" />
+          <img class="sc-scroll-img" src="/paalan-scroll/5.jpg" alt="Paalan Analysis" data-section="2" width="1600" height="3233" loading="lazy" decoding="async" />
+          <img class="sc-scroll-img" src="/paalan-scroll/6.jpg" alt="Paalan Journey & Personas" data-section="2" width="1600" height="3233" loading="lazy" decoding="async" />
+          <img class="sc-scroll-img" src="/paalan-scroll/7.jpg" alt="Paalan Ideation" data-section="3" width="1600" height="3234" loading="lazy" decoding="async" />
+          <img class="sc-scroll-img" src="/paalan-scroll/8.jpg" alt="Paalan Wireframes" data-section="3" width="1600" height="3233" loading="lazy" decoding="async" />
+          <img class="sc-scroll-img" src="/paalan-scroll/9.jpg" alt="Paalan Design System" data-section="4" width="1600" height="3233" loading="lazy" decoding="async" />
+          <img class="sc-scroll-img" src="/paalan-scroll/10.jpg" alt="Paalan UI Components" data-section="4" width="1600" height="3234" loading="lazy" decoding="async" />
+          <img class="sc-scroll-img" src="/paalan-scroll/11.jpg" alt="Paalan Features" data-section="5" width="1600" height="3233" loading="lazy" decoding="async" />
+          <img class="sc-scroll-img" src="/paalan-scroll/12.jpg" alt="Paalan Mobile Screens" data-section="5" width="1600" height="3233" loading="lazy" decoding="async" />
+          <img class="sc-scroll-img" src="/paalan-scroll/13.jpg" alt="Paalan Care Workflow" data-section="5" width="1600" height="3234" loading="lazy" decoding="async" />
+          <img class="sc-scroll-img" src="/paalan-scroll/14.jpg" alt="Paalan Conclusion" data-section="5" width="1600" height="1206" loading="lazy" decoding="async" />
         </div>
       </div>
 
@@ -295,7 +289,7 @@ const updateFollow = (now) => {
   }
 
   if (cursor) {
-    cursor.style.transform = \`translate(\${Math.round(follow.x)}px, \${Math.round(follow.y)}px) translate(-50%, -50%)\`
+    cursor.style.transform = `translate(${Math.round(follow.x)}px, ${Math.round(follow.y)}px) translate(-50%, -50%)`
   }
 
   requestAnimationFrame(updateFollow)
