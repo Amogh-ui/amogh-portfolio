@@ -155,7 +155,7 @@ const workItems = [
     title: 'Beyond the Net',
     year: '2025',
     description:
-      'Beyond the Net is a sports experience concept that turns match stats into a sharper digital story, pairing live performance cues with clearer score-state feedback and a more deliberate visual hierarchy.',
+      'Beyond The Net is an AI-powered badminton analytics platform that converts match videos into interactive simulations and tactical insights. By analyzing movement, positioning, recovery, and court control, it helps coaches and players understand why performances succeed or fail.',
     tags: ['UI/UX', 'Sports Analytics', 'Data visualization'],
     image: beyondTheNetImage,
     isSoloProject: true
@@ -166,7 +166,7 @@ const workItems = [
     title: 'Paalan',
     year: '2026',
     description:
-      'Paalan is a caregiving companion concept designed to make daily check-ins, support notes, and routine coordination feel calmer and easier to navigate.',
+      'Paalan is a digital care management system for caretakers, veterinarians, and shelter administrators. It replaces memory based workflows with structured, low-friction logging, early behavioural health detection, and role-appropriate information access.',
     tags: ['Animal Welfare', 'UX Research', 'UI Design'],
     image: paalanThumbnail
   },
@@ -176,7 +176,7 @@ const workItems = [
     title: 'ScreenCalorie',
     year: '2025',
     description:
-      'ScreenCalorie is a mental metabolism app that reframes screen time as balance instead of restriction. Using a calorie-based metaphor, the app tracks productive and unproductive usage through “sCals,” introducing smart nudges, micro-interruptions, and recovery prompts to help users build intentional digital habits without removing autonomy.',
+      'Most screen-time apps focus on reducing usage, not improving it. ScreenCalorie reframes productivity using a familiar mental model: Calories. Instead of reducing your screen time, it helps you balance your ScreenCalories.',
     tags: ['Digital Wellbeing', 'Product design', 'Prototyping'],
     isSoloProject: true
   },
@@ -186,7 +186,7 @@ const workItems = [
     title: 'Rethinking Procreate',
     year: '2026',
     description:
-      'Rethinking Procreate is an ergonomic evaluation and redesign of Procreate\'s interface, reimagining usability patterns, tool accessibility, and creative workflow to better serve digital artists.',
+      'Our goal is to identify where and why users struggle while performing common tasks in Procreate, understand the problems they face, and create simple design improvements that make the app easier, faster, and more intuitive to use.',
     tags: ['Redesign', 'Hueristic Evaluation', 'User testing'],
     image: '/procreate-thumbnail.jpg'
   },
@@ -196,7 +196,7 @@ const workItems = [
     title: 'TicketSure',
     year: '2025',
     description:
-      'TicketSure is a ticketing concept focused on reducing friction in seat selection, purchase states, and post-booking clarity for faster event checkout.',
+      'TicketSure is a movie and event booking platform designed to make discovering and booking tickets simpler and more reliable, with a waitlist feature for sold-out shows that allows users to join a queue and get notified when tickets become available.',
     tags: ['E-Commerce', 'Product Design', 'User Flows'],
     image: ticketsureImage,
     isSoloProject: true
@@ -207,7 +207,7 @@ const workItems = [
     title: 'One Flow',
     year: '2026',
     description:
-      'One Flow is the comprehensive design system and component library for the IIT Bombay intranet, establishing visual language, interaction patterns, and reusable UI foundations for a unified campus digital experience.',
+      'OneFlow is a unified visual system for IIT Bombay\'s intranet and internet, defining its visual language, components, and role-based experiences. It adapts interfaces based on user roles while maintaining a consistent IIT Bombay identity.',
     tags: ['Design System', 'Component Design', 'Interface Design'],
     image: designSystemThumbnail
   },
@@ -217,7 +217,7 @@ const workItems = [
     title: 'Popclozet',
     year: '2026',
     description:
-      'Popclozet explores a more editorial shopping flow for fashion discovery, mixing wardrobe curation, styling prompts, and a cleaner product presentation.',
+      'A fashion rental platform that allows users to access premium clothing through flexible rental plans while enabling seamless returns and ownership through a rent-to-buy model.',
     tags: ['Fashion Rental', 'Product Design', 'UI design'],
     image: '/popclozet-thumbnail.jpg'
   },
