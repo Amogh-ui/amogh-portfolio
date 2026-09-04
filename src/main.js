@@ -156,7 +156,7 @@ const workItems = [
     year: '2025',
     description:
       'Beyond the Net is a sports experience concept that turns match stats into a sharper digital story, pairing live performance cues with clearer score-state feedback and a more deliberate visual hierarchy.',
-    tags: ['Product Design', 'Dashboard', 'Visual System'],
+    tags: ['UI/UX', 'Sports Analytics', 'Data visualization'],
     image: beyondTheNetImage,
     isSoloProject: true
   },
@@ -167,7 +167,7 @@ const workItems = [
     year: '2026',
     description:
       'Paalan is a caregiving companion concept designed to make daily check-ins, support notes, and routine coordination feel calmer and easier to navigate.',
-    tags: ['UX Design', 'Service Design', 'App Flow'],
+    tags: ['Animal Welfare', 'UX Research', 'UI Design'],
     image: paalanThumbnail
   },
   {
@@ -177,7 +177,7 @@ const workItems = [
     year: '2025',
     description:
       'ScreenCalorie is a mental metabolism app that reframes screen time as balance instead of restriction. Using a calorie-based metaphor, the app tracks productive and unproductive usage through “sCals,” introducing smart nudges, micro-interruptions, and recovery prompts to help users build intentional digital habits without removing autonomy.',
-    tags: ['UI/UX', 'App Design', 'Brand Identity'],
+    tags: ['Digital Wellbeing', 'Product design', 'Prototyping'],
     isSoloProject: true
   },
   {
@@ -187,7 +187,7 @@ const workItems = [
     year: '2026',
     description:
       'Rethinking Procreate is an ergonomic evaluation and redesign of Procreate\'s interface, reimagining usability patterns, tool accessibility, and creative workflow to better serve digital artists.',
-    tags: ['UX Research', 'Ergonomic Design', 'Redesign'],
+    tags: ['Redesign', 'Hueristic Evaluation', 'User testing'],
     image: '/procreate-thumbnail.jpg'
   },
   {
@@ -197,7 +197,7 @@ const workItems = [
     year: '2025',
     description:
       'TicketSure is a ticketing concept focused on reducing friction in seat selection, purchase states, and post-booking clarity for faster event checkout.',
-    tags: ['Mobile UX', 'Booking Flow', 'Brand System'],
+    tags: ['E-Commerce', 'Product Design', 'User Flows'],
     image: ticketsureImage,
     isSoloProject: true
   },
@@ -208,7 +208,7 @@ const workItems = [
     year: '2026',
     description:
       'One Flow is the comprehensive design system and component library for the IIT Bombay intranet, establishing visual language, interaction patterns, and reusable UI foundations for a unified campus digital experience.',
-    tags: ['Design System', 'UI Library', 'UX Design'],
+    tags: ['Design System', 'Component Design', 'Interface Design'],
     image: designSystemThumbnail
   },
   {
@@ -218,7 +218,7 @@ const workItems = [
     year: '2026',
     description:
       'Popclozet explores a more editorial shopping flow for fashion discovery, mixing wardrobe curation, styling prompts, and a cleaner product presentation.',
-    tags: ['E-Commerce', 'Art Direction', 'Visual Identity'],
+    tags: ['Fashion Rental', 'Product Design', 'UI design'],
     image: '/popclozet-thumbnail.jpg'
   },
   {
