@@ -7,6 +7,7 @@ if (!app) throw new Error('App root not found.')
 
 // Section titles for the right-side indicator
 const sectionTitles = ['Overview', 'Features', 'User Flow', 'Screens', 'Thank You']
+const sectionMapping = [0, 0, 1, 2, 3, 4]
 
 const sectionNavMarkup = sectionTitles
   .map((title, i) => `
@@ -108,7 +109,7 @@ app.innerHTML = `
         <div class="sc-scroll-frame-bg"></div>
         <div class="sc-scroll-track" id="sc-scroll-track">
           ${Array.from({ length: 6 }, (_, i) => `
-            <img class="sc-scroll-img" src="/ticketsure-scroll/${i + 1}.jpg" alt="Scroll slice ${i + 1}" data-section="${Math.floor(i / 1.2)}" loading="eager" decoding="async" />
+            <img class="sc-scroll-img" src="/ticketsure-scroll/${i + 1}.jpg" alt="Scroll slice ${i + 1}" data-section="${sectionMapping[i]}" loading="eager" decoding="async" />
           `).join('')}
         </div>
       </div>

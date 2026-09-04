@@ -7,6 +7,7 @@ if (!app) throw new Error('App root not found.')
 
 // Section titles for the right-side indicator
 const sectionTitles = ['Overview', 'Foundation', 'Components', 'Patterns', 'Showcase']
+const sectionMapping = [0, 0, 1, 1, 2, 2, 3, 3, 4]
 
 const sectionNavMarkup = sectionTitles
   .map((title, i) => `
@@ -107,7 +108,7 @@ app.innerHTML = `
         <div class="sc-scroll-frame-bg"></div>
         <div class="sc-scroll-track" id="sc-scroll-track">
           ${Array.from({ length: 9 }, (_, i) => `
-            <img class="sc-scroll-img" src="/design-system-scroll/${i + 1}.jpg" alt="One Flow design system — scroll slice ${i + 1}" data-section="${Math.floor(i / 1.8)}" loading="eager" decoding="async" />
+            <img class="sc-scroll-img" src="/design-system-scroll/${i + 1}.jpg" alt="One Flow design system — scroll slice ${i + 1}" data-section="${sectionMapping[i]}" loading="eager" decoding="async" />
           `).join('')}
         </div>
       </div>
