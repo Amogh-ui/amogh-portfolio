@@ -106,6 +106,18 @@ app.innerHTML = `
       <div class="sc-scroll-frame">
         <div class="sc-scroll-frame-bg"></div>
         <div class="sc-scroll-track" id="sc-scroll-track">
+          <div class="sc-video-wrap">
+            <video
+              class="sc-scroll-img sc-scroll-video"
+              src="/paalan-scroll/intro.mp4"
+              data-section="0"
+              autoplay
+              muted
+              playsinline
+              preload="metadata"
+              loop
+            ></video>
+          </div>
           <img class="sc-scroll-img" src="/paalan-scroll/1.jpg" alt="Paalan Overview" data-section="0" width="1600" height="3088" loading="eager" decoding="async" />
           <img class="sc-scroll-img" src="/paalan-scroll/2.jpg" alt="Paalan Brief" data-section="0" width="1600" height="3088" loading="eager" decoding="async" />
           <img class="sc-scroll-img" src="/paalan-scroll/3.jpg" alt="Paalan Research" data-section="1" width="1600" height="3088" loading="lazy" decoding="async" />
@@ -219,19 +231,19 @@ const sectionObserver = new IntersectionObserver(
 scrollImgs.forEach(img => sectionObserver.observe(img))
 
 // Also observe the video for section nav
-const scrollVideo = document.querySelector('.sc-scroll-video')
-if (scrollVideo) sectionObserver.observe(scrollVideo)
+const scrollVideos = document.querySelectorAll('.sc-scroll-video')
+scrollVideos.forEach(v => sectionObserver.observe(v))
 
 // ─── Video autoplay on scroll ─────────────────────────────────────────────────
 
-if (scrollVideo) {
+if (scrollVideos.length > 0) {
   const videoObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          scrollVideo.play().catch(() => {})
+          entry.target.play().catch(() => {})
         } else {
-          scrollVideo.pause()
+          entry.target.pause()
         }
       })
     },
@@ -241,7 +253,7 @@ if (scrollVideo) {
       threshold: 0.3
     }
   )
-  videoObserver.observe(scrollVideo)
+  scrollVideos.forEach(v => videoObserver.observe(v))
 }
 
 // ─── Entrance animation ───────────────────────────────────────────────────────
