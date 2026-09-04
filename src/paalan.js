@@ -120,6 +120,18 @@ app.innerHTML = `
           <img class="sc-scroll-img" src="/paalan-scroll/12.jpg" alt="Paalan Mobile Screens" data-section="5" width="1600" height="3088" loading="lazy" decoding="async" />
           <img class="sc-scroll-img" src="/paalan-scroll/13.jpg" alt="Paalan Care Workflow" data-section="5" width="1600" height="3088" loading="lazy" decoding="async" />
           <img class="sc-scroll-img" src="/paalan-scroll/14.jpg" alt="Paalan Conclusion" data-section="5" width="1600" height="3082" loading="lazy" decoding="async" />
+          <div class="sc-video-wrap">
+            <video
+              class="sc-scroll-img sc-scroll-video"
+              src="/paalan-scroll/yuhh.mp4"
+              data-section="5"
+              autoplay
+              muted
+              playsinline
+              preload="metadata"
+              loop
+            ></video>
+          </div>
         </div>
       </div>
 
@@ -205,6 +217,32 @@ const sectionObserver = new IntersectionObserver(
 )
 
 scrollImgs.forEach(img => sectionObserver.observe(img))
+
+// Also observe the video for section nav
+const scrollVideo = document.querySelector('.sc-scroll-video')
+if (scrollVideo) sectionObserver.observe(scrollVideo)
+
+// ─── Video autoplay on scroll ─────────────────────────────────────────────────
+
+if (scrollVideo) {
+  const videoObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          scrollVideo.play().catch(() => {})
+        } else {
+          scrollVideo.pause()
+        }
+      })
+    },
+    {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.3
+    }
+  )
+  videoObserver.observe(scrollVideo)
+}
 
 // ─── Entrance animation ───────────────────────────────────────────────────────
 
