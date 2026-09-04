@@ -81,18 +81,33 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent !important;
 }
 
 html,
 body,
 #app {
   width: 100%;
+  -webkit-tap-highlight-color: transparent !important;
 }
 
 body {
-  
   overflow-x: hidden;
   background: var(--bg);
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+a, button {
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-touch-callout: none;
+  outline: none;
+}
+
+button:focus:not(:focus-visible),
+a:focus:not(:focus-visible),
+button:active,
+a:active {
+  outline: none !important;
 }
 
 /* ── Page ───────────────────────────────────────────────────────────────── */
