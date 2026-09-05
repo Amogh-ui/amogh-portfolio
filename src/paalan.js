@@ -109,7 +109,7 @@ app.innerHTML = `
           <div class="sc-video-wrap">
             <video
               class="sc-scroll-img sc-scroll-video"
-              src="/paalan-scroll/intro.mp4"
+              src="/paalan-scroll/yuhh.mp4"
               data-section="0"
               autoplay
               muted
@@ -135,7 +135,7 @@ app.innerHTML = `
           <div class="sc-video-wrap">
             <video
               class="sc-scroll-img sc-scroll-video"
-              src="/paalan-scroll/yuhh.mp4"
+              src="/paalan-scroll/intro.mp4"
               data-section="5"
               autoplay
               muted

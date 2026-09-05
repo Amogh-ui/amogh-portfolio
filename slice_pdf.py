@@ -1,34 +1,43 @@
 import fitz
-import sys
 import os
+from PIL import Image
+import io
 
-def slice_pdf(pdf_path, output_dir, slice_height_pt=4000):
-    os.makedirs(output_dir, exist_ok=True)
-    # clean output dir
-    for f in os.listdir(output_dir):
-        if f.endswith('.jpg'):
-            os.remove(os.path.join(output_dir, f))
-    
-    doc = fitz.open(pdf_path)
-    page = doc[0]
-    rect = page.rect
-    w, h = rect.width, rect.height
-    
-    print(f"Processing {pdf_path}, dimensions: {w}x{h}")
-    
-    slice_idx = 1
-    y0 = 0
-    while y0 < h:
-        y1 = min(y0 + slice_height_pt, h)
-        clip = fitz.Rect(0, y0, w, y1)
-        matrix = fitz.Matrix(1.5, 1.5) # 1.5x scale for better quality since original is just PDF vector/images
-        pix = page.get_pixmap(matrix=matrix, clip=clip)
-        out_path = os.path.join(output_dir, f"{slice_idx}.jpg")
-        pix.save(out_path, output="jpg", jpg_quality=85)
-        slice_idx += 1
-        y0 = y1
-    
-    print(f"Generated {slice_idx - 1} images in {output_dir}")
+pdf_path = "/Users/amoghshete/Documents/PORTFOLIO WEBSITE/Beyond the net/Frame 5.pdf"
+output_dir = "/Users/amoghshete/Documents/PORTFOLIO WEBSITE/public/beyond-the-net-scroll/"
 
-slice_pdf("/Users/amoghshete/Documents/PORTFOLIO WEBSITE/Beyond the net/Frame 5.pdf", "/Users/amoghshete/Documents/PORTFOLIO WEBSITE/public/beyond-the-net-scroll")
-slice_pdf("/Users/amoghshete/Documents/PORTFOLIO WEBSITE/Ticketsure/Ticketsure documentation.pdf", "/Users/amoghshete/Documents/PORTFOLIO WEBSITE/public/ticketsure-scroll")
+# Ensure output directory exists and is empty
+os.makedirs(output_dir, exist_ok=True)
+os.system(f"rm -f '{output_dir}'*.jpg")
+
+doc = fitz.open(pdf_path)
+page = doc[0]
+
+# Render the whole page at high resolution
+# We want the output width to be around 2400px.
+# PDF width is 1980, so zoom = 2400 / 1980 = 1.212
+zoom = 2400 / 1980
+mat = fitz.Matrix(zoom, zoom)
+
+pix = page.get_pixmap(matrix=mat)
+img = Image.open(io.BytesIO(pix.tobytes("png")))
+
+width, height = img.size
+# Target slice height
+slice_height = 4823
+
+num_slices = (height + slice_height - 1) // slice_height
+print(f"Total height: {height}px, width: {width}px")
+print(f"Generating {num_slices} slices of max height {slice_height}px...")
+
+for i in range(num_slices):
+    top = i * slice_height
+    bottom = min(top + slice_height, height)
+    slice_img = img.crop((0, top, width, bottom))
+    
+    # Save as high-quality JPG
+    out_path = os.path.join(output_dir, f"{i + 1}.jpg")
+    slice_img.convert("RGB").save(out_path, "JPEG", quality=90)
+    print(f"Saved {out_path} (size: {slice_img.size})")
+
+print(f"Successfully generated {num_slices} images.")
