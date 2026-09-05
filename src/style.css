@@ -66,7 +66,7 @@
   --page-margin: clamp(1rem, 4vw, 1.5rem);
   --page-gutter: var(--page-margin);
   --grid-gutter: 24px;
-  --hero-title-top: clamp(25.5rem, 69.5vh, 44rem);
+  --hero-title-top: clamp(25.5rem, 69.5vh, 72vh);
   --hero-rule-bottom: clamp(4.25rem, 13vh, 10rem);
   --hero-rule-width: min(1383px, calc(100vw - (var(--page-margin) * 2)));
   color-scheme: dark;

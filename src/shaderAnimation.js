@@ -208,7 +208,7 @@ export function createShaderAnimation(container, { reducedMotion = false } = {})
     }
 
     if (state.running) {
-      uniforms.time.value += 0.07
+      uniforms.time.value = Math.min(uniforms.time.value + 0.07, 4.2)
 
       if (now - state.startTime >= 4200) {
         state.running = false

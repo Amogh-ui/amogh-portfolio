@@ -1041,8 +1041,8 @@ const startScrollLoop = () => {
 }
 
 const getHeroTitleTarget = () => {
-  let left = Math.min(Math.max(window.innerWidth * 0.0666, 16), 128)
-  let top = Math.min(Math.max(window.innerHeight * 0.662, 352), 720)
+  let left = Math.max(window.innerWidth * 0.0666, 16)
+  let top = Math.min(Math.max(window.innerHeight * 0.662, 352), window.innerHeight * 0.72)
 
   try {
     const probe = document.createElement('div')
@@ -1061,7 +1061,7 @@ const getHeroTitleTarget = () => {
     probe.style.top = 'var(--hero-title-top)'
     const measuredTop = probe.getBoundingClientRect().top + window.scrollY
     if (Number.isFinite(measuredTop)) {
-      top = Math.min(Math.max(measuredTop, 80), Math.max(320, window.innerHeight - 120))
+      top = Math.min(Math.max(measuredTop, 80), window.innerHeight * 0.72)
     }
 
     document.body.removeChild(probe)
