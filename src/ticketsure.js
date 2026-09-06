@@ -82,7 +82,7 @@ app.innerHTML = `
       <div class="mobile-menu-content">
         <div class="mobile-menu-sections">
           <a href="/#work" class="mobile-menu-section-link">Work</a>
-          <a href="/#info" class="mobile-menu-section-link">Info</a>
+          <a href="#" class="mobile-menu-section-link" data-scroll-bottom>Info</a>
         </div>
         <div class="mobile-menu-links">
           <a href="https://www.behance.net/Amogh-Shete" target="_blank" rel="noopener noreferrer">BEHANCE <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.29231 12L0 10.7077L8.86154 1.84615H0.923077V0H12V11.0769H10.1538V3.13846L1.29231 12Z" fill="#656565"/></svg></a>
@@ -338,3 +338,15 @@ scMenuOverlay?.addEventListener('click', closeSCMenu)
 scMenuPanel?.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', closeSCMenu)
 })
+
+// Scroll to bottom when "Info" is clicked
+const scrollBottomLink = document.querySelector('[data-scroll-bottom]')
+if (scrollBottomLink) {
+  scrollBottomLink.addEventListener('click', (e) => {
+    e.preventDefault()
+    closeSCMenu()
+    setTimeout(() => {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' })
+    }, 400)
+  })
+}
