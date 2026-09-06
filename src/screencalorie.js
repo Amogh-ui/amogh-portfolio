@@ -6,7 +6,7 @@ const app = document.querySelector('#app')
 if (!app) throw new Error('App root not found.')
 
 // Section titles for the right-side indicator (matching Figma "Title 1–4" placeholders)
-const sectionTitles = ['Overview', 'Research', 'Prototyping', 'Branding', 'Demo']
+const sectionTitles = ['Overview', 'Research', 'Concept', 'Branding', 'Testing']
 
 const sectionNavMarkup = sectionTitles
   .map((title, i) => `
@@ -146,7 +146,7 @@ app.innerHTML = `
             class="sc-scroll-img"
             src="/screencalorie-scroll/6.jpg"
             alt="Branding — typography, colors, beta testing"
-            data-section="3"
+            data-section="2"
             loading="lazy"
           />
           <img
@@ -160,7 +160,7 @@ app.innerHTML = `
             class="sc-scroll-img"
             src="/screencalorie-scroll/8.jpg"
             alt="Demo — final screens and interactions"
-            data-section="4"
+            data-section="3"
             loading="lazy"
           />
           <img

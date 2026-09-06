@@ -6,7 +6,7 @@ const app = document.querySelector('#app')
 if (!app) throw new Error('App root not found.')
 
 // Section titles for the side indicator
-const sectionTitles = ['Overview', 'Approach', 'Features', 'SUS Score', 'Branding']
+const sectionTitles = ['Overview', 'Research', 'Features', 'Usability', 'Branding']
 
 const sectionNavMarkup = sectionTitles
   .map((title, i) => `

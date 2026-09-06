@@ -6,7 +6,7 @@ const app = document.querySelector('#app')
 if (!app) throw new Error('App root not found.')
 
 // Section titles for the side indicator
-const sectionTitles = ['Overview', 'Research', 'Analysis', 'Ideation', 'Features', 'Branding']
+const sectionTitles = ['Overview', 'Research', 'Ideation', 'Features', 'User Flow', 'Branding']
 
 const sectionNavMarkup = sectionTitles
   .map((title, i) => `
@@ -120,18 +120,18 @@ app.innerHTML = `
           </div>
           <img class="sc-scroll-img" src="/paalan-scroll/1.jpg" alt="Paalan Overview" data-section="0" width="1600" height="3088" loading="eager" decoding="async" />
           <img class="sc-scroll-img" src="/paalan-scroll/2.jpg" alt="Paalan Brief" data-section="0" width="1600" height="3088" loading="eager" decoding="async" />
-          <img class="sc-scroll-img" src="/paalan-scroll/3.jpg" alt="Paalan Research" data-section="1" width="1600" height="3088" loading="lazy" decoding="async" />
-          <img class="sc-scroll-img" src="/paalan-scroll/4.jpg" alt="Paalan Field Study" data-section="1" width="1600" height="3088" loading="lazy" decoding="async" />
-          <img class="sc-scroll-img" src="/paalan-scroll/5.jpg" alt="Paalan Analysis" data-section="2" width="1600" height="3088" loading="lazy" decoding="async" />
-          <img class="sc-scroll-img" src="/paalan-scroll/6.jpg" alt="Paalan Journey & Personas" data-section="2" width="1600" height="3088" loading="lazy" decoding="async" />
-          <img class="sc-scroll-img" src="/paalan-scroll/7.jpg" alt="Paalan Ideation" data-section="3" width="1600" height="3088" loading="lazy" decoding="async" />
-          <img class="sc-scroll-img" src="/paalan-scroll/8.jpg" alt="Paalan Wireframes" data-section="3" width="1600" height="3088" loading="lazy" decoding="async" />
-          <img class="sc-scroll-img" src="/paalan-scroll/9.jpg" alt="Paalan Features" data-section="4" width="1600" height="3088" loading="lazy" decoding="async" />
-          <img class="sc-scroll-img" src="/paalan-scroll/10.jpg" alt="Paalan Branding" data-section="5" width="1600" height="3088" loading="lazy" decoding="async" />
-          <img class="sc-scroll-img" src="/paalan-scroll/11.jpg" alt="Paalan Branding" data-section="5" width="1600" height="3088" loading="lazy" decoding="async" />
-          <img class="sc-scroll-img" src="/paalan-scroll/12.jpg" alt="Paalan Branding" data-section="5" width="1600" height="3088" loading="lazy" decoding="async" />
-          <img class="sc-scroll-img" src="/paalan-scroll/13.jpg" alt="Paalan Branding" data-section="5" width="1600" height="3088" loading="lazy" decoding="async" />
-          <img class="sc-scroll-img" src="/paalan-scroll/14.jpg" alt="Paalan Branding" data-section="5" width="1600" height="3082" loading="lazy" decoding="async" />
+          <img class="sc-scroll-img" src="/paalan-scroll/3.jpg" alt="Paalan Competitive Analysis" data-section="1" width="1600" height="3088" loading="lazy" decoding="async" />
+          <img class="sc-scroll-img" src="/paalan-scroll/4.jpg" alt="Paalan Research Insights" data-section="1" width="1600" height="3088" loading="lazy" decoding="async" />
+          <img class="sc-scroll-img" src="/paalan-scroll/5.jpg" alt="Paalan Affinity Mapping" data-section="1" width="1600" height="3088" loading="lazy" decoding="async" />
+          <img class="sc-scroll-img" src="/paalan-scroll/6.jpg" alt="Paalan Personas" data-section="2" width="1600" height="3088" loading="lazy" decoding="async" />
+          <img class="sc-scroll-img" src="/paalan-scroll/7.jpg" alt="Paalan Information Architecture" data-section="2" width="1600" height="3088" loading="lazy" decoding="async" />
+          <img class="sc-scroll-img" src="/paalan-scroll/8.jpg" alt="Paalan Features" data-section="3" width="1600" height="3088" loading="lazy" decoding="async" />
+          <img class="sc-scroll-img" src="/paalan-scroll/9.jpg" alt="Paalan Feature Details" data-section="3" width="1600" height="3088" loading="lazy" decoding="async" />
+          <img class="sc-scroll-img" src="/paalan-scroll/10.jpg" alt="Paalan User Flow" data-section="4" width="1600" height="3088" loading="lazy" decoding="async" />
+          <img class="sc-scroll-img" src="/paalan-scroll/11.jpg" alt="Paalan Daily Checkup" data-section="4" width="1600" height="3088" loading="lazy" decoding="async" />
+          <img class="sc-scroll-img" src="/paalan-scroll/12.jpg" alt="Paalan User Testing" data-section="5" width="1600" height="3088" loading="lazy" decoding="async" />
+          <img class="sc-scroll-img" src="/paalan-scroll/13.jpg" alt="Paalan Typography" data-section="5" width="1600" height="3088" loading="lazy" decoding="async" />
+          <img class="sc-scroll-img" src="/paalan-scroll/14.jpg" alt="Paalan Visual Identity" data-section="5" width="1600" height="3082" loading="lazy" decoding="async" />
           <div class="sc-video-wrap">
             <video
               class="sc-scroll-img sc-scroll-video"

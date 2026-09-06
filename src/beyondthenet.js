@@ -6,8 +6,8 @@ const app = document.querySelector('#app')
 if (!app) throw new Error('App root not found.')
 
 // Section titles for the right-side indicator (matching Beyond the Net sections)
-const sectionTitles = ['Overview', 'Discover', 'Features', 'Development', 'User Flow']
-const sectionMapping = [0, 1, 1, 2, 2, 2, 2, 2, 3, 4, 4]
+const sectionTitles = ['Overview', 'Features', 'Research', 'Design', 'User Flow']
+const sectionMapping = [0, 1, 1, 1, 2, 2, 2, 2, 3, 4, 4]
 
 const sectionNavMarkup = sectionTitles
   .map((title, i) => `
