@@ -2,9 +2,13 @@ import './style.css'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Lenis from 'lenis'
+import { inject } from '@vercel/analytics'
 // Lazy-loaded later to avoid blocking the main bundle with Three.js
 
 gsap.registerPlugin(ScrollTrigger)
+
+// Initialize Vercel Web Analytics
+inject()
 
 
 

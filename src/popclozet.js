@@ -1,6 +1,10 @@
 import './popclozet.css'
 import gsap from 'gsap'
 import Lenis from 'lenis'
+import { inject } from '@vercel/analytics'
+
+// Initialize Vercel Web Analytics
+inject()
 
 const app = document.querySelector('#app')
 if (!app) throw new Error('App root not found.')
@@ -129,7 +133,7 @@ app.innerHTML = `
           <img
             class="sc-scroll-img"
             src="/popclozet-scroll/3.jpg"
-            alt="Approach — Research, user journey and pain points"
+            alt="Approach �� Research, user journey and pain points"
             data-section="1"
             width="1692"
             height="2025"
