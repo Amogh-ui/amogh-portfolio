@@ -1,3 +1,4 @@
+import './analytics.js'
 import './trox.css'
 import './trox-layout.css'
 import gsap from 'gsap'

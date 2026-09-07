@@ -1,3 +1,4 @@
+import './analytics.js'
 import './oneflow.css'
 import gsap from 'gsap'
 import Lenis from 'lenis'

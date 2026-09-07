@@ -1,3 +1,4 @@
+import './analytics.js'
 import './style.css'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'

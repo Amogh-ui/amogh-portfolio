@@ -1,3 +1,4 @@
+import './analytics.js'
 import './screencalorie.css'
 import gsap from 'gsap'
 import Lenis from 'lenis'
