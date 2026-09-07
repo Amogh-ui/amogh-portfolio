@@ -1,6 +1,10 @@
 import './oneflow.css'
 import gsap from 'gsap'
 import Lenis from 'lenis'
+import { inject } from '@vercel/analytics'
+
+// Initialize Vercel Web Analytics
+inject()
 
 const app = document.querySelector('#app')
 if (!app) throw new Error('App root not found.')
