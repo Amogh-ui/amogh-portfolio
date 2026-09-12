@@ -88,6 +88,7 @@ app.innerHTML = `
       <div><span class="project-solo-badge">✦ Solo Project</span></div>
       
       <div class="trox-video-container">
+        <div class="video-loader"></div>
         <video class="trox-video" src="/trox-video.mp4" autoplay loop muted playsinline></video>
         <button class="trox-mute-btn" aria-label="Toggle mute">
           <svg class="icon-mute" style="display: block;" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -120,9 +121,9 @@ app.innerHTML = `
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
 const lenis = reducedMotion ? null : new Lenis({
-  duration: 1.5,
-  wheelMultiplier: 0.8,
-  touchMultiplier: 0.8,
+  duration: 1.8,
+  wheelMultiplier: 0.65,
+  touchMultiplier: 0.65,
   smoothWheel: true,
   smoothTouch: false,
   easing: (t) => 1 - Math.pow(2, -10 * t)
@@ -195,7 +196,18 @@ if (cursor && !window.matchMedia('(pointer: coarse)').matches) {
 
 // ─── Video Mute Toggle ───────────────────────────────────────────────────────
 const troxVideo = document.querySelector('.trox-video')
+const videoLoader = document.querySelector('.video-loader')
 const troxMuteBtn = document.querySelector('.trox-mute-btn')
+
+if (troxVideo) {
+  troxVideo.addEventListener('canplay', () => {
+    if (videoLoader) {
+      videoLoader.style.opacity = '0'
+      setTimeout(() => videoLoader.style.display = 'none', 300)
+    }
+  })
+}
+
 if (troxVideo && troxMuteBtn) {
   const iconMute = troxMuteBtn.querySelector('.icon-mute')
   const iconUnmute = troxMuteBtn.querySelector('.icon-unmute')

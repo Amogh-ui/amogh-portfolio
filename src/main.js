@@ -572,9 +572,9 @@ import('./shaderAnimation.js').then(({ createShaderAnimation }) => {
 const lenis = reducedMotion
   ? null
   : new Lenis({
-      duration: 1.5,
-      wheelMultiplier: 0.8,
-      touchMultiplier: 0.8,
+      duration: 1.8,
+      wheelMultiplier: 0.65,
+      touchMultiplier: 0.65,
       smoothWheel: true,
       smoothTouch: false,
       easing: (t) => 1 - Math.pow(2, -10 * t)
